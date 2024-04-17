@@ -1,0 +1,26 @@
+{% from 'bootstrap5/form.html' import render_field %}
+<form method="post" action="" id="loginForm" novalidate>
+  <fieldset>
+    {{ render_field(form.username) }}
+    {% if not reset %}
+      {{ render_field(form.password) }}
+    {% endif %}
+  </fieldset>
+  <div class="row login__btn-group">
+    <div class="col-sm-12">
+      <button class="btn btn-primary narrow" type="submit">
+        {% if not reset %}
+          Log in
+        {% else %}
+          Reset Password
+        {% endif %}
+      </button>
+      {% if not reset %}
+        <a rel="nofollow" class="link--styled" href="{{ url_for('account.resetpwd') }}">
+          Forgot password?
+        </a>
+      {% endif %}
+      <hr>
+    </div>
+  </div>
+</form>

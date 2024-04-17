@@ -1,0 +1,254 @@
+# version: '3.9'
+
+services:
+  # redis:
+  #   image: redis:6.2-alpine
+  #   container_name: redis
+  #   env_file: .\infisical\.env
+  #   restart: always
+  #   pull_policy: always
+  #   # Password cannot have special chars
+  #   command: redis-server --port 6379 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81 --maxmemory-policy allkeys-lfu --appendonly yes
+  #   environment:
+  #     - ALLOW_EMPTY_PASSWORD=yes
+  #   volumes:
+  #     - .\persistent\redis_data:/data
+  #   ports:
+  #     - 6379:6379
+  #   networks:
+  #     - redis_network
+  #     - infisical_network
+  #     - flaskshop_network
+
+  # postgres:
+  #   # build:
+  #   #     context: .
+  #   #     dockerfile: .\.docker\dockerfile.postgres
+  #   image: postgres:16-alpine
+  #   container_name: postgres
+  #   restart: always
+  #   env_file: infisical/.env
+  #   pull_policy: always
+  #   ports:
+  #     - 5432:5432
+  #   networks:
+  #     - postgresql_network
+  #     - infisical_network
+  #     - flaskshop_network
+  #   volumes:
+  #     - .\persistent\postgresql:/var/lib/postgresql/
+  #     - .\persistent\postgresql_data:/var/lib/postgresql/data/
+  #     - .\init-scripts\init.sql:/docker-entrypoint-initdb.d/
+  #     # -
+  #     #   type: bind
+  #     #   source: .\persistent\postgresql
+  #     #   target: /var/lib/postgresql/
+  #     # -
+  #     #   type: bind
+  #     #   source: .\persistent\postgresql_data
+  #     #   target: /var/lib/postgresql/data
+  #     # - .\persistent\postgresql:/var/lib/postgresql
+  #     # - .\persistent\postgresql_data:/var/lib/postgresql/data
+  #   # environment:
+  #   #   POSTGRES_USER: dev
+  #   #   POSTGRES_PASSWORD: dev
+  #   #   POSTGRES_DB: postgres
+  #     # PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/postgresql/16/bin
+  #   command:
+  #     # - /bin/bash
+  #     # - -c
+  #     # - |
+  #     #   rethinkdb create --initial-password Passw0rd!
+  #     #   rethinkdb --bind all
+  #   healthcheck:
+  #     test: "pg_isready --username=infisical && psql --username=infisical --list"
+  #     interval: 5s
+  #     timeout: 10s
+  #     retries: 10
+
+  # # pgadmin4:
+  # #   image: dpage/pgadmin4
+  # #   container_name: pgadmin4
+  # #   restart: always
+  # #   pull_policy: always
+  # #   environment:
+  # #     # PGADMIN_DEFAULT_EMAIL=infisical@infisical.pt'
+  # #     PGADMIN_DEFAULT_EMAIL: infisical@infisical.pt
+  # #     PGADMIN_DEFAULT_PASSWORD: infisical
+  # #     # PGADMIN_DEFAULT_PASSWORD_FILE: infisical
+  # #     PGADMIN_DISABLE_POSTFIX: true
+  # #     PGADMIN_LISTEN_ADDRESS: 0.0.0.0
+  # #   user: root
+  # #   depends_on:
+  # #     - postgres
+  # #   ports:
+  # #     - 8090:80
+  # #   networks:
+  # #     - postgresql_network
+  # #   volumes:
+  # #     - .\persistent\pgadmin4:/var/lib/pgadmin
+  # #     - .\persistent\pgadmin:/var/lib/pgadmin
+
+  # #     # -e PGADMIN_DEFAULT_EMAIL=user@domain.com -e PGADMIN_DEFAULT_PASSWORD=catsarecool -d dpage/pgadmin4
+
+  # db-migration:
+  #   container_name: infisical-db-migration
+  #   depends_on:
+  #     postgres:
+  #       condition: service_healthy
+  #   image: infisical/infisical:latest-postgres
+  #   env_file: .\infisical/.env
+  #   command: npm run migration:latest
+  #   pull_policy: always
+  #   networks:
+  #     - infisical_network
+  #     - postgresql_network
+  #     - redis_network
+
+  # backend:
+  #   container_name: infisical-backend
+  #   restart: unless-stopped
+  #   depends_on:
+  #     postgres:
+  #       condition: service_healthy
+  #     redis:
+  #       condition: service_started
+  #     db-migration:
+  #       condition: service_completed_successfully
+  #   image: infisical/infisical:latest-postgres
+  #   # image: postgres:latest
+  #   pull_policy: always
+  #   env_file: .\infisical/.env
+  #   ports:
+  #     - 8082:8080
+  #   environment:
+  #     - NODE_ENV=production
+  #   networks:
+  #     - infisical_network
+  #     - postgresql_network
+  #     - redis_network
+
+  # rethinkdb:
+  #   build:
+  #     context: .
+  #     dockerfile: .\.docker\dockerfile.rethinkdb
+  #   environment: # Goes directly to ENV inside container (cachtes env from gitlab ci)
+  #     - TZ=Europe/Lisbon
+  #   container_name: rethinkdb
+  #   restart: always
+  #   networks:
+  #     - flaskshop_network
+  #     - redis_network
+  #     - rethinkdb_net
+  #   ports:
+  #     - 8086:8080
+  #     - 28015:28015
+  #     - 29015:29015
+  #   command:
+  #     - /bin/bash
+  #     - -c
+  #     - |
+  #       rethinkdb create --initial-password Passw0rd!
+  #       rethinkdb --bind all
+  #   volumes:
+  #     - .\persistent\rethinkdb_data:/data
+  #   deploy:
+  #     resources:
+  #       limits:
+  #         cpus: '1.5'
+  #         memory: 2GB
+
+  db-init:
+    build:
+      context: .
+      dockerfile: .\.docker\dockerfile-db-init
+    container_name: shop-db-init
+    # depends_on:
+    #   postgres:
+    #     condition: service_healthy
+    pull_policy: always
+    networks:
+      - flaskshop_network
+      - redis_network
+      - rethinkdb_net
+      - infisical_network
+
+  shop:
+    build:
+      context: .
+      dockerfile: .\.docker\dockerfile
+    environment: # Goes directly to ENV inside container (cachtes env from gitlab ci)
+      - TZ=Europe/Lisbon
+    container_name: shop
+    restart: always
+    pull_policy: always
+    depends_on:
+      db-init:
+        condition: service_completed_successfully
+    networks:
+      - flaskshop_network
+      - redis_network
+      - rethinkdb_net
+      - infisical_network
+    ports:
+      - 5001:5001
+      # - 5679:5679
+    # entrypoint: [ "python", "-m", "debugpy", "--listen", "0.0.0.0:5679", "-m", "app",  "--wait-for-client", "--multiprocess", "-m", "flask", "run", "-h", "0.0.0.0", "-p", "5000" ]
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 2GB
+
+networks:
+  redis_network:
+    name: redis_network
+    # driver: overlay
+    # attachable: true
+    external: true
+  infisical_network:
+    name: infisical_network
+    # driver: overlay
+    # attachable: true
+    external: true
+  postgresql_network:
+    name: postgresql_network
+    # driver: overlay
+    # attachable: true
+    external: true
+  rethinkdb_net:
+    name: rethinkdb_net
+    # driver: overlay
+    # attachable: true
+    external: true
+  flaskshop_network:
+    name: flaskshop_network
+    # driver: overlay
+    attachable: true
+    external: true
+
+volumes:
+  rethinkdb_data:
+    external: true
+    # driver: local
+  pg_data:
+    external: true
+    # driver: local
+  redis_data:
+    external: true
+    # driver: local
+  postgresql_data:
+    external: true
+    # driver: local
+  postgresql:
+    external: true
+    # driver: local
+
+# networks:
+#   host:
+#     external: true
+# docker network create rethinkdb_net
+# docker network create postgresql_network
+# docker network create redis_network
+# docker network create infisical_network
+# docker network create flaskshop_network

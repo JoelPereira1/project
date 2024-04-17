@@ -1,0 +1,36 @@
+# FROM python:3.12
+# # Or any preferred Python version.
+# ADD main.py .
+# RUN pip install requests beautifulsoup4 python-dotenv
+# CMD ["python3", “./main.py”]
+# # Or enter the name of your unique directory and parameter set.
+
+
+FROM python:3.10
+
+WORKDIR /app
+COPY . .
+
+RUN pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org --upgrade pip
+RUN pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org --no-cache-dir -r requirements.txt
+
+RUN git config --global --add safe.directory .git/gitconfig
+
+ENV PYTHONPATH="${PYTHONPATH}:/app/modules/databases:/app/modules/cosmosdb:/app/modules/rethinkdb:/app/flaskshop:/app/models:/app/models/challenge:/app/models/blog:/app/models/customer:/app/models/order:/app/models/product:/app/models/post:/app/packages"
+
+WORKDIR /app/shop
+ENV FLASK_APP=/app/shop/app.py
+ENV FLASK_ENV=development
+EXPOSE 5001
+
+
+# CMD ["python", "/app/shop/app.py"]
+CMD python -m flask run --host=0.0.0.0 --port=5001 --debug
+
+# CMD [ "python", "-m flask run --debug" ]
+
+
+# ENV PYTHONDONTWRITEBYTECODE 1
+# ENV PYTHONUNBUFFERED 1
+# ENV DEBIAN_FRONTEND=noninteractive
+# CMD ["python", "-m", "debugpy", "--listen", "0.0.0.0:5679", "app.py"]

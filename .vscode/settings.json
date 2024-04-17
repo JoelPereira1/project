@@ -1,0 +1,13 @@
+{
+  "python.analysis.extraPaths": [
+    "../ultimate/",
+    "./settings",
+    "./settings",
+    "./shop/",
+    "./shop/corelib/",
+    "./shop/routes/",
+    "./shop/models/",
+    "./shop/static/",
+    "./shop/templates/"
+  ]
+}

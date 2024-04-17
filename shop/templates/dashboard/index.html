@@ -1,0 +1,114 @@
+{% extends 'dashboard/layout.html' %}
+
+{% block body %}
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="info-box mb-3">
+                            <span class="info-box-icon bg-success"><i
+                                    class="fa fa-shopping-cart"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Sales</span>
+                                    <span class="info-box-text"><b>{{ orders_today }}</b> today
+                                        and <b>{{ orders_total }}</b>
+                                        total</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-box mb-3">
+                                <span class="info-box-icon bg-warning"><i class="fa fa-users"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Members</span>
+                                    <span class="info-box-text"><b>{{ users_today }}</b> new in
+                                        <b>{{ users_total }}</b>
+                                        accounts</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body p-0">
+                            <ul class="navi-card">
+                                <li class="item">
+                                    <a href="{{ url_for('dashboard.orders', status=order_fulfill.kind) }}">
+                                        <span>{{ order_fulfill.count }} Orders are ready to
+                                            fulfill</span>
+                                        <span class="right">></span>
+                                    </a>
+                                </li>
+                                <li class="item">
+                                    <a href="{{ url_for('dashboard.orders', status=order_unfulfill.kind) }}">
+                                        <span>{{ order_unfulfill.count }} Payments to
+                                            capture</span>
+                                        <span class="right">></span>
+                                    </a>
+                                </li>
+                                <li class="item">
+                                    <a href="{{ url_for('dashboard.products', sale=True) }}">
+                                        <span>{{ onsale_products_count }} products is on
+                                            sale</span>
+                                        <span class="right">></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="card-title">Top Products</h6>
+                        </div>
+                        <div class="card-body p-0">
+                            <ul class="products-list product-list-in-card px-2">
+                                {% for product in top_products %}
+                                    <li class="item">
+                                        <img src="{{ product.first_img }}"
+                                             alt="Product Image">
+                                        <div class="product-info">
+                                            <a href="{{ url_for('dashboard.product_detail', id=product.id) }}"
+                                               class="product-title">{{ product.title }}
+                                                <span class="badge text-bg-primary float-right">{{ product.price_human }}</span>
+                                            </a>
+                                            <span class="product-description">
+                                                {{ product.description }}
+                                            </span>
+                                            <span class="product-description">
+                                                {{ product.order_count }} Ordered
+                                            </span>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="card-title">Activity</h6>
+                        </div>
+                        <div class="card-body p-0">
+                            <ul class="activity product-list-in-card px-2">
+                                {% for a in activity %}
+                                    <li class="item">
+                                        <span class="activity-title">Order #{{ a.order_id }}
+                                            was {{ order_events(a.type_).name }}</span>
+                                        <span>{{ a.created_at_human }}</span>
+                                    </li>
+                                {% else %}
+                                    <li class="item">
+                                        <span class="activity-title">There is no recent
+                                            activity </span>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

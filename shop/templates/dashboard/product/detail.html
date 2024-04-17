@@ -1,0 +1,145 @@
+{% extends 'dashboard/layout.html' %}
+{% import 'dashboard/_macros.html' as macros %}
+
+{% block body %}
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-outline">
+                        <div class="card-header">
+                            <h4 class="card-title">
+                                <a href="{{ url_for('product.show', id=product.id) }}"
+                                   target="_blank">{{ product.title }}</a>
+                            </h4>
+                            <div class="card-tools">
+                                <a href="{{ url_for('dashboard.product_manage', id=product.id) }}"
+                                   class="btn btn-primary btn-sm mx-2">
+                                    Edit</a>
+                                <a class="btn btn-danger btn-sm"
+                                   data-delete-url="products/{{ product.id }}/delete"
+                                   data-redirect-url="/dashboard/products"
+                                   data-bs-toggle="modal" data-bs-target="#deleteModal"
+                                >Delete</a>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div id="banner" class="carousel slide" data-bs-ride="true">
+                                    <div class="carousel-inner">
+                                        {% for img in product.images %}
+                                            <div class="carousel-item {% if loop.first %}active{% endif %}">
+                                                <img src="{{ img }}" class="d-block w-100" alt="...">
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                    <button class="carousel-control-prev" type="button"
+                                            data-bs-target="#banner" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button"
+                                            data-bs-target="#banner" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+                                <div class="product-attrs">
+                                    <ul class="list-group mb-3">
+                                        <li class="list-group-item">
+                                            <b>On Sale</b> <span
+                                                class="float-right">{{ macros.render_boolean(product.on_sale) }}</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Price</b> <span
+                                                class="float-right">${{ product.price }} /
+                                            ${{ product.basic_price }}</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Rating</b> <span
+                                                class="float-right">{{ product.rating }}</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Sold Count</b> <span
+                                                class="float-right">{{ product.sold_count }}</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Review Count</b> <span
+                                                class="float-right">{{ product.review_count }}</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Category</b> <span
+                                                class="float-right">{{ product.category }}</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>ProductType</b> <span
+                                                class="float-right">{{ product.product_type }}</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Created</b> <span
+                                                class="float-right">{{ product.created_at }}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p class="lead">Product Description:</p>
+                                <p class="text-muted well well-sm no-shadow">
+                                    {{ product.description }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="m-0">Variants</h5>
+                            <div class="card-tools">
+                                <div class="input-group input-group-sm">
+                                    <a href="{{ url_for('dashboard.variant_manage', product_id=product.id) }}"
+                                       class="btn btn-success btn-sm">Create</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-hover">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>SKU</th>
+                                    <th>Title</th>
+                                    <th>Quantity</th>
+                                    <th>PriceOverride</th>
+                                    <th>Operation</th>
+                                </tr>
+                                {% for item in product.variant %}
+                                    <tr>
+                                        <td>{{ item.id }}</td>
+                                        <td>{{ item.sku }}</td>
+                                        <td>{{ item.title }}</td>
+                                        <td>{{ item.quantity }}</td>
+                                        <td>{{ item.price_override }}</td>
+                                        <td>
+                                            <a href="{{ url_for('dashboard.variant_manage', id=item.id) }}"
+                                               class="btn btn-primary btn-sm">Edit</a>
+                                            <a class="btn btn-danger btn-sm "
+                                               data-delete-url="variants/{{ item.id }}/delete"
+                                               data-bs-toggle="modal" data-bs-target="#deleteModal"
+                                            >
+                                                Delete</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+

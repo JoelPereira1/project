@@ -1,0 +1,77 @@
+{% extends 'dashboard/layout.html' %}
+{% from 'bootstrap5/pagination.html' import render_pagination %}
+
+{% block body %}
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Order List</h4>
+                            <div class="card-tools">
+                                <form>
+                                    <div class="row">
+                                        <div class="form-group col-2">
+                                            <select class="form-control form-control-sm" name="status">
+                                                <option value="" disabled selected hidden>
+                                                    Status</option>
+                                                {% for stat in order_stats_kinds %}
+                                                    <option value="{{ stat.value }}">{{ stat.name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-2">
+                                            <input type="text" name="order_number" class="form-control form-control-sm"
+                                                   placeholder="Order No.">
+                                        </div>
+                                        <div class="form-group col-3">
+                                            <input type="datetime-local" name="created_at" class="form-control form-control-sm"
+                                                   placeholder="Created At" id="reservation">
+                                        </div>
+                                        <div class="form-group col-3">
+                                            <input type="datetime-local" name="ended_at" class="form-control form-control-sm"
+                                                   placeholder="Ended At" id="reservation">
+                                        </div>
+                                        <div class="form-group col-2">
+                                            <button type="submit" class="btn btn-secondary btn-sm">
+                                                Query</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="card-body table-responsive p-3">
+                            <table class="table table-hover">
+                                <tr>
+                                    {% for th in props.values() %}
+                                        <th>{{ th }}</th>
+                                    {% endfor %}
+                                    <th>Operation</th>
+                                </tr>
+                                {% for item in items %}
+                                    <tr>
+                                        {% for prop in props.keys() %}
+                                            <td>{{ item | attr(prop) }}</td>
+                                        {% endfor %}
+                                        <td>
+                                            <a href="{{ url_for('dashboard.order_detail', id=item.id) }}"
+                                               class="btn btn-info btn-sm">View</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                        {% if pagination.pages > 1 %}
+                            <div class="card-footer clearfix">
+                                {{ render_pagination(pagination, size='sm', align='right') }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+

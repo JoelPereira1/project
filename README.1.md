@@ -28,47 +28,14 @@ docker run --name flower_shop  python-docker
 # Docker Compose
 docker compose build
 
-
-# Docker rethinkdb
-
-rethinkdb
+infisical
+infisicaladmin
 
 
+changed docker-compose
+.docker
+.env infisical
 
-python -m flask db init
-python -m flask db migrate -m "Initial migration"
-python -m flask db upgrade
-python -m flask db stamp
-python -m flask db branches
-python -m flask db current
-
-
-
-#######################################################
-sudo apt-get install --reinstall libpq-dev
-
-pip install psycopg2
-
-pip install psycopg2-binary
-
-pip install --upgrade *
-
-python3 -m venv .venv
-
-source .venv/bin/activate
-
-pip3 install -r requirements.txt
-
-sudo apt install alembic
-alembic init alembic
-cp alembic/env.py alembic/versions/env.py
-
-python ./database_init.py
-
-CREATE DATABASE demo_postgres_app;
-
-python -m flask run --debugger --port="8088"
-#####################################################
 
 <p align="center">
   <a href="https://www.swe-agent.com/">

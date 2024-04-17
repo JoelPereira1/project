@@ -1,0 +1,53 @@
+{% macro render_boolean(field) %}
+    {% if field %}
+        <i class="fa fa-check text-success"></i>
+    {% else %}
+        <i class="fa fa-times text-danger"></i>
+    {% endif %}
+{% endmacro %}
+
+{% macro render_img(field) %}
+    <div class="form-group">
+        <label>{{ field.label.text }}</label>
+        {% if field.data %}
+            <img class="img-fluid rounded" src="{{ url_for('static', filename=field.data) }}" alt="">
+        {% endif %}
+    </div>
+{% endmacro %}
+
+{% macro render_multi_img(field) %}
+    <div class="form-group">
+        <label>{{ field.label.text }}</label>
+        <div id="field_list" class="img_field ">
+            {% for subfield in field %}
+                <div class="img_block my-2">
+                    <img class="img-thumbnail mb-1" src="{{ subfield.data }}" alt="">
+                    <input type="hidden" name="{{ subfield.label.field_id }}" value="{{ subfield.data.id }}">
+                    <button type="button" class="btn btn-info btn-sm" id="item_del">Remove</button>
+                </div>
+            {% endfor %}
+        </div>
+        <br/>
+    </div>
+{% endmacro %}
+
+{% macro render_attribute_field(field, attributes) %}
+    <div class="form-group">
+        <label>{{ field.label.text }}</label>
+        <p>
+            {% for attr in attributes %}
+                <label>{{ attr.title }}</label>
+                <select class="form-control" name="attributes-{{ loop.index }}">
+                    <option value="0">None</option>
+                    {% for item in attr.values %}
+                        {% set attr_id = attr.id|string %}
+                        {% set item_id = item.id|string %}
+                        <option value="{{ item.id }}" {% if field.object_data[attr_id]==item_id %} selected {% endif %}>
+                            {{ item.title }}
+                        </option>
+                    {% endfor %}
+                </select>
+            {% endfor %}
+        </p>
+    </div>
+{% endmacro %}

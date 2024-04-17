@@ -1,0 +1,70 @@
+{% extends 'dashboard/layout.html' %}
+{% from 'bootstrap5/form.html' import render_field %}
+
+
+{% block body %}
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h4 class="card-title">
+                                {% if 'edit' in request.path %}Edit{% else %}Create
+                                {% endif %} Page</h4>
+                        </div>
+                        <form method="POST" action="">
+                            <div class="card-body">
+                                {{ form.hidden_tag() }}
+                                {{ render_field(form.title) }}
+                                {{ render_field(form.slug) }}
+                                {{ render_field(form.is_visible) }}
+
+                                <div class="form-control mb-3 editor">
+                                    <input id="rawContent" name="content" type="hidden"
+                                           data-raw="{{ form.content.data | safe }}"/>                                    </input>
+                                    <div id="toolbar-container"></div>
+                                    <div id="text-editor"></div>
+                                </div>
+                                {{ render_field(form.submit) }}
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block tail_js %}
+    <link href="https://unpkg.com/@wangeditor/editor@latest/dist/css/style.css" rel="stylesheet">
+    <script src="https://unpkg.com/@wangeditor/editor@latest/dist/index.js"></script>
+    <script>
+        const {createEditor, createToolbar} = window.wangEditor
+
+        const rawInput = document.getElementById('rawContent')
+        const editorConfig = {
+
+            onChange(editor) {
+                const html = editor.getHtml()
+                rawInput.value = html
+            }
+        }
+
+        const editor = createEditor({
+            selector: '#text-editor',
+            config: editorConfig,
+            html: rawInput.dataset.raw,
+            mode: 'simple',
+        })
+
+        const toolbarConfig = {}
+
+        const toolbar = createToolbar({
+            editor,
+            selector: '#toolbar-container',
+            config: toolbarConfig,
+            mode: 'simple',
+        })
+    </script>
+{% endblock %}

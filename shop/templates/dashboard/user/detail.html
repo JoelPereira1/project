@@ -1,0 +1,122 @@
+{% extends 'dashboard/layout.html' %}
+{% import 'dashboard/_macros.html' as macros %}
+
+
+
+{% block body %}
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+
+                    <!-- Profile Image -->
+                    <div class="card card-primary card-outline">
+                        <div class="card-body box-profile">
+                            <div class="text-center">
+                                <img class="profile-user-img img-fluid img-thumbnail rounded-circle"
+                                     src="{{ user.avatar }}"
+                                     alt="User profile picture">
+                            </div>
+                            <h4 class="profile-username text-center">{{ user.username }}</h4>
+                            <p class="text-muted text-center">{{ user.email }}</p>
+                            <ul class="list-group list-group-unbordered mb-3">
+                                <li class="list-group-item">
+                                    <b>Is Active</b> <span
+                                        class="float-right">{{ macros.render_boolean(user.is_active) }}</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Registered</b> <span
+                                        class="float-right">{{ user.created_at.strftime('%Y-%m-%d') }}</span>
+                                </li>
+                            </ul>
+
+                            <a href="{{ url_for('dashboard.user_edit', user_id=user.id) }}"
+                               class="btn btn-primary d-block mb-2"><b>Edit</b></a>
+                            <a class="btn btn-danger d-block"
+                               data-delete-url="users/{{ user.id }}/delete"
+                               data-redirect-url="/dashboard/users"
+                               data-bs-toggle="modal" data-bs-target="#deleteModal"
+                            ><b>Delete</b></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header p-2">
+                            <nav class="nav nav-pills nav-justified">
+                                <a class="nav-link active"
+                                   data-bs-toggle="tab" data-bs-target="#address" role="tab"
+                                >Addresses</a>
+                                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#order"
+                                   role="tab">
+                                    Orders</a>
+                            </nav>
+                        </div>
+                        <div class="card-body">
+                            <div class="tab-content">
+                                <div class="active tab-pane" id="address">
+                                    {% if addresses|list|length > 0 %}
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <th style="width: 10px">ID</th>
+                                                <th>Contact Name</th>
+                                                <th>Contact Phone</th>
+                                                <th style="width: 40px">Operation</th>
+                                            </tr>
+                                            {% for address in addresses %}
+                                                <tr>
+                                                    <td>{{ address.id }}</td>
+                                                    <td>{{ address.contact_name }}</td>
+                                                    <td>{{ address.contact_phone }}</td>
+                                                    <td class="text-center"><a
+                                                            href="{{ url_for('dashboard.address_edit', id=address.id) }}"
+                                                            class="btn btn-info btn-sm">
+                                                        Edit</a></td>
+                                                </tr>
+                                            {% endfor %}
+                                        </table>
+                                    {% else %}
+                                        <h6 class="card-title">This user have not add
+                                            address</h6>
+                                    {% endif %}
+                                </div>
+                                <div class="tab-pane" id="order">
+                                    {% if orders|list|length > 0 %}
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Status</th>
+                                                <th>Total</th>
+                                                <th>Created At</th>
+                                                <th style="width: 40px">Operation</th>
+                                            </tr>
+                                            {% for order in orders %}
+                                                <tr>
+                                                    <td>{{ order.identity }}</td>
+                                                    <td>{{ order.status }}</td>
+                                                    <td>{{ order.total_net }}</td>
+                                                    <td>{{ order.created_at }}</td>
+                                                    <td class="text-center"><a
+                                                            href="/dashboard/orders/{{ order.id }}"
+                                                            class="btn btn-info btn-sm">
+                                                        View</a>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+
+                                        </table>
+                                    {% else %}
+                                        <h6 class="card-title">This user have not create
+                                            orders</h6>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
