@@ -9,6 +9,7 @@ from flask_wtf.csrf import CSRFProtect
 from shop.extensions import login_manager
 from shop.models.user import User
 from shop.models.product import Product
+from shop.models.public import Page
 
 csrf_protect = CSRFProtect()
 public = Blueprint('public', __name__)
@@ -33,23 +34,18 @@ def favicon():
 
 @public.route('/public/search')
 def search():
-    query = request.args.get("q", "")
-    page = request.args.get("page", default=1, type=int)
-    if current_app.config["USE_ES"]:
-        pagination = Product.new_search(query, page)
-    else:
-        pagination = Product.query.filter(Product.title.ilike(f"%{query}%")).paginate(
-            page=page, per_page=10
-        )
-    return render_template(
-        "public/search_result.html",
-        products=pagination.items,
-        query=query,
-        pagination=pagination,
-    )
+  query = request.args.get("q", "")
+  page = request.args.get("page", default=1, type=int)
+  pagination = Product.query.filter(Product.title.ilike(f"%{query}%")).paginate(page=page, per_page=10)
+  return render_template(
+    "public/search_result.html",
+    products=pagination.items,
+    query=query,
+    pagination=pagination
+  )
 
-# @public.route('/public/page/<identity>')
-# def show_page(identity):
-#     page = Page.get_by_identity(identity)
-#     return render_template("public/page.html", page=page)
+@public.route('/public/page/<identity>')
+def show_page(identity):
+  page = Page.get_by_identity(identity)
+  return render_template("public/page.html", page=page)
 

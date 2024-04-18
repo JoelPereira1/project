@@ -1,4 +1,5 @@
 from .public import public as public_blueprint
+from .public import public as public_blueprint
 from .product import product as product_blueprint
 from .auth import auth as auth_blueprint
 from .order import order as order_blueprint

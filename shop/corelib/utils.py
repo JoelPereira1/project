@@ -8,7 +8,6 @@ from flask_login import current_user
 
 from urllib.parse import urlencode
 
-
 from shop.models.checkout import Cart
 from shop.constant import SiteDefaultSettings
 from shop.models.dashboard import Setting

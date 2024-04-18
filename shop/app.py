@@ -6,16 +6,15 @@ from . import commands
 # from flask_login import LoginManager
 from settings import Config
 from shop.extensions import (
-    bcrypt,
-    bootstrap,
-    csrf_protect,
-    db,
-    login_manager,
-    migrate
+  bcrypt,
+  bootstrap,
+  csrf_protect,
+  db,
+  login_manager,
+  migrate
 )
 
 from shop.corelib.utils import jinja_global_varibles
-
 
 def create_app(config_object=Config):
   app = Flask(__name__.split(".")[0])

@@ -26,8 +26,7 @@
     <div class=" d-none d-md-block container">
       <div class="row">
         <div class="col-6">
-        <p class="text-left">{{ project_title }}
-          - {{ project_subtitle }}</p>
+        <p class="text-left">{{ settings['project_title'].value }}</p>
         </div>
         <div class="col-6">
           <ul class="float-right">
@@ -86,7 +85,7 @@
         <svg data-src="{{ url_for('static', filename='img/search.svg') }}" width="30"
          height="30"></svg>
       </div>
-      <form class="form-inline search-form" action="/search">
+      <form class="form-inline search-form" action="/public/search">
         <div class="mobile-close-search d-md-none">
         <svg data-src="{{ url_for('static', filename='img/close.svg') }}" width="30"
            height="30"></svg>
@@ -247,12 +246,13 @@
         <svg data-src="{{ url_for('static', filename='img/logo-document.svg') }}"></svg>
       </a>
       </div>
-      <div class="col-8 footer__copy-text">{{ project_copyright }}</div>
+      <div class="col-8 footer__copy-text">{{ settings['project_copyright'].value }}</div>
     </div>
     </div>
   </div>
   </footer>
 {% endblock %}
+
 {% block footer_scripts %}
   <script src="{{ url_for('static', filename='build/storefront.js') }}"></script>
   {% if config.GA_MEASUREMENT_ID %}
@@ -269,6 +269,7 @@
   </script>
   {% endif %}
 {% endblock footer_scripts %}
+
 </body>
 
 </html>
