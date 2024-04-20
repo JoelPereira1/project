@@ -47,9 +47,9 @@ python -m flask db current
 #######################################################
 sudo apt-get install --reinstall libpq-dev
 
-pip install psycopg2
+pip install psycopg
 
-pip install psycopg2-binary
+pip install psycopg-binary
 
 pip install --upgrade *
 

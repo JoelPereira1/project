@@ -1,12 +1,7 @@
-
-# from flask_login import LoginManager, UserMixin
-
 from datetime import datetime, timezone
-
 import arrow
-from flask import abort, request, session
 from flask_bcrypt import Bcrypt
-from flask_bootstrap import Bootstrap
+from flask_bootstrap import Bootstrap4
 from flask_login import LoginManager
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
@@ -21,7 +16,7 @@ bcrypt = Bcrypt()
 csrf_protect = CSRFProtect()
 login_manager = LoginManager()
 migrate = Migrate(compare_type=True)
-bootstrap = Bootstrap()
+bootstrap = Bootstrap4()
 
 class BaseModel(PropsMixin, Model):
   __table_args__ = {"extend_existing": True}

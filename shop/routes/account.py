@@ -10,7 +10,6 @@ from flask_login import current_user, login_required, login_user, logout_user
 
 from shop.models.order import Order
 from shop.corelib.utils import flash_errors, gen_tmp_pwd, send_reset_pwd_email
-
 from shop.forms.account import AddressForm, ChangePasswordForm, LoginForm, RegisterForm, ResetPasswd
 from shop.models.user import User, UserAddress
 

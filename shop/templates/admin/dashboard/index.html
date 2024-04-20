@@ -1,4 +1,4 @@
-{% extends 'dashboard/layout.html' %}
+{% extends 'admin/dashboard/layout.html' %}
 
 {% block body %}
     <section>
@@ -34,21 +34,21 @@
                         <div class="card-body p-0">
                             <ul class="navi-card">
                                 <li class="item">
-                                    <a href="{{ url_for('dashboard.orders', status=order_fulfill.kind) }}">
+                                    <a href="{{ url_for('admin_order.orders', status=order_fulfill.kind) }}">
                                         <span>{{ order_fulfill.count }} Orders are ready to
                                             fulfill</span>
                                         <span class="right">></span>
                                     </a>
                                 </li>
                                 <li class="item">
-                                    <a href="{{ url_for('dashboard.orders', status=order_unfulfill.kind) }}">
+                                    <a href="{{ url_for('admin_order.orders', status=order_unfulfill.kind) }}">
                                         <span>{{ order_unfulfill.count }} Payments to
                                             capture</span>
                                         <span class="right">></span>
                                     </a>
                                 </li>
                                 <li class="item">
-                                    <a href="{{ url_for('dashboard.products', sale=True) }}">
+                                    <a href="{{ url_for('admin.products', sale=True) }}">
                                         <span>{{ onsale_products_count }} products is on
                                             sale</span>
                                         <span class="right">></span>

@@ -1,147 +1,107 @@
-# CLOUD-78343-2024
+## Overview
 
-# To use the % operator for string interpolation, the following syntax is used:
-# string % values
-# user = "Abrar"
-# age = "20"
-# print("Hello %s. Your age is %s "%(user,age))
-# %s: when we want the placeholder value to be a string
-# %f: when we want the placeholder value to be a floating point decimal like 2.415
-# %r: when we want to replace the placeholder with the raw data of a variable
-# %x: when the value replacing the placeholder has to be a hexadecimal value
-# %o: when the value replacing the placeholder has to be an octal value
-# %c: when we want to replace the placeholder with special characters
+This Flask application contains the basic user management functionality (register, login, logout) to demonstrate how to test a Flask project using [pytest](https://docs.pytest.org/en/stable/).
 
-python -m flask run --debug
+For details on how to test a Flask app using pytest, check out my blog post on [TestDriven.io](https://testdriven.io/):
 
-# Docker
-docker build -t python-docker .
-docker run --name flower_shop --rm -p 5000:5000 python-docker:latest
+* [https://testdriven.io/blog/flask-pytest/](https://testdriven.io/blog/flask-pytest/)
 
-docker run --name flower_shop --rm -it -p 5000:5000 python-docker:latest
+![Testing Flask Applications with Pytest](project/static/img/flask_pytest_social.png?raw=true "Testing Flask Applications with Pytest")
 
-docker run --rm --name flower_shop -p 5000:5000 python-docker:latest
-docker inspect flower_shop --format '{{ .NetworkSettings.IPAddress }}'
+## Motivation
 
-docker run --name flower_shop  python-docker
+## Installation Instructions
 
-# Docker Compose
-docker compose build
+### Installation
 
-infisical
-infisicaladmin
+Pull down the source code from this GitLab repository:
 
-
-changed docker-compose
-.docker
-.env infisical
-
-
-<p align="center">
-  <a href="https://www.swe-agent.com/">
-    <img src="assets/swe-agent-banner.png" alt="swe-agent.com" />
-  </a>
-</p>
-
-
-<p align="center">
-  <a href="https://swe-agent.com"><strong>Website & Demo</strong></a>&nbsp; | &nbsp;
-  <a href="https://discord.gg/AVEFbBn2rH"><strong>Discord</strong></a>&nbsp; | &nbsp;
-  <strong>Paper [coming April 10th]</strong>
-</p>
-
-
-## 👋 Overview <a name="overview"></a>
-SWE-agent turns LMs (e.g. GPT-4) into software engineering agents that can fix bugs and issues in real GitHub repositories.
-
-On the full [SWE-bench](https://github.com/princeton-nlp/SWE-bench) test set, SWE-agent resolves **12.29%** of issues, achieving the state-of-the-art performance on the full test set.
-
-<p align="center">
-  <img src="assets/results+preview.png" style="width: 80%; height: auto;">
-</p>
-
-### ✨ Agent-Computer Interface (ACI) <a name="aci"></a>
-We accomplish these results by designing simple LM-centric commands and feedback formats to make it easier for the LM to browse the repository, view, edit and execute code files. We call this an **Agent-Computer Interface** (ACI) and build the SWE-agent repository to make it easy to iterate on ACI design for repository-level coding agents.
-
-Just like how typical language models requires good prompt engineering, good ACI design leads to much better results when using agents. As we show in our paper, a baseline agent without a well-tuned ACI does much worse than SWE-agent.
-
-SWE-agent contains features that we discovered to be immensely helpful during the agent-computer interface design process:
-1. We add a linter that runs when an edit command is issued, and do not let the edit command go through if the code isn't syntactically correct.
-2. We supply the agent with a special-built file viewer, instead of having it just ```cat``` files. We found that this file viewer works best when displaying just 100 lines in each turn. The file editor that we built has commands for scrolling up and down and for performing a search within the file.
-3. We supply the agent with a special-built full-directory string searching command. We found that it was important for this tool to succintly list the matches- we simply list each file that had at least one match. Showing the model more context about each match proved to be too confusing for the model.
-4. When commands have an empty output we return a message saying "Your command ran successfully and did not produce any output."
-
-Read our paper for more details.
-
+```sh
+$ git clone git@gitlab.com:patkennedy79/flask_user_management_example.git
 ```
-@misc{yang2024sweagent,
-      title={SWE-agent: Agent Computer Interfaces Enable Software Engineering Language Models},
-      author={John Yang and Carlos E. Jimenez and Alexander Wettig and Shunyu Yao and Karthik Narasimhan and Ofir Press},
-      year={2024},
-}
+If you are running in local machine, we advice to use linux, and for that you will need to install some dependencies
+```sh
+$ sudo apt install libpq-dev alembic
+```
+Create a new virtual environment:
+
+```sh
+$ cd <PATH_TO_YOUR_CLONE>
+$ python3 -m venv .venv
 ```
 
-## 🚀 Setup <a name="setup"></a>
-1. [Install Docker](https://docs.docker.com/engine/install/), then start Docker locally.
-2. [Install Miniconda](https://docs.anaconda.com/free/miniconda/miniconda-install/), then create the `swe-agent` environment with `conda env create -f environment.yml`
-3. Activate using `conda activate swe-agent`.
-4. Run `./setup.sh` to create the `swe-agent` docker image.
-5. Create a `keys.cfg` file at the root of this repository and fill in the following:
-```
-GITHUB_TOKEN: 'GitHub Token Here (required)'
-OPENAI_API_KEY: 'OpenAI API Key Here if using OpenAI Model (optional)'
-ANTHROPIC_API_KEY: 'Anthropic API Key Here if using Anthropic Model (optional)'
-TOGETHER_API_KEY: 'Together API Key Here if using Together Model (optional)'
-```
-See the following links for tutorials on obtaining [Anthropic](https://docs.anthropic.com/claude/reference/getting-started-with-the-api), [OpenAI](https://platform.openai.com/docs/quickstart/step-2-set-up-your-api-key), and [Github](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) tokens.
-
-## 💽 Usage <a name="usage"></a>
-There are two steps to the SWE-agent pipeline. First SWE-agent takes an input GitHub issue and returns a pull request that attempts to fix it. We call that step *inference*. The second step (currently, only available for issues in the SWE-bench benchmark) is to *evaluate* the pull request to verify that it has indeed fixed the issue.
-
-_NOTE_: At this moment, there are known issues with a small number of repositories that don't install properly for `arm64` / `aarch64` architecture computers. We're working on a fix, but if you'd like to run and evaluate on the entirety of SWE-bench, the easiest way is by using an `x86` machine.
-
-### 👩‍💻 Inference <a name="inference"></a>
-**Inference on *any* GitHub Issue**: Using this script, you can run SWE-agent on any GitHub issue!
-```
-python run.py --model_name gpt4 \
-  --data_path https://github.com/pvlib/pvlib-python/issues/1603 \
-  --config_file config/default_from_url.yaml
+Activate alembic:
+```sh
+$ alembic init alembic
+$ cp alembic/env.py alembic/versions/env.py
 ```
 
-**Inference on SWE-bench**: Run SWE-agent on [SWE-bench Lite](https://www.swebench.com/lite.html) and generate patches.
-```
-python run.py --model_name gpt4 \
-  --per_instance_cost_limit 2.00 \
-  --config_file ./config/default.yaml
+Create database:
+```sh
+$ python ./database_init.py
 ```
 
-If you'd like to run on a *single* issue from SWE-bench, use the `--instance_filter` option as follows:
+Activate the virtual environment:
+```sh
+$ source .venv/bin/activate
 ```
-python run.py --model_name gpt4 \
-  --instance_filter marshmallow-code__marshmallow-1359
+
+Install the python packages specified in requirements.txt:
+
+```sh
+(venv) $ pip install -r requirements.txt
 ```
-* See the [`scripts/`](scripts/) folder for other useful scripts and details.
-* See the [`config/`](config/) folder for details about how you can define your own configuration!
-* See the [`sweagent/agent/`](sweagent/agent/) folder for details about the logic behind configuration based workflows.
-* See the [`sweagent/environment/`](sweagent/environment/) folder for details about the `SWEEnv` environment (interface + implementation).
-* See the [`trajectories/`](trajectories) folder for details about the output of `run.py`.
 
-### 🧪 Evaluation <a name="evaluation"></a>
-This step is only available for issues from the SWE-bench set. To evaluate generated pull requests:
+### Database Initialization
+
+This Flask application needs a SQLite database to store data.  The database should be initialized using:
+
 ```
-cd evaluation/
-./run_eval.sh <predictions_path>
+(venv) $ flask createdb
+(venv) $ flask seed
 ```
-Replace `<predictions_path>` with the path to the model's predictions, which should be generated from the *Inference* step. The `<predictions_path>` arguments should look like `../trajectories/<username>/<model>-<dataset>-<hyperparams>/all_preds.jsonl`
-* See the [`evaluation/`](evaluation/) folder for details about how evaluation works.
 
+### Running the Flask Application
 
-## 💫 Contributions <a name="contributions"></a>
-- If you'd like to ask questions, learn about upcoming features, and participate in future development, join our [Discord community](https://discord.gg/AVEFbBn2rH)!
-- If you'd like to contribute to the codebase, we welcome [issues](https://github.com/princeton-nlp/SWE-agent/issues) and [pull requests](https://github.com/princeton-nlp/SWE-agent/pulls)!
-- If you'd like to see a post or tutorial about some topic, please let us know via an [issue](https://github.com/princeton-nlp/SWE-agent/issues).
+Run development server to serve the Flask application:
 
-Contact person: [John Yang](https://john-b-yang.github.io/) and [Carlos E. Jimenez](http://www.carlosejimenez.com/) (Email: {jy1682, carlosej}@princeton.edu).
+```sh
+(venv) $ flask --app app --debug run
+(venv) $ python -m flask run --debugger --port="8088" --reload
+```
 
-## 🪪 License <a name="license"></a>
-MIT. Check `LICENSE`.
+Navigate to 'http://127.0.0.1:8088' in your favorite web browser to view the website!
+
+## Key Python Modules Used
+
+* **Flask**: micro-framework for web application development which includes the following dependencies:
+  * click: package for creating command-line interfaces (CLI)
+  * itsdangerous: cryptographically sign data
+  * Jinja2: templating engine
+  * MarkupSafe: escapes characters so text is safe to use in HTML and XML
+  * Werkzeug: set of utilities for creating a Python application that can talk to a WSGI server
+* **pytest**: framework for testing Python projects
+* **Flask-SQLAlchemy** - ORM (Object Relational Mapper) for Flask
+* **Flask-Login** - support for user management (login/logout) in Flask
+* **Flask-WTF** - simplifies forms in Flask
+* **flake8** - static analysis tool
+* **isort** - sorts Python package imports
+* **safety** - checks Python dependencies for known security vulnerabilities
+* **bandit** - tool designed to find common security issues in Python code
+
+This application is written using Python 3.10.
+
+## Testing
+
+To run all the tests:
+
+```sh
+(venv) $ python -m pytest -v
+```
+
+To check the code coverage of the tests:
+
+```sh
+(venv) $ python -m pytest --cov-report term-missing --cov=project
+```
+

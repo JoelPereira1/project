@@ -7,10 +7,10 @@ from wtforms.validators import DataRequired, NumberRange
 from wtforms.widgets.core import Input
 
 class NumberInput(Input):
-    input_type = "number"
+  input_type = "number"
 
 class MyIntegerField(IntegerField):
-    widget = NumberInput()
+  widget = NumberInput()
 
 class AddCartForm(FlaskForm):
   variant = RadioField("variant", validators=[DataRequired()], coerce=int)

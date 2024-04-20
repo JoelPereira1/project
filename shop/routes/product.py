@@ -5,7 +5,6 @@ from flask import Blueprint, render_template, redirect, url_for, request, flash,
 from flask_login import current_user, login_required, login_user, logout_user
 
 from shop.models.checkout import Cart
-
 from shop.forms.add_cart import AddCartForm
 from shop.models.product import Category, Product, ProductCollection, ProductVariant
 

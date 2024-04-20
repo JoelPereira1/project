@@ -85,17 +85,17 @@ class UserAddress(Model):
 
   @property
   def full_address(self):
-      return (
-          f"{self.province}<br>{self.city}<br>{self.district}<br>"
-          f"{self.address}<br>{self.contact_name}<br>{self.contact_phone}"
-      )
+    return (
+      f"{self.province}<br>{self.city}<br>{self.district}<br>"
+      f"{self.address}<br>{self.contact_name}<br>{self.contact_phone}"
+    )
 
   @hybrid_property
   def user(self):
-      return User.get_by_id(self.user_id)
+    return User.get_by_id(self.user_id)
 
   def __str__(self):
-      return self.full_address
+    return self.full_address
 
 class Role(Model):
   __tablename__ = "account_role"
@@ -106,8 +106,3 @@ class UserRole(Model):
   __tablename__ = "account_user_role"
   user_id = Column(db.Integer())
   role_id = Column(db.Integer())
-
-
-# new_user = User(name='John Doe', email='[john.doe@example.com](mailto:john.doe@example.com)')
-# session.add(new_user)
-# session.commit()

@@ -6,7 +6,7 @@
 # # Or enter the name of your unique directory and parameter set.
 
 
-FROM python:3.10
+FROM tiangolo/uwsgi-nginx-flask:python3.10
 
 WORKDIR /app
 COPY . .
@@ -16,8 +16,8 @@ RUN pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org --
 
 RUN git config --global --add safe.directory .git/gitconfig
 
-ENV PYTHONPATH="${PYTHONPATH}:/app/modules/databases:/app/modules/cosmosdb:/app/modules/rethinkdb:/app/flaskshop:/app/models:/app/models/challenge:/app/models/blog:/app/models/customer:/app/models/order:/app/models/product:/app/models/post:/app/packages"
-
+# ENV PYTHONPATH="${PYTHONPATH}:/app/modules/databases:/app/modules/cosmosdb:/app/modules/rethinkdb:/app/flaskshop:/app/models:/app/models/challenge:/app/models/blog:/app/models/customer:/app/models/order:/app/models/product:/app/models/post:/app/packages"
+ENV PYTHONPATH="${PYTHONPATH}:/app/settings:/app/settings:/app/shop/:/app/shop/corelib/:/app/shop/routes/:/app/shop/models/:/app/shop/static/:/app/shop/templates/"
 WORKDIR /app/shop
 ENV FLASK_APP=/app/shop/app.py
 ENV FLASK_ENV=development

@@ -1,4 +1,5 @@
-from .public import public as public_blueprint
+from .admin.dashboard import dashboard as admin_dashboard_blueprint
+from .admin.order import admin_order as admin_order_blueprint
 from .public import public as public_blueprint
 from .product import product as product_blueprint
 from .auth import auth as auth_blueprint
@@ -7,7 +8,6 @@ from .checkout import checkout as checkout_blueprint
 from .account import account as account_blueprint
 
 def blueprint_manager(app):
-  pass
   # app.pluggy.hook.flaskshop_load_blueprints(app=app)
   # Registering blueprints
   # app.register_blueprint(auth_blueprint, template_folder='templates/auth')
@@ -18,4 +18,7 @@ def blueprint_manager(app):
   app.register_blueprint(auth_blueprint)
   app.register_blueprint(order_blueprint)
   app.register_blueprint(checkout_blueprint)
+  # Admin routes
+  app.register_blueprint(admin_dashboard_blueprint)
+  app.register_blueprint(admin_order_blueprint)
 

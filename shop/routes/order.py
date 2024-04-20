@@ -77,14 +77,15 @@ def test_pay_flow(token):
 def payment_success():
     payment_no = request.args.get("out_trade_no")
     if payment_no:
-        res = zhifubao.query_order(payment_no)
-        if res["code"] == "10000":
-            order_payment = OrderPayment.query.filter_by(
-                payment_no=res["out_trade_no"]
-            ).first()
-            order_payment.pay_success(paid_at=res["send_pay_date"])
-        else:
-            print(res["msg"])
+       pass
+        # res = zhifubao.query_order(payment_no)
+        # if res["code"] == "10000":
+        #     order_payment = OrderPayment.query.filter_by(
+        #         payment_no=res["out_trade_no"]
+        #     ).first()
+        #     order_payment.pay_success(paid_at=res["send_pay_date"])
+        # else:
+        #     print(res["msg"])
 
     return render_template("orders/checkout_success.html")
 

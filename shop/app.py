@@ -1,9 +1,5 @@
-import sys
-from flask import Flask, render_template
+from flask import Flask
 from . import commands
-# from flask_sqlalchemy import SQLAlchemy
-# from flask_migrate import Migrate
-# from flask_login import LoginManager
 from settings import Config
 from shop.extensions import (
   bcrypt,
@@ -13,7 +9,6 @@ from shop.extensions import (
   login_manager,
   migrate
 )
-
 from shop.corelib.utils import jinja_global_varibles
 
 def create_app(config_object=Config):
@@ -25,14 +20,6 @@ def create_app(config_object=Config):
   jinja_global_varibles(app)
 
   return app
-
-# def register_extensions(app):
-#   db.init_app(app)
-#   migrate.init_app(app, db)
-#   login_manager.init_app(app)
-
-#   login = LoginManager(app)
-#   login.login_view = 'auth.login'
 
 def register_extensions(app):
   bcrypt.init_app(app)

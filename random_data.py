@@ -490,7 +490,6 @@ def create_order_lines(order, discounts, how_many=10):
 # step26
 def create_order_line(order, discounts):
   product = Product.query.order_by(func.random()).first()
-  breakpoint()
   variant = product.variant[0]
   quantity = random.randrange(1, 5)
   variant.quantity += quantity
