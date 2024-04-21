@@ -24,122 +24,122 @@ class Product(Model):
   description = Column(db.Text())
 
   def __str__(self):
-      return self.title
+    return self.title
 
   def __iter__(self):
-      return iter(self.variants)
+    return iter(self.variants)
 
   def get_absolute_url(self):
-      return url_for("product.show", id=self.id)
+    return url_for("product.show", id=self.id)
 
   @property
   def images(self):
-      return ProductImage.query.filter(ProductImage.product_id == self.id).all()
+    return ProductImage.query.filter(ProductImage.product_id == self.id).all()
 
   @property
   def first_img(self):
-      if self.images:
-          return str(self.images[0])
-      return ""
+    if self.images:
+        return str(self.images[0])
+    return ""
 
   @property
   def is_in_stock(self):
-      return any(variant.is_in_stock for variant in self)
+    return any(variant.is_in_stock for variant in self)
 
   @property
   def category(self):
-      return Category.get_by_id(self.category_id)
+    return Category.get_by_id(self.category_id)
 
   @property
   def product_type(self):
-      return ProductType.get_by_id(self.product_type_id)
+    return ProductType.get_by_id(self.product_type_id)
 
   @property
   def is_discounted(self):
-      if float(self.discounted_price) > 0:
-          return True
-      return False
+    if float(self.discounted_price) > 0:
+      return True
+    return False
 
   @property
   def discounted_price(self):
-      from shop.models.discount import Sale
-      return Sale.get_discounted_price(self)
+    from shop.models.discount import Sale
+    return Sale.get_discounted_price(self)
 
   @property
   def price(self):
-      if self.is_discounted:
-          return self.basic_price - self.discounted_price
-      return self.basic_price
+    if self.is_discounted:
+      return self.basic_price - self.discounted_price
+    return self.basic_price
 
   @property
   def price_human(self):
-      return "$" + str(self.price)
+    return "$" + str(self.price)
 
   @property
   def on_sale_human(self):
-      return "Y" if self.on_sale else "N"
+    return "Y" if self.on_sale else "N"
 
   @property
   def variant(self):
-      return ProductVariant.query.filter(ProductVariant.product_id == self.id).all()
+    return ProductVariant.query.filter(ProductVariant.product_id == self.id).all()
 
   @property
   def attribute_map(self):
-      items = {
-          ProductAttribute.get_by_id(k): AttributeChoiceValue.get_by_id(v)
-          for k, v in self.attributes.items()
-      }
-      return items
+    items = {
+      ProductAttribute.get_by_id(k): AttributeChoiceValue.get_by_id(v)
+      for k, v in self.attributes.items()
+    }
+    return items
 
   @classmethod
   def get_featured_product(cls, num=8):
-      return cls.query.filter_by(is_featured=True).limit(num).all()
+    return cls.query.filter_by(is_featured=True).limit(num).all()
 
   def update_images(self, new_images):
-      origin_ids = (
-          ProductImage.query.with_entities(ProductImage.id)
-          .filter_by(product_id=self.id)
-          .all()
-      )
-      origin_ids = set(i for i, in origin_ids)
-      new_images = set(int(i) for i in new_images)
-      need_del = origin_ids - new_images
-      for id in need_del:
-          ProductImage.get_by_id(id).delete(commit=False)
-      session.commit()
+    origin_ids = (
+      ProductImage.query.with_entities(ProductImage.id)
+      .filter_by(product_id=self.id)
+      .all()
+    )
+    origin_ids = set(i for i, in origin_ids)
+    new_images = set(int(i) for i in new_images)
+    need_del = origin_ids - new_images
+    for id in need_del:
+      ProductImage.get_by_id(id).delete(commit=False)
+    db.session.commit()
 
   def update_attributes(self, attr_values):
-      attr_entries = [str(item.id) for item in self.product_type.product_attributes]
-      attributes = dict(zip(attr_entries, attr_values))
-      self.attributes = attributes
+    attr_entries = [str(item.id) for item in self.product_type.product_attributes]
+    attributes = dict(zip(attr_entries, attr_values))
+    self.attributes = attributes
 
   def generate_variants(self):
-      if not self.product_type.has_variants:
-          ProductVariant.create(sku=str(self.id) + "-1337", product_id=self.id)
-      else:
-          sku_id = 1337
-          variant_attributes = self.product_type.variant_attributes[0]
-          for value in variant_attributes.values:
-              sku = str(self.id) + "-" + str(sku_id)
-              attributes = {str(variant_attributes.id): str(value.id)}
-              ProductVariant.create(
-                  sku=sku,
-                  title=value.title,
-                  product_id=self.id,
-                  attributes=attributes,
-              )
-              sku_id += 1
+    if not self.product_type.has_variants:
+      ProductVariant.create(sku=str(self.id) + "-1337", product_id=self.id)
+    else:
+      sku_id = 1337
+      variant_attributes = self.product_type.variant_attributes[0]
+      for value in variant_attributes.values:
+        sku = str(self.id) + "-" + str(sku_id)
+        attributes = {str(variant_attributes.id): str(value.id)}
+        ProductVariant.create(
+          sku=sku,
+          title=value.title,
+          product_id=self.id,
+          attributes=attributes
+        )
+        sku_id += 1
 
   def delete(self):
-      need_del_collection_products = ProductCollection.query.filter_by(
-          product_id=self.id
-      ).all()
-      for item in itertools.chain(
-          self.images, self.variant, need_del_collection_products
-      ):
-          item.delete(commit=False)
-      db.session.delete(self)
-      db.session.commit()
+    need_del_collection_products = ProductCollection.query.filter_by(
+      product_id=self.id
+    ).all()
+    for item in itertools.chain(
+      self.images, self.variant, need_del_collection_products
+    ):
+      item.delete(commit=False)
+    db.session.delete(self)
+    db.session.commit()
 
 
 class Category(Model):
@@ -149,70 +149,70 @@ class Category(Model):
   background_img = Column(db.String(255))
 
   def __str__(self):
-      return self.title
+    return self.title
 
   def get_absolute_url(self):
-      return url_for("product.show_category", id=self.id)
+    return url_for("product.show_category", id=self.id)
 
   @property
   def background_img_url(self):
-      return url_for("static", filename=self.background_img)
+    return url_for("static", filename=self.background_img)
 
   @property
   def products(self):
-      all_category_ids = [child.id for child in self.children] + [self.id]
-      return Product.query.filter(Product.category_id.in_(all_category_ids)).all()
+    all_category_ids = [child.id for child in self.children] + [self.id]
+    return Product.query.filter(Product.category_id.in_(all_category_ids)).all()
 
   @property
   def children(self):
-      return Category.query.filter(Category.parent_id == self.id).all()
+    return Category.query.filter(Category.parent_id == self.id).all()
 
   @property
   def parent(self):
-      return Category.get_by_id(self.parent_id)
+    return Category.get_by_id(self.parent_id)
 
   @property
   def attr_filter(self):
-      attr_filter = set()
-      for product in self.products:
-          for attr in product.product_type.product_attributes:
-              attr_filter.add(attr)
-      return attr_filter
+    attr_filter = set()
+    for product in self.products:
+      for attr in product.product_type.product_attributes:
+        attr_filter.add(attr)
+    return attr_filter
 
   @classmethod
   def get_product_by_category(cls, category_id, page):
-      category = Category.get_by_id(category_id)
-      all_category_ids = [child.id for child in category.children] + [category.id]
-      query = Product.query.filter(Product.category_id.in_(all_category_ids))
-      ctx, query = get_product_list_context(query, category)
-      pagination = query.paginate(page=page, per_page=16)
-      ctx.update(object=category, pagination=pagination, products=pagination.items)
-      return ctx
+    category = Category.get_by_id(category_id)
+    all_category_ids = [child.id for child in category.children] + [category.id]
+    query = Product.query.filter(Product.category_id.in_(all_category_ids))
+    ctx, query = get_product_list_context(query, category)
+    pagination = query.paginate(page=page, per_page=16)
+    ctx.update(object=category, pagination=pagination, products=pagination.items)
+
+    return ctx
 
   @classmethod
   def first_level_items(cls):
-      return cls.query.filter(cls.parent_id == 0).all()
+    return cls.query.filter(cls.parent_id == 0).all()
 
   def delete(self):
-      for child in self.children:
-          child.parent_id = 0
-          db.session.add(child)
-      need_update_products = Product.query.filter_by(category_id=self.id).all()
-      for product in need_update_products:
-          product.category_id = 0
-          db.session.add(product)
-      db.session.delete(self)
-      db.session.commit()
-      if self.background_img:
-          image = current_app.config["STATIC_DIR"] / self.background_img
-          if image.exists():
-              image.unlink()
+    for child in self.children:
+      child.parent_id = 0
+      db.session.add(child)
+    need_update_products = Product.query.filter_by(category_id=self.id).all()
+    for product in need_update_products:
+      product.category_id = 0
+      db.session.add(product)
+    db.session.delete(self)
+    db.session.commit()
+    if self.background_img:
+      image = current_app.config["STATIC_DIR"] / self.background_img
+      if image.exists():
+        image.unlink()
 
 class ProductTypeAttributes(Model):
   __tablename__ = "product_type_attribute"
   product_type_id = Column(db.Integer())
   product_attribute_id = Column(db.Integer())
-
 
 class ProductType(Model):
   __tablename__ = "product_type"
@@ -225,43 +225,43 @@ class ProductType(Model):
 
   @property
   def product_attributes_ids(self):
-      at_ids = (
-          ProductTypeAttributes.query.with_entities(
-              ProductTypeAttributes.product_attribute_id
-          )
-          .filter(ProductTypeAttributes.product_type_id == self.id)
-          .all()
+    at_ids = (
+      ProductTypeAttributes.query.with_entities(
+        ProductTypeAttributes.product_attribute_id
       )
-      return [id[0] for id in at_ids]
+      .filter(ProductTypeAttributes.product_type_id == self.id)
+      .all()
+    )
+    return [id[0] for id in at_ids]
 
   @property
   def product_attributes(self):
-      return ProductAttribute.query.filter(
-          ProductAttribute.id.in_(self.product_attributes_ids)
-      ).all()
+    return ProductAttribute.query.filter(
+      ProductAttribute.id.in_(self.product_attributes_ids)
+    ).all()
 
   def update_product_attr(self, new_attrs):
-      origin_ids = (
-          ProductTypeAttributes.query.with_entities(
-              ProductTypeAttributes.product_attribute_id
-          )
-          .filter_by(product_type_id=self.id)
-          .all()
+    origin_ids = (
+      ProductTypeAttributes.query.with_entities(
+        ProductTypeAttributes.product_attribute_id
       )
-      origin_ids = set(i for i, in origin_ids)
-      new_attrs = set(int(i) for i in new_attrs)
-      need_del = origin_ids - new_attrs
-      need_add = new_attrs - origin_ids
-      for id in need_del:
-          ProductTypeAttributes.query.filter_by(
-              product_type_id=self.id, product_attribute_id=id
-          ).first().delete(commit=False)
-      for id in need_add:
-          new = ProductTypeAttributes(
-              product_type_id=self.id, product_attribute_id=id
-          )
-          db.session.add(new)
-      db.session.commit()
+      .filter_by(product_type_id=self.id)
+      .all()
+    )
+    origin_ids = set(i for i, in origin_ids)
+    new_attrs = set(int(i) for i in new_attrs)
+    need_del = origin_ids - new_attrs
+    need_add = new_attrs - origin_ids
+    for id in need_del:
+      ProductTypeAttributes.query.filter_by(
+        product_type_id=self.id, product_attribute_id=id
+      ).first().delete(commit=False)
+    for id in need_add:
+      new = ProductTypeAttributes(
+        product_type_id=self.id, product_attribute_id=id
+      )
+      db.session.add(new)
+    db.session.commit()
 
   def delete(self):
     need_del_product_attrs = ProductTypeAttributes.query.filter_by(
@@ -420,7 +420,6 @@ class ProductAttribute(Model):
       db.session.delete(self)
       db.session.commit()
 
-
 class AttributeChoiceValue(Model):
   __tablename__ = "product_attribute_value"
   title = Column(db.String(255), nullable=False)
@@ -432,7 +431,6 @@ class AttributeChoiceValue(Model):
   @property
   def attribute(self):
     return ProductAttribute.get_by_id(self.attribute_id)
-
 
 class ProductImage(Model):
   __tablename__ = "product_image"
@@ -553,21 +551,23 @@ def get_product_list_context(query, obj):
             query = query.order_by(getattr(Product, arg_sort_by))
     now_sorted_by = arg_sort_by or "title"
     args_dict.update(
-        sort_by_choices=sort_by_choices,
-        now_sorted_by=now_sorted_by,
-        is_descending=is_descending,
+      sort_by_choices=sort_by_choices,
+      now_sorted_by=now_sorted_by,
+      is_descending=is_descending,
     )
 
     args_dict.update(default_attr={})
     attr_filter = obj.attr_filter
+
     for attr in attr_filter:
-        value = request.args.get(attr.title)
-        if value:
-            query = query.filter(Product.attributes.__getitem__(str(attr.id)) == value)
-            args_dict["default_attr"].update({attr.title: int(value)})
+      value = request.args.get(attr.title)
+      if value:
+        breakpoint()
+        query = query.filter(Product.attributes.__getitem__(str(attr.id)) == value)
+        args_dict["default_attr"].update({attr.title: int(value)})
     args_dict.update(attr_filter=attr_filter)
 
     if request.args:
-        args_dict.update(clear_filter=True)
+      args_dict.update(clear_filter=True)
 
     return args_dict, query

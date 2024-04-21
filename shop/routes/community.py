@@ -15,22 +15,23 @@ from shop.constant import OrderStatusKinds, PaymentStatusKinds, ShipStatusKinds
 from shop.extensions import csrf_protect
 from shop.models.order import Order, OrderPayment
 
-order = Blueprint('order', __name__)
+community = Blueprint('community', __name__, url_prefix='/community')
 
 @login_required
-@order.route('/order/')
+@community.route('/')
 def index():
-  return redirect(url_for("account.index"))
+
+  return redirect(url_for("community.index"))
 
 @login_required
-@order.route('/order/<string:token>')
+@community.route('/order/<string:token>')
 def show(token):
   order = Order.query.filter_by(token=token).first()
   if not order.is_self_order:
     abort(403, "This is not your order!")
   return render_template("orders/details.html", order=order)
 
-@order.route('/order/<int:id>')
+@community.route('/order/<int:id>')
 def create_payment(token, payment_method):
   order = Order.query.filter_by(token=token).first()
   if order.status != OrderStatusKinds.unfulfilled.value:
@@ -60,20 +61,20 @@ def create_payment(token, payment_method):
   return payment
 
 @login_required
-@order.route('/order/<int:id>')
+@community.route('/order/<int:id>')
 def ali_pay(token):
   payment = create_payment(token, "alipay")
   return redirect(payment.redirect_url)
 
 @login_required
-@order.route('/order/pay/<string:token>/testpay')
+@community.route('/order/pay/<string:token>/testpay')
 def test_pay_flow(token):
     payment = create_payment(token, "testpay")
     payment.pay_success(paid_at=datetime.now())
     return redirect(url_for("order.payment_success"))
 
 @login_required
-@order.route('/order/payment_success')
+@community.route('/order/payment_success')
 def payment_success():
     payment_no = request.args.get("out_trade_no")
     if payment_no:
@@ -90,7 +91,7 @@ def payment_success():
     return render_template("orders/checkout_success.html")
 
 @login_required
-@order.route('/order/cancel/<string:token>')
+@community.route('/order/cancel/<string:token>')
 def cancel_order(token):
     order = Order.query.filter_by(token=token).first()
     if not order.is_self_order:
@@ -99,7 +100,7 @@ def cancel_order(token):
     return render_template("orders/details.html", order=order)
 
 @login_required
-@order.route('/order/receive/<string:token>')
+@community.route('/order/receive/<string:token>')
 def receive(token):
   order = Order.query.filter_by(token=token).first()
   order.update(

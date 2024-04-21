@@ -3,30 +3,13 @@
 {% block content %}
   <div class="home">
     <div class="row">
-      <div class="col-sm-12 home__block1">
-        <div class="home--square">
-          <div class="home--content">
-            <div class="home--content-wrapper">
-              <div class="home--content-inner">
-                <h1>Daily Challenge</h1>
-                <h2>dare to win</h2>
-                <a class="btn btn-secondary home__button" href="#">
-                  Participate
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
       <div class="col-sm-12 col-md-6 home__block2">
         <div class="home--square">
           <div class="home--content">
             <div class="home--content-wrapper">
               <div class="home--content-inner">
-                <h1>Products</h1>
-                <a class="btn btn-secondary home__button" href="#">Shop now</a>
+                <h1>Daily Challenge</h1>
+                <a class="btn btn-secondary home__button" href="{{ url_for('challenge.index') }}">Dare to win</a>
               </div>
             </div>
           </div>
@@ -38,7 +21,7 @@
             <div class="home--content-wrapper">
               <div class="home--content-inner">
                 <h1>Community</h1>
-                <a class="btn btn-secondary home__button" href="#">Share with us</a>
+                <a class="btn btn-secondary home__button" href="{{ url_for('community.index') }}">Share with us</a>
               </div>
             </div>
           </div>
