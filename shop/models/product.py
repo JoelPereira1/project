@@ -562,7 +562,6 @@ def get_product_list_context(query, obj):
     for attr in attr_filter:
       value = request.args.get(attr.title)
       if value:
-        breakpoint()
         query = query.filter(Product.attributes.__getitem__(str(attr.id)) == value)
         args_dict["default_attr"].update({attr.title: int(value)})
     args_dict.update(attr_filter=attr_filter)
