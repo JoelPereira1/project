@@ -10,6 +10,7 @@ from .community import community as community_blueprint
 
 from .admin.dashboard import dashboard as admin_dashboard_blueprint
 from .admin.order import admin_order as admin_order_blueprint
+from .admin.product import admin_product as admin_product_blueprint
 def blueprint_manager(app):
   # Registering Shop blueprints
   # app.register_blueprint(auth_blueprint, template_folder='templates/auth')
@@ -27,4 +28,5 @@ def blueprint_manager(app):
   # Registering Admin blueprints
   app.register_blueprint(admin_dashboard_blueprint)
   app.register_blueprint(admin_order_blueprint)
+  app.register_blueprint(admin_product_blueprint)
 

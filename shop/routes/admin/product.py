@@ -1,6 +1,4 @@
-from flask import redirect, render_template, request, url_for, flash
-from flask_babel import lazy_gettext
-
+from flask import Blueprint, redirect, render_template, request, url_for, flash
 from shop.forms.admin.dashboard import (
     AttributeForm,
     CategoryForm,
@@ -21,6 +19,9 @@ from shop.models.product import (
 )
 from .utils import save_img_file, wrap_partial, item_del
 
+admin_product = Blueprint('admin_product', __name__, url_prefix='/admin')
+
+@admin_product.route('attributes')
 def attributes():
   page = request.args.get('page', type=int, default=1)
   pagination = ProductAttribute.query.paginate(page=page, per_page=10)
@@ -39,7 +40,8 @@ def attributes():
   }
   return render_template('dashboard/general_list.html', **context)
 
-
+@admin_product.route('attributes/create', methods=["GET", "POST"])
+@admin_product.route('attributes/<int:id>/edit', methods=["GET", "POST"])
 def attributes_manage(id=None):
   if id:
     attr = ProductAttribute.get_by_id(id)
@@ -59,18 +61,20 @@ def attributes_manage(id=None):
     'general_edit.html', form=form, title='Attribute'
   )
 
-attribute_del = wrap_partial(item_del, ProductAttribute)
+# attribute_del = wrap_partial(item_del, ProductAttribute)
+# @admin_product.route('attributes/<int:id>/delete', view_func=attribute_del, methods=["DELETE"])
 
+@admin_product.route('collections')
 def collections():
     page = request.args.get("page", type=int, default=1)
     pagination = Collection.query.paginate(page=page, per_page=10)
     props = {
-        "id": lazy_gettext("ID"),
-        "title": lazy_gettext("Title"),
-        "created_at": lazy_gettext("Created At"),
+        "id": "ID",
+        "title": "Title",
+        "created_at": "Created At",
     }
     context = {
-        "title": lazy_gettext("Product Collection"),
+        "title": "Product Collection",
         "items": pagination.items,
         "props": props,
         "pagination": pagination,
@@ -78,18 +82,18 @@ def collections():
     }
     return render_template("dashboard/general_list.html", **context)
 
-
+@admin_product.route('categories')
 def categories():
     page = request.args.get("page", type=int, default=1)
     pagination = Category.query.paginate(page=page, per_page=10)
     props = {
-        "id": lazy_gettext("ID"),
-        "title": lazy_gettext("Title"),
-        "parent": lazy_gettext("Parent"),
-        "created_at": lazy_gettext("Created At"),
+        "id": "ID",
+        "title": "Title",
+        "parent": "Parent",
+        "created_at": "Created At",
     }
     context = {
-        "title": lazy_gettext("Product Category"),
+        "title": "Product Category",
         "items": pagination.items,
         "props": props,
         "pagination": pagination,
@@ -97,7 +101,8 @@ def categories():
     }
     return render_template("dashboard/general_list.html", **context)
 
-
+@admin_product.route('collections/create', methods=["GET", "POST"])
+@admin_product.route('collections/<int:id>/edit', methods=["GET", "POST"])
 def collections_manage(id=None):
     if id:
         collection = Collection.get_by_id(id)
@@ -113,14 +118,15 @@ def collections_manage(id=None):
             collection.background_img = save_img_file(image)
         collection.save()
         collection.update_products(form.products_ids.data)
-        flash(lazy_gettext("Collection saved."), "success")
+        flash("Collection saved.", "success")
         return redirect(url_for("dashboard.collections"))
     return render_template("product/collection.html", form=form)
 
+# collection_del = wrap_partial(item_del, Collection)
+# @admin_product.route('collections/<int:id>/delete', view_func=collection_del, methods=["DELETE"])
 
-collection_del = wrap_partial(item_del, Collection)
-
-
+@admin_product.route('categories/create', methods=["GET", "POST"])
+@admin_product.route('categories/<int:id>/edit', methods=["GET", "POST"])
 def categories_manage(id=None):
     if id:
         category = Category.get_by_id(id)
@@ -136,26 +142,26 @@ def categories_manage(id=None):
         if image:
             category.background_img = save_img_file(image)
         category.save()
-        flash(lazy_gettext("Category saved."), "success")
+        flash("Category saved.", "success")
         return redirect(url_for("dashboard.categories"))
     return render_template("product/category.html", form=form)
 
+# category_del = wrap_partial(item_del, Category)
+# @admin_product.route('categories/<int:id>/delete', view_func=category_del, methods=["DELETE"])
 
-category_del = wrap_partial(item_del, Category)
-
-
+@admin_product.route('product_types')
 def product_types():
     page = request.args.get("page", type=int, default=1)
     pagination = ProductType.query.paginate(page=page, per_page=10)
     props = {
-        "id": lazy_gettext("ID"),
-        "title": lazy_gettext("Title"),
-        "has_variants": lazy_gettext("Has Variants"),
-        "is_shipping_required": lazy_gettext("Is Shipping Required"),
-        "created_at": lazy_gettext("Created At"),
+        "id": "ID",
+        "title": "Title",
+        "has_variants": "Has Variants",
+        "is_shipping_required": "Is Shipping Required",
+        "created_at": "Created At",
     }
     context = {
-        "title": lazy_gettext("Product Type"),
+        "title": "Product Type",
         "items": pagination.items,
         "props": props,
         "pagination": pagination,
@@ -163,7 +169,8 @@ def product_types():
     }
     return render_template("dashboard/general_list.html", **context)
 
-
+@admin_product.route('product_types/create', methods=["GET", "POST"])
+@admin_product.route('product_types/<int:id>/edit', methods=["GET", "POST"])
 def product_types_manage(id=None):
     if id:
         product_type = ProductType.get_by_id(id)
@@ -180,16 +187,16 @@ def product_types_manage(id=None):
         form.populate_obj(product_type)
         product_type.save()
         product_type.update_product_attr(tmp_pa)
-        flash(lazy_gettext("Product type saved."), "success")
+        flash("Product type saved.", "success")
         return redirect(url_for("dashboard.product_types"))
     return render_template(
-        "general_edit.html", form=form, title=lazy_gettext("Product Type")
+        "general_edit.html", form=form, title="Product Type"
     )
 
+# product_type_del = wrap_partial(item_del, ProductType)
+# @admin_product.route('product_types/<int:id>/delete', view_func=product_type_del, methods=["DELETE"])
 
-product_type_del = wrap_partial(item_del, ProductType)
-
-
+@admin_product.route('products')
 def products():
     page = request.args.get("page", type=int, default=1)
     query = Product.query
@@ -212,12 +219,12 @@ def products():
 
     pagination = query.paginate(page=page, per_page=10)
     props = {
-        "id": lazy_gettext("ID"),
-        "title": lazy_gettext("Title"),
-        "on_sale_human": lazy_gettext("On Sale"),
-        "sold_count": lazy_gettext("Sold Count"),
-        "price_human": lazy_gettext("Price"),
-        "category": lazy_gettext("Category"),
+        "id": "ID",
+        "title": "Title",
+        "on_sale_human": "On Sale",
+        "sold_count": "Sold Count",
+        "price_human": "Price",
+        "category": "Category",
     }
     context = {
         "items": pagination.items,
@@ -227,12 +234,13 @@ def products():
     }
     return render_template("product/list.html", **context)
 
-
+@admin_product.route('products/<int:id>')
 def product_detail(id):
     product = Product.get_by_id(id)
     return render_template("product/detail.html", product=product)
 
-
+@admin_product.route('products/<int:id>/edit', methods=['GET', 'POST'])
+@admin_product.route('products/create/step2', methods=['GET', 'POST'])
 def product_manage(id=None):
     if id:
         product = Product.get_by_id(id)
@@ -260,15 +268,15 @@ def product_manage(id=None):
                 image=save_img_file(img),
                 product_id=product.id,
             )
-        flash(lazy_gettext("Product saved."), "success")
+        flash("Product saved.", "success")
         return redirect(url_for("dashboard.product_detail", id=product.id))
     context = {"form": form, "product_type": product_type}
     return render_template("product/product.html", **context)
 
+# product_del = wrap_partial(item_del, Product)
+# @admin_product.route('products/<int:id>/delete', view_func=product_del, methods=['DELETE'])
 
-product_del = wrap_partial(item_del, Product)
-
-
+@admin_product.route('products/create/step1', methods=['GET', 'POST'])
 def product_create_step1():
     form = ProductCreateForm()
     form.product_type_id.choices = [(p.id, p.title) for p in ProductType.query.all()]
@@ -280,10 +288,11 @@ def product_create_step1():
             )
         )
     return render_template(
-        "general_edit.html", form=form, title=lazy_gettext("Product Step 1")
+        "general_edit.html", form=form, title="Product Step 1"
     )
 
-
+@admin_product.route('products/variant/create', methods=['GET', 'POST'])
+@admin_product.route('products/variant/<int:id>/edit', methods=['GET', 'POST'])
 def variant_manage(id=None):
     if id:
         variant = ProductVariant.get_by_id(id)
@@ -298,11 +307,11 @@ def variant_manage(id=None):
             variant.product_id = product_id
         variant.sku = str(variant.product_id) + "-" + str(form.sku_id.data)
         variant.save()
-        flash(lazy_gettext("Variant saved."), "success")
+        flash("Variant saved.", "success")
         return redirect(url_for("dashboard.product_detail", id=variant.product_id))
     return render_template(
-        "general_edit.html", form=form, title=lazy_gettext("Variant")
+        "general_edit.html", form=form, title="Variant"
     )
 
-
-variant_del = wrap_partial(item_del, ProductVariant)
+# variant_del = wrap_partial(item_del, ProductVariant)
+# @admin_product.route('variants/<int:id>/delete', view_func=variant_del, methods=['DELETE'])
