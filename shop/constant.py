@@ -39,3 +39,5 @@ SiteDefaultSettings = {
     "description": "Copyright notice of the Project. "
   }
 }
+
+SUBMIT_METHODS = {"POST", "PUT", "PATCH", "DELETE"}

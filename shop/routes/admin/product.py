@@ -38,7 +38,7 @@ def attributes():
     'pagination': pagination,
     'identity': 'attributes',
   }
-  return render_template('dashboard/general_list.html', **context)
+  return render_template('admin/dashboard/general_list.html', **context)
 
 @admin_product.route('attributes/create', methods=["GET", "POST"])
 @admin_product.route('attributes/<int:id>/edit', methods=["GET", "POST"])
@@ -58,7 +58,7 @@ def attributes_manage(id=None):
     flash('Attribute saved.', "success")
     return redirect(url_for('dashboard.attributes'))
   return render_template(
-    'general_edit.html', form=form, title='Attribute'
+    'admin/dashboard/general_edit.html', form=form, title='Attribute'
   )
 
 # attribute_del = wrap_partial(item_del, ProductAttribute)
@@ -80,7 +80,7 @@ def collections():
         "pagination": pagination,
         "identity": "collections",
     }
-    return render_template("dashboard/general_list.html", **context)
+    return render_template("admin/dashboard/general_list.html", **context)
 
 @admin_product.route('categories')
 def categories():
@@ -99,7 +99,7 @@ def categories():
         "pagination": pagination,
         "identity": "categories",
     }
-    return render_template("dashboard/general_list.html", **context)
+    return render_template("admin/dashboard/general_list.html", **context)
 
 @admin_product.route('collections/create', methods=["GET", "POST"])
 @admin_product.route('collections/<int:id>/edit', methods=["GET", "POST"])
@@ -120,7 +120,7 @@ def collections_manage(id=None):
         collection.update_products(form.products_ids.data)
         flash("Collection saved.", "success")
         return redirect(url_for("dashboard.collections"))
-    return render_template("product/collection.html", form=form)
+    return render_template("admin/dashboard/collection.html", form=form)
 
 # collection_del = wrap_partial(item_del, Collection)
 # @admin_product.route('collections/<int:id>/delete', view_func=collection_del, methods=["DELETE"])
@@ -144,7 +144,7 @@ def categories_manage(id=None):
         category.save()
         flash("Category saved.", "success")
         return redirect(url_for("dashboard.categories"))
-    return render_template("product/category.html", form=form)
+    return render_template("admin/dashboard/category.html", form=form)
 
 # category_del = wrap_partial(item_del, Category)
 # @admin_product.route('categories/<int:id>/delete', view_func=category_del, methods=["DELETE"])
@@ -190,7 +190,7 @@ def product_types_manage(id=None):
         flash("Product type saved.", "success")
         return redirect(url_for("dashboard.product_types"))
     return render_template(
-        "general_edit.html", form=form, title="Product Type"
+        "admin/dashboard/general_edit.html", form=form, title="Product Type"
     )
 
 # product_type_del = wrap_partial(item_del, ProductType)
@@ -232,12 +232,12 @@ def products():
         "pagination": pagination,
         "categories": Category.query.all(),
     }
-    return render_template("product/list.html", **context)
+    return render_template("admin/dashboard/product/list.html", **context)
 
 @admin_product.route('products/<int:id>')
 def product_detail(id):
     product = Product.get_by_id(id)
-    return render_template("product/detail.html", product=product)
+    return render_template("admin/dashboard/product/detail.html", product=product)
 
 @admin_product.route('products/<int:id>/edit', methods=['GET', 'POST'])
 @admin_product.route('products/create/step2', methods=['GET', 'POST'])
@@ -269,9 +269,9 @@ def product_manage(id=None):
                 product_id=product.id,
             )
         flash("Product saved.", "success")
-        return redirect(url_for("dashboard.product_detail", id=product.id))
+        return redirect(url_for("admin_product.product_detail", id=product.id))
     context = {"form": form, "product_type": product_type}
-    return render_template("product/product.html", **context)
+    return render_template("admin/dashboard/product/product.html", **context)
 
 # product_del = wrap_partial(item_del, Product)
 # @admin_product.route('products/<int:id>/delete', view_func=product_del, methods=['DELETE'])
@@ -283,12 +283,12 @@ def product_create_step1():
     if form.validate_on_submit():
         return redirect(
             url_for(
-                "dashboard.product_manage",
+                "admin_product.product_manage",
                 product_type_id=form.product_type_id.data,
             )
         )
     return render_template(
-        "general_edit.html", form=form, title="Product Step 1"
+        "admin/dashboard/general_edit.html", form=form, title="Product Step 1"
     )
 
 @admin_product.route('products/variant/create', methods=['GET', 'POST'])
@@ -308,10 +308,10 @@ def variant_manage(id=None):
         variant.sku = str(variant.product_id) + "-" + str(form.sku_id.data)
         variant.save()
         flash("Variant saved.", "success")
-        return redirect(url_for("dashboard.product_detail", id=variant.product_id))
+        return redirect(url_for("admin_product.product_detail", id=variant.product_id))
     return render_template(
-        "general_edit.html", form=form, title="Variant"
+        "admin/dashboard/general_edit.html", form=form, title="Variant"
     )
 
 # variant_del = wrap_partial(item_del, ProductVariant)
-# @admin_product.route('variants/<int:id>/delete', view_func=variant_del, methods=['DELETE'])
+# @admin_product.route('products/variants/<int:id>/delete', view_func=variant_del, methods=['DELETE'])

@@ -27,7 +27,7 @@ def vouchers():
         "pagination": pagination,
         "identity": lazy_gettext("vouchers"),
     }
-    return render_template("dashboard/general_list.html", **context)
+    return render_template("admin/dashboard/general_list.html", **context)
 
 
 def vouchers_manage(id=None):
@@ -52,7 +52,7 @@ def vouchers_manage(id=None):
         return redirect(url_for("dashboard.vouchers"))
 
     context = {"form": form, "title": lazy_gettext("Voucher")}
-    return render_template("general_edit.html", **context)
+    return render_template("admin/dashboard/general_edit.html", **context)
 
 
 voucher_del = wrap_partial(item_del, Voucher)
@@ -74,7 +74,7 @@ def sales():
         "pagination": pagination,
         "identity": lazy_gettext("sales"),
     }
-    return render_template("dashboard/general_list.html", **context)
+    return render_template("admin/dashboard/general_list.html", **context)
 
 
 def sales_manage(id=None):
@@ -104,7 +104,7 @@ def sales_manage(id=None):
         return redirect(url_for("dashboard.sales"))
 
     context = {"form": form, "title": lazy_gettext("Sale")}
-    return render_template("general_edit.html", **context)
+    return render_template("admin/dashboard/general_edit.html", **context)
 
 
 sale_del = wrap_partial(item_del, Sale)

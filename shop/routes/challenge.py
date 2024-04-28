@@ -8,6 +8,7 @@ from flask import (
     render_template,
     request,
     url_for,
+    flash
 )
 
 from flask_login import current_user, login_required, login_user, logout_user
@@ -22,5 +23,7 @@ challenge = Blueprint('challenge', __name__, url_prefix='/challenge')
 def index():
   challenge = Challenge.query.order_by(Challenge.id.desc()).first()
   if challenge:
-    challenge_images = Challenge.get_images_for_challange(challenge)
-    return render_template("challenge/index.html", challenge=challenge, challenge_images=challenge_images)
+    challenge_images = Challenge.get_images_for_challenge(challenge.id)
+    return render_template('challenge/index.html', challenge=challenge, challenge_images=challenge_images)
+  flash('No Challenge', 'warning')
+  return redirect(url_for('public.home'))

@@ -33,7 +33,7 @@ def shipping_methods():
         "pagination": pagination,
         "identity": "shipping_methods",
     }
-    return render_template("dashboard/general_list.html", **context)
+    return render_template("admin/dashboard/general_list.html", **context)
 
 
 def shipping_methods_manage(id=None):
@@ -49,7 +49,7 @@ def shipping_methods_manage(id=None):
         flash(lazy_gettext("Shipping method saved."), "success")
         return redirect(url_for("dashboard.shipping_methods"))
     return render_template(
-        "general_edit.html", form=form, title=lazy_gettext("Shipping Method")
+        "admin/dashboard/general_edit.html", form=form, title=lazy_gettext("Shipping Method")
     )
 
 
@@ -73,7 +73,7 @@ def site_menus():
         "pagination": pagination,
         "identity": "site_menus",
     }
-    return render_template("dashboard/general_list.html", **context)
+    return render_template("admin/dashboard/dashboard/general_list.html", **context)
 
 
 @admin_required
@@ -100,7 +100,7 @@ def site_menus_manage(id=None):
         return redirect(url_for("dashboard.site_menus"))
 
     return render_template(
-        "general_edit.html", form=form, title=lazy_gettext("Site Menu")
+        "admin/dashboard/general_edit.html", form=form, title=lazy_gettext("Site Menu")
     )
 
 
@@ -125,7 +125,7 @@ def dashboard_menus():
         "pagination": pagination,
         "identity": "dashboard_menus",
     }
-    return render_template("dashboard/general_list.html", **context)
+    return render_template("admin/dashboard/dashboard/general_list.html", **context)
 
 
 @admin_required
@@ -146,7 +146,7 @@ def dashboard_menus_manage(id=None):
         flash(lazy_gettext("Menu saved."), "success")
         return redirect(url_for("dashboard.dashboard_menus"))
     return render_template(
-        "general_edit.html", form=form, title=lazy_gettext("Dashboard Menu")
+        "admin/dashboard/general_edit.html", form=form, title=lazy_gettext("Dashboard Menu")
     )
 
 
@@ -170,7 +170,7 @@ def site_pages():
         "pagination": pagination,
         "identity": "site_pages",
     }
-    return render_template("dashboard/general_list.html", **context)
+    return render_template("admin/dashboard/general_list.html", **context)
 
 
 def site_pages_manage(id=None):
@@ -185,7 +185,7 @@ def site_pages_manage(id=None):
         page.save()
         flash(lazy_gettext("Page saved."), "success")
         return redirect(url_for("dashboard.site_pages"))
-    return render_template("site/site_page.html", form=form)
+    return render_template("admin/dashboard/site/site_page.html", form=form)
 
 
 site_page_del = wrap_partial(item_del, Page)
@@ -193,7 +193,7 @@ site_page_del = wrap_partial(item_del, Page)
 
 def plugin_list():
     plugins = PluginRegistry.query.all()
-    return render_template("site/plugin.html", plugins=plugins)
+    return render_template("admin/dashboard/site/plugin.html", plugins=plugins)
 
 
 def plugin_enable(id):
@@ -203,7 +203,7 @@ def plugin_enable(id):
     flash(
         lazy_gettext("The plugin is enabled, Please restart flask-shop now!"), "success"
     )
-    return redirect(url_for("dashboard.plugin_list"))
+    return redirect(url_for("admin/dashboard/dashboard.plugin_list"))
 
 
 def plugin_disable(id):
@@ -213,7 +213,7 @@ def plugin_disable(id):
     flash(
         lazy_gettext("The plugin is disabled, Please restart flask-shop now!"), "info"
     )
-    return redirect(url_for("dashboard.plugin_list"))
+    return redirect(url_for("admin/dashboard/dashboard.plugin_list"))
 
 
 def site_setting():
@@ -242,9 +242,9 @@ def site_setting():
         Setting.update(settings=new_settings)
         flash(lazy_gettext("Settings saved."), "success")
     return render_template(
-        "general_edit.html", form=form, title=lazy_gettext("Site Settings")
+        "admin/dashboard/general_edit.html", form=form, title=lazy_gettext("Site Settings")
     )
 
 
 def config_index():
-    return render_template("site/index.html")
+    return render_template("admin/dashboard/site/index.html")

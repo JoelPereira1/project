@@ -10,6 +10,7 @@ from shop.extensions import (
   migrate
 )
 from shop.corelib.utils import jinja_global_varibles
+import shop.corelib.rethinkdb.initdb as RethinkBD
 
 def create_app(config_object=Config):
   app = Flask(__name__.split(".")[0])
@@ -17,16 +18,16 @@ def create_app(config_object=Config):
   register_extensions(app)
   register_blueprints(app)
   register_commands(app)
-  jinja_global_varibles(app)
 
   return app
 
 def register_extensions(app):
-  bcrypt.init_app(app)
   db.init_app(app)
+  migrate.init_app(app, db)
+  RethinkBD.init_database('localhost', 28015, 'flask_chat', 'Passw0rd!', 'tblchat')
+  bcrypt.init_app(app)
   csrf_protect.init_app(app)
   login_manager.init_app(app)
-  migrate.init_app(app, db)
   bootstrap.init_app(app)
   jinja_global_varibles(app)
 

@@ -36,11 +36,6 @@ $ alembic init alembic
 $ cp alembic/env.py alembic/versions/env.py
 ```
 
-Create database:
-```sh
-$ python ./database_init.py
-```
-
 Activate the virtual environment:
 ```sh
 $ source .venv/bin/activate
@@ -54,6 +49,10 @@ Install the python packages specified in requirements.txt:
 
 ### Database Initialization
 
+Create database:
+```sh
+(venv) $ python ./database_init.py
+```
 This Flask application needs a SQLite database to store data.  The database should be initialized using:
 
 ```

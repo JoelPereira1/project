@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Chat {{ chats }}
+{% endblock %}
+
+{% block breadcrumb %}
+  <ul class="breadcrumbs list-unstyled">
+    <li>
+      <a href="{{ url_for('public.home') }}">
+        Home
+      </a>
+    </li>
+    <li>
+      <a href="{{ url_for('account.index') }}">
+        Your account
+      </a>
+    </li>
+    <li>
+      <a href="{{ chats }}">
+        Order {{ chats }}
+      </a>
+    </li>
+  </ul>
+{% endblock breadcrumb %}
+
+{% block content %}
+  <div class="row order-details">
+    <div class="col-lg-10 m-auto">
+      <h2 class="order-details__header">
+        Chat: {{ chats }}<br>
+      </h2>
+      <div class="order-notes">
+        {% if chats %}
+            <h2 class="order-notes__header">Your note</h2>
+          {% for chat in chats %}
+            <p>{{ chats.response }}</p>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-primary">
+            <form method="POST" action="chat/add">
+              <div class="card-body">
+                <div class="form-group col-12">
+                  <input type="text" name="chat" class="form-control form-control-sm" placeholder="chat">
+                  <div class="form-group text-right col-1">
+                    <button type="submit" class="btn btn-primary text-right btn-sm">Submit</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock content %}

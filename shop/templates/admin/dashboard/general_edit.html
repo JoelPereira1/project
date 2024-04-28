@@ -1,27 +1,29 @@
-{% extends 'dashboard/layout.html' %}
+{% extends 'admin/dashboard/layout.html' %}
+{% import 'admin/dashboard/_macros.html' as macros %}
 {% from 'bootstrap5/form.html' import render_form %}
 
 {% block body %}
-    <section class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h4 class="card-title">
-                                {% if 'edit' in request.path %}
-                                    Edit
-                                {% else %}
-                                    Create
-                                {% endif %}
-                                {{ title }}</h4>
-                        </div>
-                        <div class="card-body">
-                            {{ render_form(form) }}
-                        </div>
-                    </div>
-                </div>
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h4 class="card-title">
+                {% if 'edit' in request.path %}
+                    Edit
+                {% else %}
+                    Create
+                {% endif %}
+                {{ title }}
+              </h4>
             </div>
+            <div class="card-body">
+              {{ render_form(form) }}
+            </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 {% endblock %}
