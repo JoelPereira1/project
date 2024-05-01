@@ -12,53 +12,121 @@
       </a>
     </li>
     <li>
-      <a href="{{ url_for('account.index') }}">
-        Your account
-      </a>
-    </li>
-    <li>
-      <a href="{{ chats }}">
-        Order {{ chats }}
+      <a href="{{ url_for('community.index') }}">
+        Community
       </a>
     </li>
   </ul>
 {% endblock breadcrumb %}
 
 {% block content %}
-  <div class="row order-details">
-    <div class="col-lg-10 m-auto">
-      <h2 class="order-details__header">
-        Chat: {{ chats }}<br>
-      </h2>
-      <div class="order-notes">
-        {% if chats %}
-            <h2 class="order-notes__header">Your note</h2>
-          {% for chat in chats %}
-            <p>{{ chats.response }}</p>
-          {% endfor %}
+  <ul id="chat-list" class="collection">
+    {% for chat in chats %}
+      <li class="collection-item">{{ chat.created }} - {{ chat.response }}</li>
+      <ul>
+        <li>
+          {% if current_user.is_authenticated %}
+            <div class="input-field col s3">
+              <i class="material-icons prefix">Respond To:</i>
+              <input id="response_message_{{chat.id}}" class="materialize-input chat_response_message" placeholder="Respond">
+            </div>
+            <div class="input-field col s3">
+              <button id="submit_response_{{chat.id}}" class="btn waves-effect waves-light chat_response_submit" type="submit"
+                name="action" data_id="{{chat.id}}">
+                <i class="material-icons right">Respond</i>
+              </button>
+            </div>
+          {% endif %}
+        </li>
+      </ul>
+    {% endfor %}
+  </ul>
+
+  <div class="row">
+    <form class="col s12" id="chat-form">
+      <div class="row">
+        {% if current_user.is_authenticated %}
+          <div class="form-group col-12">
+            <input id="message" type="text" name="chat" class="form-control form-control-sm" placeholder="Message">
+            <div class="form-group text-right col-1">
+              <button id="submit" class="btn btn-primary text-right btn-sm" type="submit" name="action">Submit</button>
+            </div>
+          </div>
         {% endif %}
+
       </div>
-    </div>
+    </form>
   </div>
 
-  <section class="content">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card card-primary">
-            <form method="POST" action="chat/add">
-              <div class="card-body">
-                <div class="form-group col-12">
-                  <input type="text" name="chat" class="form-control form-control-sm" placeholder="chat">
-                  <div class="form-group text-right col-1">
-                    <button type="submit" class="btn btn-primary text-right btn-sm">Submit</button>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.js"></script>
+  <script>
+    var chatForm = document.getElementById('chat-form');
+    var chatList = document.getElementById('chat-list');
+
+    // const socket = io.connect("http://127.0.0.1:8080");
+    var socket = io.connect('http://' + document.domain + ':' + location.port);
+    socket.on('new_chat', function (data) {
+      chatList.innerHTML = '<li class="collection-item">' + data.new_val.created + ' - ' + data.new_val.response + '</li>' +
+      `<ul>
+        <li>
+          {% if current_user.is_authenticated %}
+            <div class="input-field col s3">
+              <i class="material-icons prefix">Respond To:</i>
+              <input id="response_message_${data.new_val.id}" class="materialize-input chat_response_message" placeholder="Respond">
+            </div>
+            <div class="input-field col s3">
+              <button id="submit_response_${data.new_val.id}" class="btn waves-effect waves-light chat_response_submit"
+                type="submit" name="action" data_id="${data.new_val.id}">
+                <i class="material-icons right">Respond</i>
+              </button>
+            </div>
+          {% endif %}
+        </li>
+      </ul>` + chatList.innerHTML;
+    });
+
+    function sendAjaxRequest(url, data) {
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Handle the response here
+        console.log(data);
+      })
+      .catch(error => {
+        // Handle any errors here
+        console.error(error);
+      });
+    }
+
+    var messageInput = document.getElementById('message');
+    chatForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const url = "{{ post_url }}"; // Replace with your Flask route
+      sendAjaxRequest(url, { input: { message: messageInput.value } });
+    });
+
+    var elements = document.getElementsByClassName('chat_response_submit');
+    Array.from(elements).forEach(function (element) {
+      element.addEventListener('click', function (e) {
+        e.preventDefault();
+        var idToGet = this.attributes.data_id.value
+        var response_message = document.getElementById(`response_message_${idToGet}`);
+        const url = "{{ post_url }}"; // Replace with your Flask route
+        sendAjaxRequest(url, { input: { message: response_message.value, chat_id: idToGet } });
+      });
+    });
+    // chatForm.addEventListener('', function (e) {
+    //   e.preventDefault();
+    //   const url = "{{ post_url }}"; // Replace with your Flask route
+    //   sendAjaxRequest(url, { input: { message: response_message.value, chat_id: '' } });
+    // });
+
+  </script>
 {% endblock content %}

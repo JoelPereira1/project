@@ -6,14 +6,15 @@ import shop.corelib.rethinkdb.initdb as InitDatabase
 @staticmethod
 def GetAll(database, table, ref_col, ref_id, order_col, limit = False, limit_num = 3, limit_col = None):
   conn = InitDatabase.connect('localhost', 28015, database, 'Passw0rd!')
-  cursor = r.table(table).changes().run(conn, timeout=1.0)
+  cursor = r.table(table).order_by(r.desc('timestamp')).run(conn)
+  return cursor
 
   # Process the data in batches
-  for change in cursor:
-    print(change)
+  # for change in cursor:
+  #   print(change)
 
     # Wait for a short period before checking for new data again
-    time.sleep(0.1)
+    # time.sleep(0.1)
   # cursor = r.table(table).run(conn)
   # cursor = r.table(table).get(1).changes(include_initial=True, include_states=True).run(conn)
   # my_array= []
@@ -33,8 +34,39 @@ def GetAll(database, table, ref_col, ref_id, order_col, limit = False, limit_num
 
     # r.db("Test").table('Users').getAll(r.args(r.db('Test').table('Users').get("0ab43d81-b883-424a-be56-32f9ff98f7d2")('friends'))).changes()
 
-  # Subscribe to changes on the documents with the two lowest ids
-  # EventMachine.run {
-  #   r.table(table).order_by(:index => 'id').limit(2).changes
-  #     .em_run(conn, FeedPrinter)
-  # }
+
+@staticmethod
+def GetChanges(database, table, ref_col, ref_id, order_col, limit = False, limit_num = 3, limit_col = None):
+  # # Connect to the database
+  # conn = InitDatabase.connect('localhost', 28015, database, 'Passw0rd!')
+  # # Retrieve data from the "updates" table, ordered by time
+  # cursor = r.table(table).changes(include_initial=True).run(conn)
+  # # cursor = r.table(table).changes(include_initial=True).run(conn)
+  # return cursor
+  try:
+    # Connect to the database
+    conn = InitDatabase.connect('localhost', 28015, database, 'Passw0rd!')
+    # Retrieve data from the "updates" table, ordered by time
+    # cursor = r.table(table).changes(include_initial=True, include_states=True).run(conn)
+    cursor = r.table(table).changes(include_initial=True).run(conn)
+    return cursor
+  except Exception as e:
+    print("Error Exception on GetChanges messages:", e)
+  finally:
+    # Close the connection
+    # if conn:
+    #   conn.close()
+    return cursor
+
+  # breakpoint()
+  # # changes = r.table(table).sync().run(conn)
+  # # if changes:
+  # feed = r.table(table).changes(squash=1000000).run(changefeed_queue_size=10)
+
+  # for change in feed:
+  #   print(change)
+
+  # feed = r.table(table).changes().run(conn)
+
+  # for change in feed:
+  #   print(change)
