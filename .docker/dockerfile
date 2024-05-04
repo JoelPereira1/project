@@ -19,6 +19,10 @@ RUN pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org --
 
 RUN git config --global --add safe.directory .git/gitconfig
 
+# RUN python3 -m venv .venv
+# RUN source .venv/bin/activate
+# RUN flask seed
+
 # ENV PYTHONPATH="${PYTHONPATH}:/app/modules/databases:/app/modules/cosmosdb:/app/modules/rethinkdb:/app/flaskshop:/app/models:/app/models/challenge:/app/models/blog:/app/models/customer:/app/models/order:/app/models/product:/app/models/post:/app/packages"
 ENV PYTHONPATH="${PYTHONPATH}:/app/settings:/app/settings:/app/shop/:/app/shop/corelib/:/app/shop/routes/:/app/shop/models/:/app/shop/static/:/app/shop/templates/"
 WORKDIR /app/shop

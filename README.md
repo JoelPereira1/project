@@ -74,10 +74,11 @@ Navigate to 'http://127.0.0.1:8088' in your favorite web browser to view the web
 
 3. If you opt by the docker way, grant that docker is installed and run
 ```sh
-$ docker compose build
-```
-```sh
-$ docker compose up -d
+$ docker compose up -d --build
+``````sh
+$ docker-compose exec web sh
+flask createdb
+flask seed
 ```
 with this you will run all necessary instances as well all the configuration needed to that
 ## Key Python Modules Used
