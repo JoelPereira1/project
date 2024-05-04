@@ -4,6 +4,7 @@ from rethinkdb.errors import RqlRuntimeError, RqlDriverError
 
 @staticmethod
 def init_database(host, port, database, password, table):
+  conn = connect(host, port, database, password)
   try:
     conn = connect(host, port, database, password)
     databases = r.db_list().run(conn)

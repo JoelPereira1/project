@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:jammy
 
 # Install RethinkDB.
 RUN apt-get update && \

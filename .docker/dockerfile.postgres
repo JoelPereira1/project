@@ -1,18 +1,18 @@
-FROM postgres:16-alpine
+# FROM postgres:16-alpine
 
-# RUN mkdir -p /docker-entrypoint-initdb.d
-# COPY init-scripts/init.sql /docker-entrypoint-initdb.d/init.sql
-# ADD init-scripts/init.sql /docker-entrypoint-initdb.d/init.sql
-# # RUN chown -R postgres:postgres /docker-entrypoint-initdb.d/
+# # RUN mkdir -p /docker-entrypoint-initdb.d
+# # COPY init-scripts/init.sql /docker-entrypoint-initdb.d/init.sql
+# # ADD init-scripts/init.sql /docker-entrypoint-initdb.d/init.sql
+# # # RUN chown -R postgres:postgres /docker-entrypoint-initdb.d/
 
-# # Entrypoint prepares the database.
-# # RUN chmod -R +x /docker-entrypoint-initdb.d/
-# ENTRYPOINT ["/docker-entrypoint-initdb.d"]
+# # # Entrypoint prepares the database.
+# # # RUN chmod -R +x /docker-entrypoint-initdb.d/
+# # ENTRYPOINT ["/docker-entrypoint-initdb.d"]
 
 
-COPY init-scripts/init.sh /usr/local/bin/
-# some docker storage backends fail on this kind of layer, so should probably chmod it in git instead
-RUN chmod +x /usr/local/bin/init.sh
+# COPY init-scripts/init.sh /usr/local/bin/
+# # some docker storage backends fail on this kind of layer, so should probably chmod it in git instead
+# RUN chmod +x /usr/local/bin/init.sh
 
-ENTRYPOINT ["init.sh"]
-# CMD ["docker-entrypoint.sh", "postgres"]
+# ENTRYPOINT ["init.sh"]
+# # CMD ["docker-entrypoint.sh", "postgres"]
