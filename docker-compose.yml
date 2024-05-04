@@ -195,7 +195,7 @@ services:
       flaskshop_network:
       jenkins_network:
     volumes:
-      - week-17-vol:/var/jenkins_home
+      - ./persistent/week-17-vol:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
 
 networks:

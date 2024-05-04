@@ -86,9 +86,16 @@ with this you will run all necessary instances as well all the configuration nee
 * **pgadmin4**:
 * **rethinkdb**:
 
-_NOTE_: infisical access
-infisical@infisical.pt
-infisicaladmin
+_NOTE_:
+* infisical access
+  * **infisical@infisical.pt**
+  * **infisicaladmin**
+
+* jenkins
+  * **16f45d739d02460bafe80573f7955e5a**
+  * **jenkins**
+  * **jenkinsadmin**
+  * **jenkins@jenkins.pt**
 
 ## Testing
 
