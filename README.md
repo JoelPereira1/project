@@ -27,6 +27,8 @@ this project has the ability to run locally or through a docker compose file, if
 * **infisical** - tool to connect to infisical instance, Open Source Secret Management * [https://infisical.com/](https://infisical.com/)
 * **rethinkdb** - RethinkDB is the first open-source scalable database built for realtime applications * [https://pypi.org/project/rethinkdb/](https://pypi.org/project/rethinkdb/)
 * **elasticsearch** - Python client for Elasticsearch
+* **jenkins** - Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software
+* **minio** - MinIO's High Performance Object Storage is Open Source, Amazon S3 compatible, Kubernetes Native and is designed for cloud native workloads like AI
 
 This application is written using Python 3.10.
 
