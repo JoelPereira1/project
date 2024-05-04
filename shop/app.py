@@ -38,7 +38,7 @@ def register_blueprints(app):
   blueprint_manager(app)
 
 def register_minio(app):
-  Minio("play.min.io", access_key="Q3AM3UQ867SPQQA43P2F", secret_key="zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG")
+  Minio("play.min.io", access_key="rq7AynI9TVrzBxUFZGvn", secret_key="zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG")
 
 def register_commands(app):
   """Register Click commands."""

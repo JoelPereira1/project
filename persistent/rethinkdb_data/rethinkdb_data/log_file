@@ -645,3 +645,16 @@
 2024-05-04T15:47:31.661036401 2483.389758s notice: All client connections closed.
 2024-05-04T15:47:31.661040701 2483.389762s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
 2024-05-04T15:47:31.703175488 2483.431897s notice: Storage engine shut down.
+2024-05-04T16:04:07.253864704 0.047540s notice: Running rethinkdb 2.4.4~0jammy (x86_64-linux-gnu) (GCC 11.4.0)...
+2024-05-04T16:04:07.258042933 0.051719s notice: Running on Linux 5.15.133.1-microsoft-standard-WSL2 x86_64
+2024-05-04T16:04:07.258996762 0.052673s notice: Loading data from directory /data/rethinkdb_data
+2024-05-04T16:04:07.326205236 0.119881s info: Automatically using cache size of 4106 MB
+2024-05-04T16:04:07.369876683 0.163552s notice: Listening for intracluster connections on port 29015
+2024-05-04T16:04:07.729090567 0.522766s notice: Listening for client driver connections on port 28015
+2024-05-04T16:04:07.729180570 0.522856s notice: Listening for administrative HTTP connections on port 8080
+2024-05-04T16:04:07.729181670 0.522857s notice: Listening on cluster addresses: 127.0.0.1, 172.24.0.3, 172.25.0.3, 172.28.0.5, ::1, fe80::42:acff:fe18:3%5954, fe80::42:acff:fe19:3%5964, fe80::42:acff:fe1c:5%5970
+2024-05-04T16:04:07.729201570 0.522877s notice: Listening on driver addresses: 127.0.0.1, 172.24.0.3, 172.25.0.3, 172.28.0.5, ::1, fe80::42:acff:fe18:3%5954, fe80::42:acff:fe19:3%5964, fe80::42:acff:fe1c:5%5970
+2024-05-04T16:04:07.729216971 0.522893s notice: Listening on http addresses: 127.0.0.1, 172.24.0.3, 172.25.0.3, 172.28.0.5, ::1, fe80::42:acff:fe18:3%5954, fe80::42:acff:fe19:3%5964, fe80::42:acff:fe1c:5%5970
+2024-05-04T16:04:07.729231271 0.522907s notice: Server ready, "3c95517529f4_6ta" 3e16050d-5054-4551-95f3-d71085e44617
+2024-05-04T16:04:08.785466562 1.579142s info: Table 9fcc1ec1-0ca1-4375-ad9c-7f128f4869fe: Starting a new Raft election for term 14.
+2024-05-04T16:04:08.792488578 1.586164s info: Table 9fcc1ec1-0ca1-4375-ad9c-7f128f4869fe: This server is Raft leader for term 14. Latest log index is 41.
