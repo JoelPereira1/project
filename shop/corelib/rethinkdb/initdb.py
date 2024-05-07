@@ -14,7 +14,7 @@ def init_database(host, port, database, password, table):
         exists = True
         break
     if not exists:
-      r.db(database).table_create(table).run(conn)
+      r.db_create(database).run(conn)
       print('Database %s created successfully'%(database))
     tables = r.db(database).table_list().run(conn)
     texists = False
@@ -23,6 +23,7 @@ def init_database(host, port, database, password, table):
         texists = True
         break
     if not texists:
+      r.db(database).table_create(table).run(conn)
       r.db(database).table(table).index_create('timestamp').run(conn)
       print('Table %s created successfully'%(table))
   except RqlRuntimeError as RqlRuntimeE:

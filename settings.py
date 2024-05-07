@@ -229,5 +229,3 @@ class Config:
   # MINIO_HTTP_CLIENT	(Optional) Customized HTTP client.	-
   # MINIO_CREDENTIALS	(Optional) Credentials of your account in S3 service.	-
   # MINIO_BUCKETS	(Optional) A list of buckets, that should be created at startup	-
-
-
