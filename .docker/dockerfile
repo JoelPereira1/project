@@ -5,8 +5,8 @@
 # CMD ["python3", “./main.py”]
 # # Or enter the name of your unique directory and parameter set.
 
-
-FROM tiangolo/uwsgi-nginx-flask:python3.10
+# Base Docker image with uWSGI and Nginx for Flask applications in Python running in a single container
+FROM python:3.10
 
 # Add  app
 WORKDIR /app
@@ -38,10 +38,10 @@ ENV STATIC_PATH /app/static
 # ENV STATIC_INDEX 1
 ENV STATIC_INDEX 0
 
-EXPOSE 5001
+EXPOSE 5000
 
 # CMD ["python", "/app/shop/app.py"]
-CMD python -m flask run --host=0.0.0.0 --port=5001 --debug
+CMD python -m flask run --host=0.0.0.0 --port=5000 --debug
 
 # CMD [ "python", "-m flask run --debug" ]
 

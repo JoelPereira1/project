@@ -183,6 +183,16 @@ services:
           cpus: '1.5'
           memory: 2GB
 
+  nginx:
+    container_name: nginx
+    build:
+      context: .
+      dockerfile: ./.docker/dockerfile.nginx
+    ports:
+      - 80:80
+    depends_on:
+      - flowershop
+
   jenkins:
     image: jenkins/jenkins:lts
     privileged: true

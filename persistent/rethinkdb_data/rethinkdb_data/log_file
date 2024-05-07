@@ -761,3 +761,25 @@
 2024-05-07T19:32:19.949400430 337.040721s notice: All client connections closed.
 2024-05-07T19:32:19.949404230 337.040725s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
 2024-05-07T19:32:19.975173808 337.066495s notice: Storage engine shut down.
+2024-05-07T19:35:02.231691751 0.099766s notice: Running rethinkdb 2.4.4~0jammy (x86_64-linux-gnu) (GCC 11.4.0)...
+2024-05-07T19:35:02.258009862 0.126085s notice: Running on Linux 5.15.133.1-microsoft-standard-WSL2 x86_64
+2024-05-07T19:35:02.276129165 0.144203s notice: Loading data from directory /data/rethinkdb_data
+2024-05-07T19:35:02.354013844 0.222088s info: Automatically using cache size of 1833 MB
+2024-05-07T19:35:02.371817331 0.239891s notice: Listening for intracluster connections on port 29015
+2024-05-07T19:35:02.525515887 0.393590s notice: Listening for client driver connections on port 28015
+2024-05-07T19:35:02.525654294 0.393728s notice: Listening for administrative HTTP connections on port 8080
+2024-05-07T19:35:02.525658894 0.393733s notice: Listening on cluster addresses: 127.0.0.1, 192.168.48.2, 192.168.32.3, 192.168.80.3, ::1, fe80::42:c0ff:fea8:2003%398, fe80::42:c0ff:fea8:3002%388, fe80::42:c0ff:fea8:5003%402
+2024-05-07T19:35:02.525665194 0.393739s notice: Listening on driver addresses: 127.0.0.1, 192.168.48.2, 192.168.32.3, 192.168.80.3, ::1, fe80::42:c0ff:fea8:2003%398, fe80::42:c0ff:fea8:3002%388, fe80::42:c0ff:fea8:5003%402
+2024-05-07T19:35:02.525677095 0.393751s notice: Listening on http addresses: 127.0.0.1, 192.168.48.2, 192.168.32.3, 192.168.80.3, ::1, fe80::42:c0ff:fea8:2003%398, fe80::42:c0ff:fea8:3002%388, fe80::42:c0ff:fea8:5003%402
+2024-05-07T19:35:02.525681595 0.393755s notice: Server ready, "3c95517529f4_6ta" 3e16050d-5054-4551-95f3-d71085e44617
+2024-05-07T19:35:03.630103907 1.498178s info: Table 9fcc1ec1-0ca1-4375-ad9c-7f128f4869fe: Starting a new Raft election for term 21.
+2024-05-07T19:35:03.659258860 1.527333s info: Table 9fcc1ec1-0ca1-4375-ad9c-7f128f4869fe: This server is Raft leader for term 21. Latest log index is 63.
+2024-05-07T19:35:37.535033603 35.404761s info: Table 8856d34f-1e47-42d6-bc5c-6ed7f900f1ec: Starting a new Raft election for term 1.
+2024-05-07T19:35:37.535387319 35.405115s info: Table 8856d34f-1e47-42d6-bc5c-6ed7f900f1ec: Added replica on this server.
+2024-05-07T19:35:37.540668065 35.410396s info: Table 8856d34f-1e47-42d6-bc5c-6ed7f900f1ec: This server is Raft leader for term 1. Latest log index is 0.
+2024-05-07T19:35:38.038481041 35.908209s info: Table 8856d34f-1e47-42d6-bc5c-6ed7f900f1ec: Configuration is changing.
+2024-05-07T21:48:50.294985508 8028.547588s notice: Server got SIGTERM from pid 0, uid 0; shutting down...
+2024-05-07T21:48:50.300347742 8028.552949s notice: Shutting down client connections...
+2024-05-07T21:48:50.306204880 8028.558807s notice: All client connections closed.
+2024-05-07T21:48:50.306211880 8028.558813s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2024-05-07T21:48:50.535654059 8028.788256s notice: Storage engine shut down.

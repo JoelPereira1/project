@@ -1,5 +1,14 @@
 <?xml version='1.1' encoding='UTF-8'?>
 <hudson>
+  <temporaryOfflineCause class="hudson.node_monitors.DiskSpaceMonitorDescriptor$DiskSpace">
+    <timestamp>1715117747308</timestamp>
+    <path>/var/jenkins_home</path>
+    <size>978128896</size>
+    <totalSize>478302928896</totalSize>
+    <trigger>hudson.node_monitors.DiskSpaceMonitor</trigger>
+    <threshold>1073741824</threshold>
+    <warningThreshold>2147483648</warningThreshold>
+  </temporaryOfflineCause>
   <disabledAdministrativeMonitors/>
   <version>2.440.3</version>
   <numExecutors>2</numExecutors>
