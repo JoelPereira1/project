@@ -1,6 +1,6 @@
 from flask import Flask
 from . import commands
-from settings import Config
+from settings import Config, DBConfig
 from minio import Minio
 from shop.extensions import (
   bcrypt,
@@ -26,7 +26,7 @@ def create_app(config_object=Config):
 def register_extensions(app):
   db.init_app(app)
   migrate.init_app(app, db)
-  RethinkBD.init_database('localhost', 28015, 'flask_chat', 'Passw0rd!', 'tblchat')
+  RethinkBD.init_database(DBConfig.rethinkdb_uri, DBConfig.rethinkdb_port, DBConfig.rethinkdb, DBConfig.rethinkdb_pwd, DBConfig.rethinkdb_tbl)
   bcrypt.init_app(app)
   csrf_protect.init_app(app)
   login_manager.init_app(app)
@@ -38,7 +38,7 @@ def register_blueprints(app):
   blueprint_manager(app)
 
 def register_minio(app):
-  Minio("play.min.io", access_key="rq7AynI9TVrzBxUFZGvn", secret_key="zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG")
+  Minio("play.min.io", access_key=Config.MINIO_ACCESS_KEY, secret_key=Config.MINIO_SECRET_KEY) # "rq7AynI9TVrzBxUFZGvn" "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG"
 
 def register_commands(app):
   """Register Click commands."""

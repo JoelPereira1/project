@@ -681,3 +681,47 @@
 2024-05-04T17:22:53.873057064 59.082406s notice: All client connections closed.
 2024-05-04T17:22:53.873062164 59.082411s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
 2024-05-04T17:22:53.908806685 59.118156s notice: Storage engine shut down.
+2024-05-04T18:56:52.746900448 0.066614s notice: Running rethinkdb 2.4.4~0jammy (x86_64-linux-gnu) (GCC 11.4.0)...
+2024-05-04T18:56:52.770423865 0.090138s notice: Running on Linux 5.15.133.1-microsoft-standard-WSL2 x86_64
+2024-05-04T18:56:52.771587796 0.091302s notice: Loading data from directory /data/rethinkdb_data
+2024-05-04T18:56:52.933542347 0.253256s info: Automatically using cache size of 4013 MB
+2024-05-04T18:56:52.938661181 0.258375s notice: Listening for intracluster connections on port 29015
+2024-05-04T18:56:53.052520070 0.372234s notice: Listening for client driver connections on port 28015
+2024-05-04T18:56:53.052630072 0.372343s notice: Listening for administrative HTTP connections on port 8080
+2024-05-04T18:56:53.052638673 0.372352s notice: Listening on cluster addresses: 127.0.0.1, 172.31.0.3, 192.168.16.3, 192.168.32.5, ::1, fe80::42:acff:fe1f:3%6841, fe80::42:c0ff:fea8:1003%6849, fe80::42:c0ff:fea8:2005%6861
+2024-05-04T18:56:53.052645673 0.372359s notice: Listening on driver addresses: 127.0.0.1, 172.31.0.3, 192.168.16.3, 192.168.32.5, ::1, fe80::42:acff:fe1f:3%6841, fe80::42:c0ff:fea8:1003%6849, fe80::42:c0ff:fea8:2005%6861
+2024-05-04T18:56:53.052652673 0.372366s notice: Listening on http addresses: 127.0.0.1, 172.31.0.3, 192.168.16.3, 192.168.32.5, ::1, fe80::42:acff:fe1f:3%6841, fe80::42:c0ff:fea8:1003%6849, fe80::42:c0ff:fea8:2005%6861
+2024-05-04T18:56:53.052815577 0.372529s notice: Server ready, "3c95517529f4_6ta" 3e16050d-5054-4551-95f3-d71085e44617
+2024-05-04T18:56:54.166437208 1.486151s info: Table 9fcc1ec1-0ca1-4375-ad9c-7f128f4869fe: Starting a new Raft election for term 16.
+2024-05-04T18:56:54.212161309 1.531875s info: Table 9fcc1ec1-0ca1-4375-ad9c-7f128f4869fe: This server is Raft leader for term 16. Latest log index is 47.
+2024-05-05T10:11:48.723506200 0.021545s notice: Running rethinkdb 2.4.4~0jammy (x86_64-linux-gnu) (GCC 11.4.0)...
+2024-05-05T10:11:48.756360900 0.054401s notice: Running on Linux 5.15.133.1-microsoft-standard-WSL2 x86_64
+2024-05-05T10:11:48.756860400 0.054899s notice: Loading data from directory /data/rethinkdb_data
+2024-05-05T10:11:48.834131300 0.132170s info: Automatically using cache size of 6545 MB
+2024-05-05T10:11:48.851613100 0.149652s notice: Listening for intracluster connections on port 29015
+2024-05-05T10:11:48.984624800 0.282664s notice: Listening for client driver connections on port 28015
+2024-05-05T10:11:48.984717600 0.282757s notice: Listening for administrative HTTP connections on port 8080
+2024-05-05T10:11:48.984721100 0.282760s notice: Listening on cluster addresses: 127.0.0.1, 192.168.16.2, 192.168.32.3, 172.31.0.5, ::1, fe80::42:acff:fe1f:5%50, fe80::42:c0ff:fea8:1002%22, fe80::42:c0ff:fea8:2003%34
+2024-05-05T10:11:48.984723900 0.282763s notice: Listening on driver addresses: 127.0.0.1, 192.168.16.2, 192.168.32.3, 172.31.0.5, ::1, fe80::42:acff:fe1f:5%50, fe80::42:c0ff:fea8:1002%22, fe80::42:c0ff:fea8:2003%34
+2024-05-05T10:11:48.984738300 0.282777s notice: Listening on http addresses: 127.0.0.1, 192.168.16.2, 192.168.32.3, 172.31.0.5, ::1, fe80::42:acff:fe1f:5%50, fe80::42:c0ff:fea8:1002%22, fe80::42:c0ff:fea8:2003%34
+2024-05-05T10:11:48.984741500 0.282780s notice: Server ready, "3c95517529f4_6ta" 3e16050d-5054-4551-95f3-d71085e44617
+2024-05-05T10:11:50.100776300 1.398815s info: Table 9fcc1ec1-0ca1-4375-ad9c-7f128f4869fe: Starting a new Raft election for term 17.
+2024-05-05T10:11:50.118751900 1.416791s info: Table 9fcc1ec1-0ca1-4375-ad9c-7f128f4869fe: This server is Raft leader for term 17. Latest log index is 50.
+2024-05-05T10:12:15.826890637 27.136961s notice: Server got SIGTERM from pid 0, uid 0; shutting down...
+2024-05-05T10:12:15.828163442 27.138235s notice: Shutting down client connections...
+2024-05-05T10:12:15.828245740 27.138316s notice: All client connections closed.
+2024-05-05T10:12:15.828249744 27.138320s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2024-05-05T10:12:15.877367750 27.187438s notice: Storage engine shut down.
+2024-05-07T17:36:36.780001701 0.049102s notice: Running rethinkdb 2.4.4~0jammy (x86_64-linux-gnu) (GCC 11.4.0)...
+2024-05-07T17:36:36.817745210 0.086846s notice: Running on Linux 5.15.133.1-microsoft-standard-WSL2 x86_64
+2024-05-07T17:36:36.825255069 0.094355s notice: Loading data from directory /data/rethinkdb_data
+2024-05-07T17:36:36.910712898 0.179813s info: Automatically using cache size of 4430 MB
+2024-05-07T17:36:36.919889259 0.188989s notice: Listening for intracluster connections on port 29015
+2024-05-07T17:36:37.035706545 0.304807s notice: Listening for client driver connections on port 28015
+2024-05-07T17:36:37.035899957 0.305000s notice: Listening for administrative HTTP connections on port 8080
+2024-05-07T17:36:37.035906857 0.305007s notice: Listening on cluster addresses: 127.0.0.1, 172.22.0.3, 172.24.0.3, 172.23.0.4, ::1, fe80::42:acff:fe16:3%44, fe80::42:acff:fe17:4%60, fe80::42:acff:fe18:3%68
+2024-05-07T17:36:37.035907857 0.305008s notice: Listening on driver addresses: 127.0.0.1, 172.22.0.3, 172.24.0.3, 172.23.0.4, ::1, fe80::42:acff:fe16:3%44, fe80::42:acff:fe17:4%60, fe80::42:acff:fe18:3%68
+2024-05-07T17:36:37.035912458 0.305012s notice: Listening on http addresses: 127.0.0.1, 172.22.0.3, 172.24.0.3, 172.23.0.4, ::1, fe80::42:acff:fe16:3%44, fe80::42:acff:fe17:4%60, fe80::42:acff:fe18:3%68
+2024-05-07T17:36:37.035972361 0.305072s notice: Server ready, "3c95517529f4_6ta" 3e16050d-5054-4551-95f3-d71085e44617
+2024-05-07T17:36:38.490891676 1.759992s info: Table 9fcc1ec1-0ca1-4375-ad9c-7f128f4869fe: Starting a new Raft election for term 18.
+2024-05-07T17:36:38.496794437 1.765895s info: Table 9fcc1ec1-0ca1-4375-ad9c-7f128f4869fe: This server is Raft leader for term 18. Latest log index is 54.
