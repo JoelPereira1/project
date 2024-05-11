@@ -209,23 +209,23 @@ services:
           cpus: '1.5'
           memory: 2GB
 
-  nginx:
-    container_name: nginx
-    build:
-      context: .
-      dockerfile: ./.docker/dockerfile.nginx
-    ports:
-      - 80:81
-    depends_on:
-      - flowershop
-    restart: always
-    networks:
-      flaskshop_network:
-    deploy:
-      resources:
-        limits:
-          cpus: '1.5'
-          memory: 2GB
+  # nginx:
+  #   container_name: nginx
+  #   build:
+  #     context: .
+  #     dockerfile: ./.docker/dockerfile.nginx
+  #   ports:
+  #     - 80:81
+  #   depends_on:
+  #     - flowershop
+  #   # restart: always
+  #   networks:
+  #     flaskshop_network:
+  #   deploy:
+  #     resources:
+  #       limits:
+  #         cpus: '1.5'
+  #         memory: 2GB
 
   jenkins:
     image: jenkins/jenkins:lts

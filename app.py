@@ -1,8 +1,9 @@
 """The app module, containing the app factory function."""
 import os
+# os.environ['APP_ENV'] = 'local'
+# os.environ['APP_ENV1'] = 'local'
 os.environ['APP_ENV'] = 'docker'
 os.environ['APP_ENV1'] = 'docker'
-# os.environ['APP_ENV1'] = 'localhost'
 from shop.app import create_app
 from flask_socketio import SocketIO, send, emit
 from threading import Thread

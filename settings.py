@@ -11,13 +11,13 @@ if os.environ.get("APP_ENV") == 'local':
   # VALUES
   secretkeyvalue = 'tO$&!|0wkamvVia0?n$NqIRVWOG'
   dbtypekeyvalue = 'postgresql'
-  dbhostkeyvalue = 'postgres'
+  dbhostkeyvalue = 'localhost'
   dbportkeyvalue = 5432
   dbnamekeyvalue = 'demo_postgres_app'
   dbuserkeyvalue = 'dev'
   dbpasswdkeyvalue = 'dev'
   redisurikeyvalue = 'redis://redis:6379'
-  miniohostvalue = 'minio-1'
+  miniohostvalue = 'localhost:9000'
   miniokeyvalue = 'rq7AynI9TVrzBxUFZGvn'
   miniosecretvalue = 'zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG'
   miniobucketvalue = 'flowershop'
@@ -27,7 +27,7 @@ if os.environ.get("APP_ENV") == 'local':
   rethinkpassvalue = 'Passw0rd!'
   rethinktablevalue = 'tblchat'
 else:
-  if os.environ.get("APP_ENV1") == 'localhost':
+  if os.environ.get("APP_ENV1") == 'local':
     # client = InfisicalClient(token="st.6be0fef8-8728-433c-b9b6-3041628dd126.bb9915efe35c4db3d98136f9cece621a.7fae5b93bdcb8c6e45a088fdf47aba87")
     client = InfisicalClient(ClientSettings(
         site_url='http://localhost:9090',

@@ -2,7 +2,7 @@ import random
 import itertools
 import unicodedata
 from uuid import uuid4
-
+from minio import Minio
 from faker import Factory
 from faker.providers import BaseProvider
 from sqlalchemy.sql.expression import func
@@ -14,7 +14,8 @@ from shop.constant import (
   DiscountValueTypeKinds,
   OrderStatusKinds,
   PaymentStatusKinds,
-  VoucherTypeKinds
+  VoucherTypeKinds,
+  ALLOWED_EXTENSIONS
 )
 from shop.models.dashboard import DashboardMenu
 from shop.models.discount import Sale, SaleProduct, Voucher
@@ -106,16 +107,16 @@ COLLECTIONS_SCHEMA = [
 ]
 
 DASHBOARD_MENUS = [
-    {"title": "CATALOG", "icon_cls": "fa-bandcamp"},
-    {"title": "ORDERS", "endpoint": "orders", "icon_cls": "fa-cart-arrow-down"},
-    {"title": "CUSTOMERS", "endpoint": "users", "icon_cls": "fa-user"},
-    {"title": "DISCOUNTS", "icon_cls": "fa-gratipay"},
-    {"title": "CONFIGURATION", "endpoint": "config_index", "icon_cls": "fa-cog"},
-    {"title": "Products", "endpoint": "products", "parent_id": 1},
-    {"title": "Categories", "endpoint": "categories", "parent_id": 1},
-    {"title": "Collections", "endpoint": "collections", "parent_id": 1},
-    {"title": "Sales", "endpoint": "sales", "parent_id": 4},
-    {"title": "Vouchers", "endpoint": "vouchers", "parent_id": 4},
+  {"title": "CATALOG", "icon_cls": "fa-bandcamp"},
+  {"title": "ORDERS", "endpoint": "orders", "icon_cls": "fa-cart-arrow-down"},
+  {"title": "CUSTOMERS", "endpoint": "users", "icon_cls": "fa-user"},
+  {"title": "DISCOUNTS", "icon_cls": "fa-gratipay"},
+  {"title": "CONFIGURATION", "endpoint": "config_index", "icon_cls": "fa-cog"},
+  {"title": "Products", "endpoint": "products", "parent_id": 1},
+  {"title": "Categories", "endpoint": "categories", "parent_id": 1},
+  {"title": "Collections", "endpoint": "collections", "parent_id": 1},
+  {"title": "Sales", "endpoint": "sales", "parent_id": 4},
+  {"title": "Vouchers", "endpoint": "vouchers", "parent_id": 4},
 ]
 
 """
@@ -211,7 +212,7 @@ def create_products_by_type(
     )
     set_product_attributes(product, product_type)
     if create_images:
-      type_placeholders = placeholder_dir / schema["images_dir"]
+      type_placeholders = schema["images_dir"]
       create_product_images(product, random.randrange(1, 5), type_placeholders)
     variant_combinations = schema["variant_titles"]
 
@@ -271,11 +272,31 @@ def set_product_attributes(product, product_type):
 
 # step9
 def create_product_images(product, how_many, placeholder_dir):
-  placeholder_root = Config.STATIC_DIR / placeholder_dir
-  for dummy in range(how_many):
-    image_name = random.choice(list(placeholder_root.iterdir()))
-    image = image_name.relative_to(Config.STATIC_DIR).as_posix()
-    ProductImage.get_or_create(image=image, product_id=product.id)
+  client = Minio(Config.MINIO_API_HOST, Config.MINIO_ACCESS_KEY, Config.MINIO_SECRET_KEY, secure=False)
+  # Make bucket if not exist.
+  found = client.bucket_exists(Config.BUCKET_NAME)
+  if not found:
+    client.make_bucket(Config.BUCKET_NAME)
+  else:
+    print(f"Bucket {Config.BUCKET_NAME} already exists")
+
+  for item in client.list_objects(Config.BUCKET_NAME, prefix=placeholder_dir, recursive=True):
+    for dummy in range(how_many):
+      if dummy == 0:
+        next
+
+      if str(dummy) in item.object_name:
+        # client.fget_object(Config.BUCKET_NAME, item.object_name, item.object_name)
+        result = client.stat_object(Config.BUCKET_NAME, item.object_name)
+        print(
+            "last-object_name: {0}, size: {1}".format(
+                result.object_name, result.size,
+            ),
+        )
+        print("##########################################################################")
+        print(result.object_name)
+        print("##########################################################################")
+        ProductImage.get_or_create(image=result.object_name, product_id=product.id)
 
 # step10
 def create_variant(product, **kwargs):
