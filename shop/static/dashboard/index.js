@@ -1,4 +1,3 @@
-
 const toggleSibebar = () => {
     const isCollapse = document.body.classList.contains('sidebar-collapse')
     const content = document.getElementById('content')
@@ -66,9 +65,11 @@ deleteModal.addEventListener('show.bs.modal', event => {
     })
 })
 
+
 document.querySelectorAll('select').forEach((el) => {
     new TomSelect(el, {});
 });
+
 
 document.querySelectorAll('.msg-toast').forEach((el) => {
     const toast = new bootstrap.Toast(el)

@@ -2,11 +2,11 @@ import random
 import string
 from datetime import datetime
 from decimal import Decimal
-
 from shop.constant import DiscountValueTypeKinds, VoucherTypeKinds
-from shop.corelib.db import rdb
 from shop.database import Column, Model, db
 from .product import Category, Product
+
+from shop.corelib.db import rdb
 
 class Voucher(Model):
     __tablename__ = "discount_voucher"

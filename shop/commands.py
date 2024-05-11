@@ -9,24 +9,23 @@ from flask import current_app
 from flask.cli import with_appcontext
 from werkzeug.exceptions import MethodNotAllowed, NotFound
 
-# from .corelib.db import rdb
 from .extensions import db
 from .models.product import Product
-# from shop.public.search import Item
-# from shop.random_data import (
-#     create_admin,
-#     create_collections_by_schema,
-#     create_dashboard_menus,
-#     create_menus,
-#     create_orders,
-#     create_page,
-#     create_product_sales,
-#     create_products_by_schema,
-#     create_roles,
-#     create_shipping_methods,
-#     create_users,
-#     create_vouchers,
-# )
+from shop.models.public import Item
+from random_data import (
+    create_admin,
+    create_collections_by_schema,
+    create_dashboard_menus,
+    create_menus,
+    create_orders,
+    # create_page,
+    create_product_sales,
+    create_products_by_schema,
+    create_roles,
+    create_shipping_methods,
+    create_users,
+    create_vouchers,
+)
 
 HERE = Path(__file__).resolve()
 PROJECT_ROOT = HERE.parent
@@ -36,7 +35,6 @@ TEST_PATH = "tests"
 def test():
   """Run the tests."""
   print(call(f"pytest {TEST_PATH}", shell=True))
-
 
 @click.command()
 @click.option(
@@ -70,7 +68,6 @@ def lint(fix_imports):
       execute_tool("Fixing import order", "isort", "-rc")
   execute_tool("Checking code style", "flake8")
 
-
 @click.command()
 def clean():
   """Remove *.pyc and *.pyo files recursively starting at current directory.
@@ -82,7 +79,6 @@ def clean():
   ):
     click.echo(f"Removing {file}")
     file.unlink()
-
 
 @click.command()
 @click.option("--url", default=None, help="Url to test (ex. /static/image.png)")
@@ -144,13 +140,11 @@ def urls(url, order):
   for row in rows:
       click.echo(str_template.format(*row[:column_length]))
 
-
 @click.command()
 @with_appcontext
 def createdb():
   """create database tables"""
   db.create_all()
-
 
 @click.command()
 @click.option("--type", default="default", help="which type to seed")
@@ -167,7 +161,7 @@ def seed(type):
           create_users(),
           create_roles(),
           create_admin(),
-          create_page(),
+        #   create_page(),
           create_menus(),
           create_shipping_methods(),
           create_dashboard_menus(),
@@ -197,7 +191,6 @@ def seed(type):
       fn = create_dict[type]
       for msg in fn():
           click.echo(msg)
-
 
 @click.command()
 @with_appcontext

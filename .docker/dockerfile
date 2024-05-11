@@ -5,27 +5,43 @@
 # CMD ["python3", “./main.py”]
 # # Or enter the name of your unique directory and parameter set.
 
-
+# Base Docker image with uWSGI and Nginx for Flask applications in Python running in a single container
 FROM python:3.10
 
+# Add  app
 WORKDIR /app
 COPY . .
 
+# Install requirements
 RUN pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org --upgrade pip
 RUN pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org --no-cache-dir -r requirements.txt
 
+
 RUN git config --global --add safe.directory .git/gitconfig
 
-ENV PYTHONPATH="${PYTHONPATH}:/app/modules/databases:/app/modules/cosmosdb:/app/modules/rethinkdb:/app/flaskshop:/app/models:/app/models/challenge:/app/models/blog:/app/models/customer:/app/models/order:/app/models/product:/app/models/post:/app/packages"
+# RUN python3 -m venv .venv
+# RUN source .venv/bin/activate
+# RUN flask seed
 
+# ENV PYTHONPATH="${PYTHONPATH}:/app/modules/databases:/app/modules/cosmosdb:/app/modules/rethinkdb:/app/flaskshop:/app/models:/app/models/challenge:/app/models/blog:/app/models/customer:/app/models/order:/app/models/product:/app/models/post:/app/packages"
+ENV PYTHONPATH="${PYTHONPATH}:/app/settings:/app/settings:/app/shop/:/app/shop/corelib/:/app/shop/routes/:/app/shop/models/:/app/shop/static/:/app/shop/templates/"
 WORKDIR /app/shop
 ENV FLASK_APP=/app/shop/app.py
 ENV FLASK_ENV=development
-EXPOSE 5001
+# URL under which static (not modified by Python) files will be requested
+# They will be served by Nginx directly, without being handled by uWSGI
+ENV STATIC_URL /static
+# Absolute path in where the static files wil be
+ENV STATIC_PATH /app/static
 
+# If STATIC_INDEX is 1, serve / with /static/index.html directly (or the static URL configured)
+# ENV STATIC_INDEX 1
+ENV STATIC_INDEX 0
+
+EXPOSE 5000
 
 # CMD ["python", "/app/shop/app.py"]
-CMD python -m flask run --host=0.0.0.0 --port=5001 --debug
+CMD python -m flask run --host=0.0.0.0 --port=5000 --debug
 
 # CMD [ "python", "-m flask run --debug" ]
 

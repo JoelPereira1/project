@@ -1,0 +1,60 @@
+{% extends 'admin/dashboard/layout.html' %}
+{% import 'admin/dashboard/_macros.html' as macros %}
+{% from 'bootstrap5/pagination.html' import render_pagination %}
+
+
+{% block body %}
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">{{ title }} </h4>
+                            <div class="card-tools">
+                                <form>
+                                    <div class="input-group input-group-sm">
+                                        <input type="text" class="form-control" placeholder="Search" name="keyword"
+                                               value="{{ request.args.get('keyword', '') }}"
+                                               aria-label="Search" aria-describedby="search-btn">
+                                        <button class="btn btn-secondary" type="submit" id="search-btn">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="card-body table-responsive p-3">
+                            <table class="table table-hover align-middle text-center">
+                                <tr>
+                                    {% for th in props.values() %}
+                                        <th>{{ th }}</th>
+                                    {% endfor %}
+                                    <th>Operation</th>
+                                </tr>
+                                <tbody class="table-group-divider">
+                                {% for item in items %}
+                                    <tr>
+                                        {% for prop in props.keys() %}
+                                            <td>{{ item | attr(prop) }}</td>
+                                        {% endfor %}
+                                        <td>
+                                            <a href="{{ url_for('dashboard.user', user_id=item.id) }}"
+                                               class="btn btn-info btn-sm">View</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                <tbody class="table-group-divider">
+                            </table>
+                        </div>
+                        {% if pagination.pages > 1 %}
+                            <div class="card-footer clearfix">
+                                {{ render_pagination(pagination, size='sm', align='right') }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -8,17 +8,31 @@
 
 FROM python:3.10
 
+# Set the working directory in the container
 WORKDIR /app
-COPY . .
+
+# Copy the alembic.ini file into the container
+COPY alembic.ini .
+
+# Copy the requirements file into the container
+COPY requirements.txt .
+
+# Install dependencies
+RUN pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org --no-cache-dir -r requirements.txt
 
 # CMD python -m flask run --host=0.0.0.0 --port=5001 --debug
 
-RUN pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org --upgrade pip
-RUN pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org --no-cache-dir -r requirements.txt
+# RUN apt install libpq-dev alembic
+RUN alembic init alembic
+# RUN alembic upgrade head
+
+# COPY alembic/env.py alembic/versions/env.py
+
+
 
 # RUN git config --global --add safe.directory .git/gitconfig
 
-ENV PYTHONPATH="${PYTHONPATH}:/app/modules/databases:/app/modules/cosmosdb:/app/modules/rethinkdb:/app/flaskshop:/app/models:/app/models/challenge:/app/models/blog:/app/models/customer:/app/models/order:/app/models/product:/app/models/post:/app/packages"
+# ENV PYTHONPATH="${PYTHONPATH}:/app/modules/databases:/app/modules/cosmosdb:/app/modules/rethinkdb:/app/flaskshop:/app/models:/app/models/challenge:/app/models/blog:/app/models/customer:/app/models/order:/app/models/product:/app/models/post:/app/packages"
 
 CMD ["python", "database_init.py"]
 # WORKDIR /app/shop
@@ -37,3 +51,4 @@ CMD ["python", "database_init.py"]
 # ENV PYTHONUNBUFFERED 1
 # ENV DEBIAN_FRONTEND=noninteractive
 # CMD ["python", "-m", "debugpy", "--listen", "0.0.0.0:5679", "app.py"]
+
