@@ -6,55 +6,162 @@ from flask.helpers import get_debug_flag
 from infisical import InfisicalClient
 from infisical_client import ClientSettings, InfisicalClient, GetSecretOptions, ListSecretsOptions
 
-# client = InfisicalClient(token="st.6be0fef8-8728-433c-b9b6-3041628dd126.bb9915efe35c4db3d98136f9cece621a.7fae5b93bdcb8c6e45a088fdf47aba87")
-client = InfisicalClient(ClientSettings(
-    site_url='http://infisical-backend:8080',
-    client_id='d1b18a21-72e3-4e01-8548-9f913dcb7121',
-    client_secret='e795dcce1c2180114ccd72c8d9e8d7c94522e3859018a80f4ced63e471bf9c57'#,
-    # access_token="st.6be0fef8-8728-433c-b9b6-3041628dd126.bb9915efe35c4db3d98136f9cece621a.7fae5b93bdcb8c6e45a088fdf47aba87"
-))
-client.listSecrets(options=ListSecretsOptions(
-    environment='dev',
-    project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70'
-))
-dbtypekey = client.getSecret(options=GetSecretOptions(
-    environment='dev',
-    project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
-    secret_name='DB_TYPE'
-))
-dbhostkey = client.getSecret(options=GetSecretOptions(
-    environment='dev',
-    project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
-    secret_name='DB_HOST'
-))
-dbportkey = client.getSecret(options=GetSecretOptions(
-    environment='dev',
-    project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
-    secret_name='DB_PORT'
-))
-dbnamekey = client.getSecret(options=GetSecretOptions(
-    environment='dev',
-    project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
-    secret_name='DB_NAME'
-))
-dbuserkey = client.getSecret(options=GetSecretOptions(
-    environment='dev',
-    project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
-    secret_name='DB_USER'
-))
-dbpasswdkey = client.getSecret(options=GetSecretOptions(
-    environment='dev',
-    project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
-    secret_name='DB_PASSWD'
-))
+# WORK ON LOCAL ENV WITH DOCKER AND INFISICAL FROM PROJ
+if os.environ.get("APP_ENV") == 'local':
+  # VALUES
+  secretkeyvalue = 'tO$&!|0wkamvVia0?n$NqIRVWOG'
+  dbtypekeyvalue = 'postgresql'
+  dbhostkeyvalue = 'postgres'
+  dbportkeyvalue = 5432
+  dbnamekeyvalue = 'demo_postgres_app'
+  dbuserkeyvalue = 'dev'
+  dbpasswdkeyvalue = 'dev'
+  redisurikeyvalue = 'redis://redis:6379'
+  miniohostvalue = 'minio-1'
+  miniokeyvalue = 'rq7AynI9TVrzBxUFZGvn'
+  miniosecretvalue = 'zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG'
+  miniobucketvalue = 'flowershop'
+  rethinkhostvalue = 'localhost'
+  rethinkportvalue = 28015
+  rethinkbdvalue = 'flask_chat'
+  rethinkpassvalue = 'Passw0rd!'
+  rethinktablevalue = 'tblchat'
+else:
+  if os.environ.get("APP_ENV1") == 'localhost':
+    # client = InfisicalClient(token="st.6be0fef8-8728-433c-b9b6-3041628dd126.bb9915efe35c4db3d98136f9cece621a.7fae5b93bdcb8c6e45a088fdf47aba87")
+    client = InfisicalClient(ClientSettings(
+        site_url='http://localhost:9090',
+        client_id='d1b18a21-72e3-4e01-8548-9f913dcb7121',
+        client_secret='e795dcce1c2180114ccd72c8d9e8d7c94522e3859018a80f4ced63e471bf9c57'#,
+        # access_token="st.6be0fef8-8728-433c-b9b6-3041628dd126.bb9915efe35c4db3d98136f9cece621a.7fae5b93bdcb8c6e45a088fdf47aba87"
+    ))
+    client.listSecrets(options=ListSecretsOptions(
+        environment='dev',
+        project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70'
+    ))
+  else:
+    # client = InfisicalClient(token="st.6be0fef8-8728-433c-b9b6-3041628dd126.bb9915efe35c4db3d98136f9cece621a.7fae5b93bdcb8c6e45a088fdf47aba87")
+    client = InfisicalClient(ClientSettings(
+        site_url='http://infisical-backend:8080',
+        client_id='d1b18a21-72e3-4e01-8548-9f913dcb7121',
+        client_secret='e795dcce1c2180114ccd72c8d9e8d7c94522e3859018a80f4ced63e471bf9c57'#,
+        # access_token="st.6be0fef8-8728-433c-b9b6-3041628dd126.bb9915efe35c4db3d98136f9cece621a.7fae5b93bdcb8c6e45a088fdf47aba87"
+    ))
+    client.listSecrets(options=ListSecretsOptions(
+        environment='dev',
+        project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70'
+    ))
+  # SHOP
+  secretkey = client.getSecret(options=GetSecretOptions(
+      environment='dev',
+      project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
+      secret_name='SECRET_KEY'
+  ))
+  # DB
+  dbtypekey = client.getSecret(options=GetSecretOptions(
+      environment='dev',
+      project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
+      secret_name='DB_TYPE'
+  ))
+  dbhostkey = client.getSecret(options=GetSecretOptions(
+      environment='dev',
+      project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
+      secret_name='DB_HOST'
+  ))
+  dbportkey = client.getSecret(options=GetSecretOptions(
+      environment='dev',
+      project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
+      secret_name='DB_PORT'
+  ))
+  dbnamekey = client.getSecret(options=GetSecretOptions(
+      environment='dev',
+      project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
+      secret_name='DB_NAME'
+  ))
+  dbuserkey = client.getSecret(options=GetSecretOptions(
+      environment='dev',
+      project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
+      secret_name='DB_USER'
+  ))
+  dbpasswdkey = client.getSecret(options=GetSecretOptions(
+      environment='dev',
+      project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
+      secret_name='DB_PASSWD'
+  ))
+  # REDIS
+  redisurikey = client.getSecret(options=GetSecretOptions(
+      environment='dev',
+      project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
+      secret_name='REDIS_URI'
+  ))
+  # MINIO
+  miniohost = client.getSecret(options=GetSecretOptions(
+      environment='dev',
+      project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
+      secret_name='MINIO_HOST'
+  ))
+  miniokey = client.getSecret(options=GetSecretOptions(
+      environment='dev',
+      project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
+      secret_name='MINIO_KEY'
+  ))
+  miniosecret = client.getSecret(options=GetSecretOptions(
+      environment='dev',
+      project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
+      secret_name='MINIO_SECRET'
+  ))
+  miniobucket = client.getSecret(options=GetSecretOptions(
+      environment='dev',
+      project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
+      secret_name='MINIO_BUCKET'
+  ))
+  # RETHINK
+  rethinkhost = client.getSecret(options=GetSecretOptions(
+      environment='dev',
+      project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
+      secret_name='RETHINKHOST'
+  ))
+  rethinkport = client.getSecret(options=GetSecretOptions(
+      environment='dev',
+      project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
+      secret_name='RETHINKPORT'
+  ))
+  rethinkbd = client.getSecret(options=GetSecretOptions(
+      environment='dev',
+      project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
+      secret_name='RETHINKDB'
+  ))
+  rethinkpass = client.getSecret(options=GetSecretOptions(
+      environment='dev',
+      project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
+      secret_name='RETHINKPASS'
+  ))
+  rethinktable = client.getSecret(options=GetSecretOptions(
+      environment='dev',
+      project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
+      secret_name='RETHINKTABLE'
+  ))
 
-# dbtypekey = client.get_secret("DB_TYPE")
-# dbhostkey = client.get_secret("DB_HOST")
-# dbnamekey = client.get_secret("DB_NAME")
-# dbuserkey = client.get_secret("DB_USER")
-# dbpasswdkey = client.get_secret("DB_PASSWD")
-# dbportkey = client.get_secret("DB_PORT")
+  # VALUES
+  secretkeyvalue = secretkey.secret_value
+  dbtypekeyvalue = dbtypekey.secret_value
+  dbhostkeyvalue = dbhostkey.secret_value
+  dbportkeyvalue = dbportkey.secret_value
+  dbnamekeyvalue = dbnamekey.secret_value
+  dbuserkeyvalue = dbuserkey.secret_value
+  dbpasswdkeyvalue = dbpasswdkey.secret_value
+  redisurikeyvalue = redisurikey.secret_value
+  miniohostvalue = miniohost.secret_value
+  miniokeyvalue = miniokey.secret_value
+  miniosecretvalue = miniosecret.secret_value
+  miniobucketvalue = miniobucket.secret_value
+  rethinkhostvalue = rethinkhost.secret_value
+  rethinkportvalue = rethinkport.secret_value
+  rethinkbdvalue = rethinkbd.secret_value
+  rethinkpassvalue = rethinkpass.secret_value
+  rethinktablevalue = rethinktable.secret_value
 
+# access_key="", secret_key="")
 # print('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
 # print(dbtypekey.secret_value) # postgresql
 # print(dbhostkey.secret_value) # postgres
@@ -63,66 +170,14 @@ dbpasswdkey = client.getSecret(options=GetSecretOptions(
 # print(dbuserkey.secret_value) # dev
 # print(dbpasswdkey.secret_value) # dev
 # print('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
-
-redisurikey = client.getSecret(options=GetSecretOptions(
-    environment='dev',
-    project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
-    secret_name='REDIS_URI'
-))
-
-secret_key = client.getSecret(options=GetSecretOptions(
-    environment='dev',
-    project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
-    secret_name='SECRET_KEY'
-))
 # print('###########################################################################################################')
 # print(redisurikey.secret_value) # redis://redis:6379
 # print(secret_key.secret_value) # tO$&!|0wkamvVia0?n$NqIRVWOG
 # print('###########################################################################################################')
-
-miniokey = client.getSecret(options=GetSecretOptions(
-    environment='dev',
-    project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
-    secret_name='MINIO_KEY'
-))
-
-miniosecret = client.getSecret(options=GetSecretOptions(
-    environment='dev',
-    project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
-    secret_name='MINIO_SECRET'
-))
 # print('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
-# print(miniokey.secret_value) # redis://redis:6379
-# print(miniosecret.secret_value) # tO$&!|0wkamvVia0?n$NqIRVWOG
+# print(miniokey.secret_value) # rq7AynI9TVrzBxUFZGvn
+# print(miniosecret.secret_value) # zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG
 # print('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
-
-
-rethinkhost = client.getSecret(options=GetSecretOptions(
-    environment='dev',
-    project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
-    secret_name='RETHINKHOST'
-))
-rethinkport = client.getSecret(options=GetSecretOptions(
-    environment='dev',
-    project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
-    secret_name='RETHINKPORT'
-))
-rethinkbd = client.getSecret(options=GetSecretOptions(
-    environment='dev',
-    project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
-    secret_name='RETHINKDB'
-))
-rethinkpass = client.getSecret(options=GetSecretOptions(
-    environment='dev',
-    project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
-    secret_name='RETHINKPASS'
-))
-rethinktable = client.getSecret(options=GetSecretOptions(
-    environment='dev',
-    project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
-    secret_name='RETHINKTABLE'
-))
-
 # print('////////////////////////////////////////////////////////////////////////////////////////////////////////////')
 # print(rethinkhost.secret_value) # rethinkdb
 # print(rethinkport.secret_value) # 28015
@@ -131,51 +186,31 @@ rethinktable = client.getSecret(options=GetSecretOptions(
 # print(rethinktable.secret_value) # tblchat
 # print('/////////////////////////////////////////////////////////////////////////////////////////////////////////')
 
-miniokey = client.getSecret(options=GetSecretOptions(
-    environment='dev',
-    project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
-    secret_name='MINIO_KEY'
-))
-miniosecret = client.getSecret(options=GetSecretOptions(
-    environment='dev',
-    project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
-    secret_name='MINIO_SECRET'
-))
-
 class DBConfig:
-  db_type = os.getenv("DB_TYPE", dbtypekey.secret_value)
-  host = os.getenv("DB_HOST", dbhostkey.secret_value)
-  port = os.getenv("DB_PORT", dbportkey.secret_value)
-  db_name = os.getenv("DB_NAME", dbnamekey.secret_value)
-  user = os.getenv("DB_USER", dbuserkey.secret_value)
-  passwd = os.getenv("DB_PASSWD", dbpasswdkey.secret_value)
-  # db_type = os.getenv("DB_TYPE", 'postgresql')
-  # host = os.getenv("DB_HOST", 'localhost')
-  # port = os.getenv("DB_PORT", 5432)
-  # db_name = os.getenv("DB_NAME", 'flask_app')
-  # user = os.getenv("DB_USER", 'dev')
-  # passwd = os.getenv("DB_PASSWD", 'dev')
+  db_type = os.getenv("DB_TYPE", dbtypekeyvalue)
+  host = os.getenv("DB_HOST", dbhostkeyvalue)
+  port = os.getenv("DB_PORT", dbportkeyvalue)
+  db_name = os.getenv("DB_NAME", dbnamekeyvalue)
+  user = os.getenv("DB_USER", dbuserkeyvalue)
+  passwd = os.getenv("DB_PASSWD", dbpasswdkeyvalue)
   if db_type == "postgresql":
     db_uri = f"postgresql://{user}:{passwd}@{host}:{port}/{db_name}"
   elif db_type == "mysql":
     db_uri = (
       f"mysql+pymysql://{user}:{passwd}@{host}:{port}/{db_name}?charset=utf8mb4"
     )
-  redis_uri = redisurikey.secret_value #"redis://redis:6379"
-  # redis_uri = "redis://redis:6379"
+  redis_uri = redisurikeyvalue
+  rethinkdb_uri = os.getenv("RETHINKHOST", rethinkhostvalue)
+  rethinkdb_port = os.getenv("RETHINKPORT", rethinkportvalue)
+  rethinkdb = os.getenv("RETHINKDB", rethinkbdvalue)
+  rethinkdb_pwd = os.getenv("RETHINKPASS", rethinkpassvalue)
+  rethinkdb_tbl = os.getenv("RETHINKTABLE", rethinktablevalue)
   esearch_uri = "localhost"
-
-  rethinkdb_uri = os.getenv("RETHINKHOST", rethinkhost.secret_value)
-  rethinkdb_port = os.getenv("RETHINKPORT", rethinkport.secret_value)
-  rethinkdb = os.getenv("RETHINKDB", rethinkbd.secret_value)
-  rethinkdb_pwd = os.getenv("RETHINKPASS", rethinkpass.secret_value)
-  rethinkdb_tbl = os.getenv("RETHINKTABLE", rethinktable.secret_value)
 
 class Config:
   ENV = "dev"
   FLASK_DEBUG = get_debug_flag()
-  SECRET_KEY = os.getenv('SECRET_KEY', secret_key.secret_value) #tO$&!|0wkamvVia0?n$NqIRVWOG
-  # SECRET_KEY = os.getenv('SECRET_KEY', 'tO$&!|0wkamvVia0?n$NqIRVWOG')
+  SECRET_KEY = os.getenv('SECRET_KEY', secretkeyvalue)
   WTF_CSRF_ENABLED = False  # Allows form testing
   # Redis
   # if redis is enabled, it can be used for:
@@ -219,10 +254,11 @@ class Config:
   GA_MEASUREMENT_ID = os.getenv("GA_MEASUREMENT_ID", "")
 
   # minio
-  # access_key="rq7AynI9TVrzBxUFZGvn", secret_key="zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG")
   # MINIO_URL	Hostname of a S3 service.	-
-  MINIO_ACCESS_KEY = os.getenv('MINIO_ACCESS_KEY', miniokey.secret_value) 	#(Optional) Access key (aka user ID) of your account in S3 service.	-
-  MINIO_SECRET_KEY = os.getenv('MINIO_SECRET_KEY', miniosecret.secret_value) 	#(Optional) Secret Key (aka password) of your account in S3 service.	-
+  MINIO_API_HOST = os.getenv('MINIO_ENDPOINT', miniohostvalue)
+  MINIO_ACCESS_KEY = os.getenv('MINIO_ACCESS_KEY', miniokeyvalue) 	#(Optional) Access key (aka user ID) of your account in S3 service.	-
+  MINIO_SECRET_KEY = os.getenv('MINIO_SECRET_KEY', miniosecretvalue) 	#(Optional) Secret Key (aka password) of your account in S3 service.	-
+  BUCKET_NAME = os.getenv('MINIO_BUCKET', miniobucketvalue)
   # MINIO_SESSION_TOKEN	(Optional) Session token of your account in S3 service.	-
   # MINIO_SECURE_CONNECTION	(Optional) Flag to indicate to use secure (TLS) connection to S3 service or not.	False
   # MINIO_REGION	(Optional) Region name of buckets in S3 service.	-

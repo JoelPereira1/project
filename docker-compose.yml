@@ -18,6 +18,11 @@ services:
     networks:
       redis_network:
       infisical_network:
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 2GB
 
   db:
     image: postgres:16-alpine
@@ -49,6 +54,11 @@ services:
       interval: 5s
       timeout: 10s
       retries: 10
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 2GB
 
   pgadmin4:
     image: dpage/pgadmin4
@@ -70,7 +80,11 @@ services:
       postgresql_network:
     volumes:
       - ./persistent/pgadmin4:/var/lib/pgadmin
-
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 2GB
       # -e PGADMIN_DEFAULT_EMAIL=user@domain.com -e PGADMIN_DEFAULT_PASSWORD=catsarecool -d dpage/pgadmin4
 
   db-migration:
@@ -109,6 +123,11 @@ services:
       infisical_network:
       postgresql_network:
       redis_network:
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 2GB
 
   rethinkdb:
     build:
@@ -154,10 +173,17 @@ services:
       timeout: 20s
       retries: 3
     hostname: minio
+    restart: always
     volumes:
       - ./persistent/minio-data:/mnt/data
     networks:
       minio_network:
+      flaskshop_network:
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 2GB
 
   flowershop:
     build:
@@ -189,9 +215,17 @@ services:
       context: .
       dockerfile: ./.docker/dockerfile.nginx
     ports:
-      - 80:80
+      - 80:81
     depends_on:
       - flowershop
+    restart: always
+    networks:
+      flaskshop_network:
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 2GB
 
   jenkins:
     image: jenkins/jenkins:lts
@@ -201,12 +235,18 @@ services:
       - 8080:8080
       - 50000:50000
     container_name: jenkins
+    restart: always
     networks:
       flaskshop_network:
       jenkins_network:
     volumes:
       - ./persistent/week-17-vol:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 2GB
 
 networks:
   redis_network:

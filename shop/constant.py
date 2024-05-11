@@ -41,3 +41,4 @@ SiteDefaultSettings = {
 }
 
 SUBMIT_METHODS = {"POST", "PUT", "PATCH", "DELETE"}
+ALLOWED_EXTENSIONS = {"txt", "pdf", "png", "jpg", "jpeg", "gif"}

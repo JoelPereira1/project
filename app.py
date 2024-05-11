@@ -1,8 +1,13 @@
 """The app module, containing the app factory function."""
+import os
+os.environ['APP_ENV'] = 'docker'
+os.environ['APP_ENV1'] = 'docker'
+# os.environ['APP_ENV1'] = 'localhost'
 from shop.app import create_app
 from flask_socketio import SocketIO, send, emit
 from threading import Thread
 from flask import g
+from settings import DBConfig
 import shop.corelib.rethinkdb.initdb as InitDatabase
 import shop.corelib.rethinkdb.db_read as RethinkRead
 
@@ -15,7 +20,7 @@ thread1 = None
 
 @app.before_request
 def before_request():
-  InitDatabase.connect('localhost', 28015, 'flask_chat', 'Passw0rd!')
+  InitDatabase.connect(DBConfig.rethinkdb_uri, DBConfig.rethinkdb_port, DBConfig.rethinkdb, DBConfig.rethinkdb_pwd)
 
 @app.teardown_request
 def teardown_request(exception):
@@ -26,14 +31,14 @@ def teardown_request(exception):
 
 def watch_chats():
   print('Watching db for new chats!')
-  feed = RethinkRead.GetChanges('flask_chat', 'tblchat', None, None, 'id', limit = False, limit_num = 6, limit_col = None)
+  feed = RethinkRead.GetChanges(DBConfig.rethinkdb, DBConfig.rethinkdb_tbl, None, None, 'id', limit = False, limit_num = 6, limit_col = None)
   for chat in feed:
     chat['new_val']['created'] = str(chat['new_val']['created'])
     socketio.emit('new_chat', chat)
 
 def watch_challenge():
   print('Watching db for new chats!')
-  feed = RethinkRead.GetChanges('flask_chat', 'tblchat', None, None, 'id', limit = False, limit_num = 6, limit_col = None)
+  feed = RethinkRead.GetChanges(DBConfig.rethinkdb, DBConfig.rethinkdb_tbl, None, None, 'id', limit = False, limit_num = 6, limit_col = None)
   for chat in feed:
     chat['new_val']['created'] = str(chat['new_val']['created'])
     socketio.emit('new_challenge', chat)
