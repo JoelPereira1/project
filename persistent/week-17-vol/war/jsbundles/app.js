@@ -2,7 +2,7 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 237:
+/***/ 8277:
 /***/ (function(__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) {
 
 
@@ -101,16 +101,18 @@ function menuItem(options) {
   const label = xmlEscape(itemOptions.label);
   let badgeText;
   let badgeTooltip;
+  let badgeSeverity;
   if (itemOptions.badge) {
     badgeText = xmlEscape(itemOptions.badge.text);
     badgeTooltip = xmlEscape(itemOptions.badge.tooltip);
+    badgeSeverity = xmlEscape(itemOptions.badge.severity);
   }
   const tag = itemOptions.type === "link" ? "a" : "button";
   const item = createElementFromHtml(`
-      <${tag} class="jenkins-dropdown__item" href="${itemOptions.url}">
+      <${tag} class="jenkins-dropdown__item ${itemOptions.clazz ? xmlEscape(itemOptions.clazz) : ""}" ${itemOptions.url ? `href="${xmlEscape(itemOptions.url)}"` : ""} ${itemOptions.id ? `id="${xmlEscape(itemOptions.id)}"` : ""}>
           ${itemOptions.icon ? `<div class="jenkins-dropdown__item__icon">${itemOptions.iconXml ? itemOptions.iconXml : `<img alt="${label}" src="${itemOptions.icon}" />`}</div>` : ``}
           ${label}
-                    ${itemOptions.badge != null ? `<span class="jenkins-dropdown__item__badge" tooltip="${badgeTooltip}">${badgeText}</span>` : ``}
+                    ${itemOptions.badge != null ? `<span class="jenkins-dropdown__item__badge jenkins-badge alert-${badgeSeverity}" tooltip="${badgeTooltip}">${badgeText}</span>` : ``}
           ${itemOptions.subMenu != null ? `<span class="jenkins-dropdown__item__chevron"></span>` : ``}
       </${tag}>
     `);
@@ -226,7 +228,7 @@ function isInViewport(element) {
   return rect.top >= 0 && rect.left >= 0 && rect.bottom <= window.innerHeight && rect.right <= window.innerWidth;
 }
 // EXTERNAL MODULE: ../../../../../.yarn/berry/cache/tippy.js-npm-6.3.7-424f946d38-10c0.zip/node_modules/tippy.js/dist/tippy.esm.js + 16 modules
-var tippy_esm = __webpack_require__(9934);
+var tippy_esm = __webpack_require__(9971);
 ;// CONCATENATED MODULE: ./src/main/js/components/dropdowns/utils.js
 
 
@@ -241,7 +243,7 @@ const SELECTED_ITEM_CLASS = "jenkins-dropdown__item--selected";
  * @param callback - called to retrieve the list of dropdown items
  */
 function generateDropdown(element, callback) {
-  (0,tippy_esm/* default */.ZP)(element, Object.assign({}, templates.dropdown(), {
+  (0,tippy_esm/* default */.Ay)(element, Object.assign({}, templates.dropdown(), {
     onCreate(instance) {
       instance.reference.addEventListener("mouseenter", () => {
         if (instance.loaded) {
@@ -252,9 +254,6 @@ function generateDropdown(element, callback) {
         });
         callback(instance);
       });
-    },
-    onShown(instance) {
-      behavior_shim.applySubtree(instance.popper);
     }
   }));
 }
@@ -269,6 +268,9 @@ function generateDropdownItems(items, compact) {
     menuItems.classList.add("jenkins-dropdown--compact");
   }
   items.map(item => {
+    if (item.type === "CUSTOM") {
+      return item.contents;
+    }
     if (item.type === "HEADER") {
       return templates.heading(item.label);
     }
@@ -280,7 +282,7 @@ function generateDropdownItems(items, compact) {
     }
     const menuItem = templates.menuItem(item);
     if (item.subMenu != null) {
-      (0,tippy_esm/* default */.ZP)(menuItem, Object.assign({}, templates.dropdown(), {
+      (0,tippy_esm/* default */.Ay)(menuItem, Object.assign({}, templates.dropdown(), {
         content: generateDropdownItems(item.subMenu()),
         trigger: "mouseenter",
         placement: "right-start",
@@ -324,7 +326,62 @@ function generateDropdownItems(items, compact) {
   behavior_shim.applySubtree(menuItems);
   return menuItems;
 }
+function convertHtmlToItems(children) {
+  const items = [];
+  Array.from(children).forEach(child => {
+    const attributes = child.dataset;
+    const type = child.dataset.dropdownType;
+    switch (type) {
+      case "ITEM":
+        {
+          const item = {
+            label: attributes.dropdownText,
+            id: attributes.dropdownId,
+            icon: attributes.dropdownIcon,
+            iconXml: attributes.dropdownIcon,
+            clazz: attributes.dropdownClazz
+          };
+          if (attributes.dropdownHref) {
+            item.url = attributes.dropdownHref;
+            item.type = "link";
+          } else {
+            item.type = "button";
+          }
+          items.push(item);
+          break;
+        }
+      case "SUBMENU":
+        items.push({
+          type: "ITEM",
+          label: attributes.dropdownText,
+          icon: attributes.dropdownIcon,
+          iconXml: attributes.dropdownIcon,
+          subMenu: () => convertHtmlToItems(child.content.children)
+        });
+        break;
+      case "SEPARATOR":
+        items.push({
+          type: type
+        });
+        break;
+      case "HEADER":
+        items.push({
+          type: type,
+          label: attributes.dropdownText
+        });
+        break;
+      case "CUSTOM":
+        items.push({
+          type: type,
+          contents: child.content.cloneNode(true)
+        });
+        break;
+    }
+  });
+  return items;
+}
 /* harmony default export */ var utils = ({
+  convertHtmlToItems,
   generateDropdown,
   generateDropdownItems
 });
@@ -460,7 +517,9 @@ function inpage_jumplist_init() {
 function overflow_button_init() {
   behavior_shim.specify("[data-dropdown='true']", "-dropdown-", 1000, element => {
     utils.generateDropdown(element, instance => {
-      instance.setContent(element.nextElementSibling.content);
+      const elements = element.nextElementSibling.content.children[0].children;
+      const mappedItems = utils.convertHtmlToItems(elements);
+      instance.setContent(utils.generateDropdownItems(mappedItems));
     });
   });
 }
@@ -675,7 +734,7 @@ function applyFilterKeyword(menu, filterInput) {
   }
 }
 function generateDropDown(button, callback) {
-  (0,tippy_esm/* default */.ZP)(button, Object.assign({}, templates.dropdown(), {
+  (0,tippy_esm/* default */.Ay)(button, Object.assign({}, templates.dropdown(), {
     appendTo: undefined,
     onCreate(instance) {
       if (instance.loaded) {
@@ -890,7 +949,7 @@ function registerTooltip(element) {
   const tooltip = element.getAttribute("tooltip");
   const htmlTooltip = element.getAttribute("data-html-tooltip");
   if (tooltip !== null && tooltip.trim().length > 0 && (htmlTooltip === null || htmlTooltip.trim().length == 0)) {
-    (0,tippy_esm/* default */.ZP)(element, Object.assign({
+    (0,tippy_esm/* default */.Ay)(element, Object.assign({
       content: () => tooltip.replace(/<br[ /]?\/?>|\\n/g, "\n"),
       onCreate(instance) {
         instance.reference.setAttribute("title", instance.props.content);
@@ -904,7 +963,7 @@ function registerTooltip(element) {
     }, TOOLTIP_BASE));
   }
   if (htmlTooltip !== null && htmlTooltip.trim().length > 0) {
-    (0,tippy_esm/* default */.ZP)(element, Object.assign({
+    (0,tippy_esm/* default */.Ay)(element, Object.assign({
       content: () => htmlTooltip,
       allowHTML: true,
       onCreate(instance) {
@@ -920,7 +979,7 @@ function registerTooltip(element) {
  * @param {HTMLElement} element - The element to show the tooltip
  */
 function hoverNotification(text, element) {
-  const tooltip = (0,tippy_esm/* default */.ZP)(element, Object.assign({
+  const tooltip = (0,tippy_esm/* default */.Ay)(element, Object.assign({
     trigger: "hover",
     offset: [0, 0],
     content: text,
@@ -1010,12 +1069,12 @@ function confirmation_link_init() {
   init: confirmation_link_init
 });
 // EXTERNAL MODULE: ../../../../../.yarn/berry/cache/jquery-npm-3.7.1-eeeac0f21e-10c0.zip/node_modules/jquery/dist/jquery.js
-var jquery = __webpack_require__(6284);
+var jquery = __webpack_require__(2910);
 var jquery_default = /*#__PURE__*/__webpack_require__.n(jquery);
 // EXTERNAL MODULE: ../../../../../.yarn/berry/cache/window-handle-npm-1.0.1-369b8e9cbe-10c0.zip/node_modules/window-handle/index.js
-var window_handle = __webpack_require__(6569);
+var window_handle = __webpack_require__(4903);
 // EXTERNAL MODULE: ../../../../../.yarn/berry/cache/handlebars-npm-4.7.8-25244c2c82-10c0.zip/node_modules/handlebars/runtime.js
-var runtime = __webpack_require__(7218);
+var runtime = __webpack_require__(3921);
 var runtime_default = /*#__PURE__*/__webpack_require__.n(runtime);
 ;// CONCATENATED MODULE: ./src/main/js/util/jenkins.js
 /**
@@ -1591,7 +1650,7 @@ dialogs.init();
 /******/ 	
 /******/ 	/* webpack/runtime/runtimeId */
 /******/ 	!function() {
-/******/ 		__webpack_require__.j = 143;
+/******/ 		__webpack_require__.j = 524;
 /******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/jsonp chunk loading */
@@ -1602,7 +1661,7 @@ dialogs.init();
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			143: 0
+/******/ 			524: 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -1659,7 +1718,7 @@ dialogs.init();
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [216], function() { return __webpack_require__(237); })
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [96], function() { return __webpack_require__(8277); })
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

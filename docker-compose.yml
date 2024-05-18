@@ -161,10 +161,10 @@ services:
 
   minio:
     image: quay.io/minio/minio:latest
-    command: server --console-address ":9090"
+    command: server --console-address ":9001"
     ports:
       - 9000:9000
-      - 9091:9090
+      - 9001:9001
     env_file:
       - minio/.env
     healthcheck:
@@ -173,6 +173,7 @@ services:
       timeout: 20s
       retries: 3
     hostname: minio
+    container_name: minio
     restart: always
     volumes:
       - ./persistent/minio-data:/mnt/data
@@ -228,7 +229,11 @@ services:
   #         memory: 2GB
 
   jenkins:
-    image: jenkins/jenkins:lts
+    # image: jenkins/jenkins:lts
+    build:
+      context: .
+      dockerfile: ./.docker/dockerfile.jenkins
+    # privileged: true
     privileged: true
     user: root
     ports:

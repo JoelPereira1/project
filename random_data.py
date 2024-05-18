@@ -280,7 +280,7 @@ def create_product_images(product, how_many, placeholder_dir):
   else:
     print(f"Bucket {Config.BUCKET_NAME} already exists")
 
-  for item in client.list_objects(Config.BUCKET_NAME, prefix=placeholder_dir, recursive=True):
+  for item in client.list_objects(Config.BUCKET_NAME, recursive=True):
     for dummy in range(how_many):
       if dummy == 0:
         next

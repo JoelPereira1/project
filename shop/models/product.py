@@ -3,6 +3,8 @@ import itertools
 from flask import current_app, request, url_for
 from sqlalchemy import desc
 from sqlalchemy.ext.mutable import MutableDict
+from minio import Minio
+from datetime import timedelta
 
 from shop.corelib.db import PropsItem, rdb
 from shop.database import Column, Model, db
@@ -140,7 +142,6 @@ class Product(Model):
       item.delete(commit=False)
     db.session.delete(self)
     db.session.commit()
-
 
 class Category(Model):
   __tablename__ = "product_category"
@@ -438,7 +439,37 @@ class ProductImage(Model):
   product_id = Column(db.Integer())
 
   def __str__(self):
-    return url_for("static", filename=self.image, _external=True)
+    # client = Minio(Config.MINIO_API_URI, Config.MINIO_ACCESS_KEY, Config.MINIO_SECRET_KEY, secure=False)
+    # import urllib3
+    client = Minio(
+      Config.MINIO_API_URI,
+      access_key=Config.MINIO_ACCESS_KEY,
+      secret_key=Config.MINIO_SECRET_KEY,
+      secure=False,
+      # http_client=urllib3.ProxyManager(
+      #   "http://localhost:9000/",
+      #   timeout=urllib3.Timeout.DEFAULT_TIMEOUT,
+      #   retries=urllib3.Retry(
+      #       total=5,
+      #       backoff_factor=0.2,
+      #       status_forcelist=[500, 502, 503, 504],
+      #   ),
+      # ),
+    )
+    url = client.get_presigned_url('GET' ,Config.BUCKET_NAME, self.image, expires=timedelta(hours=2))
+    url1 = client.presigned_get_object(Config.BUCKET_NAME, self.image, expires=timedelta(hours=2))
+    print('###################################################################################################')
+    new_text = url.replace('minio', 'localhost')
+    print(new_text)
+    new_text = new_text.replace('9000', '9001')
+    print(new_text)
+    print(url)
+    print('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
+    new_text1 = url1.replace('minio', 'localhost')
+    print(new_text1)
+    print(url1)
+    print('###################################################################################################')
+    return f"http://localhost:9000/{Config.BUCKET_NAME}/{self.image}"
 
 class Collection(Model):
   __tablename__ = "product_collection"
@@ -453,6 +484,7 @@ class Collection(Model):
 
   @property
   def background_img_url(self):
+
     return url_for("static", filename=self.background_img)
 
   @property
@@ -501,6 +533,7 @@ class Collection(Model):
       item.delete(commit=False)
     db.session.delete(self)
     db.session.commit()
+
     if self.background_img:
       image = current_app.config["STATIC_DIR"] / self.background_img
       if image.exists():

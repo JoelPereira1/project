@@ -38,7 +38,25 @@ def register_blueprints(app):
   blueprint_manager(app)
 
 def register_minio(app):
-  Minio("play.min.io", access_key=Config.MINIO_ACCESS_KEY, secret_key=Config.MINIO_SECRET_KEY) # "rq7AynI9TVrzBxUFZGvn" "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG"
+  Minio(Config.MINIO_API_URI, access_key=Config.MINIO_ACCESS_KEY, secret_key=Config.MINIO_SECRET_KEY, secure=False)
+  # Create client with custom HTTP client using proxy server.
+  # import urllib3
+  # client = Minio(
+  #     Config.MINIO_API_URI,
+  #     access_key=Config.MINIO_ACCESS_KEY,
+  #     secret_key=Config.MINIO_SECRET_KEY,
+  #     secure=False,
+  #     http_client=urllib3.ProxyManager(
+  #         "https://PROXYSERVER:PROXYPORT/",
+  #         timeout=urllib3.Timeout.DEFAULT_TIMEOUT,
+  #         cert_reqs="CERT_REQUIRED",
+  #         retries=urllib3.Retry(
+  #             total=5,
+  #             backoff_factor=0.2,
+  #             status_forcelist=[500, 502, 503, 504],
+  #         ),
+  #     ),
+  # )
 
 def register_commands(app):
   """Register Click commands."""

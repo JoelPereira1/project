@@ -2,15 +2,15 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 8793:
+/***/ 2437:
 /***/ (function(__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) {
 
-/* harmony import */ var hotkeys_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5423);
+/* harmony import */ var hotkeys_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7735);
 
 window.addEventListener("load", () => {
   const searchBar = document.querySelector("#search-box");
   searchBar.placeholder = searchBar.placeholder + ` (${translateModifierKeysForUsersPlatform("CMD+K").replace("CMD", "⌘")})`;
-  (0,hotkeys_js__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z)(translateModifierKeysForUsersPlatform("CMD+K"), () => {
+  (0,hotkeys_js__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A)(translateModifierKeysForUsersPlatform("CMD+K"), () => {
     searchBar.focus();
 
     // Returning false stops the event and prevents default browser events
@@ -18,7 +18,7 @@ window.addEventListener("load", () => {
   });
   const pageSearchBar = document.querySelectorAll(".jenkins-search__input");
   if (pageSearchBar.length === 1) {
-    (0,hotkeys_js__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z)("/", () => {
+    (0,hotkeys_js__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A)("/", () => {
       pageSearchBar[0].focus();
 
       // Returning false stops the event and prevents default browser events
@@ -134,7 +134,7 @@ function translateModifierKeysForUsersPlatform(keyboardShortcut) {
 /******/ 	
 /******/ 	/* webpack/runtime/runtimeId */
 /******/ 	!function() {
-/******/ 		__webpack_require__.j = 764;
+/******/ 		__webpack_require__.j = 122;
 /******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/jsonp chunk loading */
@@ -145,7 +145,7 @@ function translateModifierKeysForUsersPlatform(keyboardShortcut) {
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			764: 0
+/******/ 			122: 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -202,7 +202,7 @@ function translateModifierKeysForUsersPlatform(keyboardShortcut) {
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [216], function() { return __webpack_require__(8793); })
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [96], function() { return __webpack_require__(2437); })
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

@@ -17,7 +17,8 @@ if os.environ.get("APP_ENV") == 'local':
   dbuserkeyvalue = 'dev'
   dbpasswdkeyvalue = 'dev'
   redisurikeyvalue = 'redis://redis:6379'
-  miniohostvalue = 'localhost:9000'
+  miniohostvalue = 'localhost'
+  minioportvalue = '9000'
   miniokeyvalue = 'rq7AynI9TVrzBxUFZGvn'
   miniosecretvalue = 'zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG'
   miniobucketvalue = 'flowershop'
@@ -30,116 +31,121 @@ else:
   if os.environ.get("APP_ENV1") == 'local':
     # client = InfisicalClient(token="st.6be0fef8-8728-433c-b9b6-3041628dd126.bb9915efe35c4db3d98136f9cece621a.7fae5b93bdcb8c6e45a088fdf47aba87")
     client = InfisicalClient(ClientSettings(
-        site_url='http://localhost:9090',
-        client_id='d1b18a21-72e3-4e01-8548-9f913dcb7121',
-        client_secret='e795dcce1c2180114ccd72c8d9e8d7c94522e3859018a80f4ced63e471bf9c57'#,
-        # access_token="st.6be0fef8-8728-433c-b9b6-3041628dd126.bb9915efe35c4db3d98136f9cece621a.7fae5b93bdcb8c6e45a088fdf47aba87"
+      site_url='http://localhost:9090',
+      client_id='d1b18a21-72e3-4e01-8548-9f913dcb7121',
+      client_secret='e795dcce1c2180114ccd72c8d9e8d7c94522e3859018a80f4ced63e471bf9c57'#,
+      # access_token="st.6be0fef8-8728-433c-b9b6-3041628dd126.bb9915efe35c4db3d98136f9cece621a.7fae5b93bdcb8c6e45a088fdf47aba87"
     ))
     client.listSecrets(options=ListSecretsOptions(
-        environment='dev',
-        project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70'
+      environment='dev',
+      project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70'
     ))
   else:
     # client = InfisicalClient(token="st.6be0fef8-8728-433c-b9b6-3041628dd126.bb9915efe35c4db3d98136f9cece621a.7fae5b93bdcb8c6e45a088fdf47aba87")
     client = InfisicalClient(ClientSettings(
-        site_url='http://infisical-backend:8080',
-        client_id='d1b18a21-72e3-4e01-8548-9f913dcb7121',
-        client_secret='e795dcce1c2180114ccd72c8d9e8d7c94522e3859018a80f4ced63e471bf9c57'#,
-        # access_token="st.6be0fef8-8728-433c-b9b6-3041628dd126.bb9915efe35c4db3d98136f9cece621a.7fae5b93bdcb8c6e45a088fdf47aba87"
+      site_url='http://infisical-backend:8080',
+      client_id='d1b18a21-72e3-4e01-8548-9f913dcb7121',
+      client_secret='e795dcce1c2180114ccd72c8d9e8d7c94522e3859018a80f4ced63e471bf9c57'#,
+      # access_token="st.6be0fef8-8728-433c-b9b6-3041628dd126.bb9915efe35c4db3d98136f9cece621a.7fae5b93bdcb8c6e45a088fdf47aba87"
     ))
     client.listSecrets(options=ListSecretsOptions(
-        environment='dev',
-        project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70'
+      environment='dev',
+      project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70'
     ))
   # SHOP
   secretkey = client.getSecret(options=GetSecretOptions(
-      environment='dev',
-      project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
-      secret_name='SECRET_KEY'
+    environment='dev',
+    project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
+    secret_name='SECRET_KEY'
   ))
   # DB
   dbtypekey = client.getSecret(options=GetSecretOptions(
-      environment='dev',
-      project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
-      secret_name='DB_TYPE'
+    environment='dev',
+    project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
+    secret_name='DB_TYPE'
   ))
   dbhostkey = client.getSecret(options=GetSecretOptions(
-      environment='dev',
-      project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
-      secret_name='DB_HOST'
+    environment='dev',
+    project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
+    secret_name='DB_HOST'
   ))
   dbportkey = client.getSecret(options=GetSecretOptions(
-      environment='dev',
-      project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
-      secret_name='DB_PORT'
+    environment='dev',
+    project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
+    secret_name='DB_PORT'
   ))
   dbnamekey = client.getSecret(options=GetSecretOptions(
-      environment='dev',
-      project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
-      secret_name='DB_NAME'
+    environment='dev',
+    project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
+    secret_name='DB_NAME'
   ))
   dbuserkey = client.getSecret(options=GetSecretOptions(
-      environment='dev',
-      project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
-      secret_name='DB_USER'
+    environment='dev',
+    project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
+    secret_name='DB_USER'
   ))
   dbpasswdkey = client.getSecret(options=GetSecretOptions(
-      environment='dev',
-      project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
-      secret_name='DB_PASSWD'
+    environment='dev',
+    project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
+    secret_name='DB_PASSWD'
   ))
   # REDIS
   redisurikey = client.getSecret(options=GetSecretOptions(
-      environment='dev',
-      project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
-      secret_name='REDIS_URI'
+    environment='dev',
+    project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
+    secret_name='REDIS_URI'
   ))
   # MINIO
   miniohost = client.getSecret(options=GetSecretOptions(
-      environment='dev',
-      project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
-      secret_name='MINIO_HOST'
+    environment='dev',
+    project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
+    secret_name='MINIO_HOST'
+  ))
+  minioport = client.getSecret(options=GetSecretOptions(
+    environment='dev',
+    project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
+    secret_name='MINIO_PORT'
   ))
   miniokey = client.getSecret(options=GetSecretOptions(
-      environment='dev',
-      project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
-      secret_name='MINIO_KEY'
+    environment='dev',
+    project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
+    secret_name='MINIO_KEY'
   ))
   miniosecret = client.getSecret(options=GetSecretOptions(
-      environment='dev',
-      project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
-      secret_name='MINIO_SECRET'
+    environment='dev',
+    project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
+    secret_name='MINIO_SECRET'
   ))
   miniobucket = client.getSecret(options=GetSecretOptions(
-      environment='dev',
-      project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
-      secret_name='MINIO_BUCKET'
+    environment='dev',
+    project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
+    secret_name='MINIO_BUCKET'
   ))
   # RETHINK
   rethinkhost = client.getSecret(options=GetSecretOptions(
-      environment='dev',
-      project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
-      secret_name='RETHINKHOST'
+    environment='dev',
+    project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
+    secret_name='RETHINKHOST'
   ))
   rethinkport = client.getSecret(options=GetSecretOptions(
-      environment='dev',
-      project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
-      secret_name='RETHINKPORT'
+    environment='dev',
+    project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
+    secret_name='RETHINKPORT'
   ))
   rethinkbd = client.getSecret(options=GetSecretOptions(
-      environment='dev',
-      project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
-      secret_name='RETHINKDB'
+    environment='dev',
+    project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
+    secret_name='RETHINKDB'
   ))
   rethinkpass = client.getSecret(options=GetSecretOptions(
-      environment='dev',
-      project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
-      secret_name='RETHINKPASS'
+    environment='dev',
+    project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
+    secret_name='RETHINKPASS'
   ))
   rethinktable = client.getSecret(options=GetSecretOptions(
-      environment='dev',
-      project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
-      secret_name='RETHINKTABLE'
+    environment='dev',
+    project_id='2da2b9ce-8d10-4d3e-95c4-947404b34a70',
+    secret_name='RETHINKTABLE'
   ))
 
   # VALUES
@@ -152,6 +158,7 @@ else:
   dbpasswdkeyvalue = dbpasswdkey.secret_value
   redisurikeyvalue = redisurikey.secret_value
   miniohostvalue = miniohost.secret_value
+  minioportvalue = minioport.secret_value
   miniokeyvalue = miniokey.secret_value
   miniosecretvalue = miniosecret.secret_value
   miniobucketvalue = miniobucket.secret_value
@@ -175,6 +182,8 @@ else:
 # print(secret_key.secret_value) # tO$&!|0wkamvVia0?n$NqIRVWOG
 # print('###########################################################################################################')
 # print('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
+# print(miniohost.secret_value) # minio
+# print(minioport.secret_value) # 9000
 # print(miniokey.secret_value) # rq7AynI9TVrzBxUFZGvn
 # print(miniosecret.secret_value) # zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG
 # print('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
@@ -255,7 +264,9 @@ class Config:
 
   # minio
   # MINIO_URL	Hostname of a S3 service.	-
-  MINIO_API_HOST = os.getenv('MINIO_ENDPOINT', miniohostvalue)
+  MINIO_API_HOST = os.getenv('MINIO_HOST', miniohostvalue)
+  MINIO_API_PORT = os.getenv('MINIO_PORT', minioportvalue)
+  MINIO_API_URI = os.getenv('MINIO_URI', f"{miniohostvalue}:{minioportvalue}")
   MINIO_ACCESS_KEY = os.getenv('MINIO_ACCESS_KEY', miniokeyvalue) 	#(Optional) Access key (aka user ID) of your account in S3 service.	-
   MINIO_SECRET_KEY = os.getenv('MINIO_SECRET_KEY', miniosecretvalue) 	#(Optional) Secret Key (aka password) of your account in S3 service.	-
   BUCKET_NAME = os.getenv('MINIO_BUCKET', miniobucketvalue)

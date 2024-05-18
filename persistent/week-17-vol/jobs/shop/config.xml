@@ -1,10 +1,104 @@
 <?xml version='1.1' encoding='UTF-8'?>
 <flow-definition plugin="workflow-job@1400.v7fd111b_ec82f">
+  <actions>
+    <org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobAction plugin="pipeline-model-definition@2.2198.v41dd8ef6dd56"/>
+    <org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobPropertyTrackerAction plugin="pipeline-model-definition@2.2198.v41dd8ef6dd56">
+      <jobProperties/>
+      <triggers/>
+      <parameters/>
+      <options/>
+    </org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobPropertyTrackerAction>
+  </actions>
   <description>this is the first pipeline for shop project</description>
   <keepDependencies>false</keepDependencies>
   <properties/>
   <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@3894.3896.vca_2c931e7935">
-    <script></script>
+    <script>pipeline {
+    agent any
+
+    environment {
+        VENV_PATH = &apos;myprojectenv&apos;
+        FLASK_APP = &apos;shop/app.py&apos;
+    }
+
+    stages {
+        stage(&apos;Limpar&apos;)
+        {
+            steps
+            {
+                cleanWs()
+            }
+        }
+        stage(&apos;Checkout&apos;) {
+            steps {
+                // Checkout code from a source control 
+                //management system (e.g., Git)
+                git url: &apos;https://github.com/JoelPereira1/project.git&apos;, branch: &apos;main&apos;
+            }
+        }
+         // Building Docker images
+        stage(&apos;Building image&apos;) {
+          steps{
+            script {
+                //sh &apos;bash -c &quot;cd ${WORKSPACE}/..&quot;&apos;
+                dockerImage = &apos;${WORKSPACE}/.docker/dockerfile&apos;
+                sh &apos;docker compose up&apos;
+            }
+          }
+        }
+        //stage(&apos;Setup Virtual Environment&apos;) {
+        //    steps {
+        //        script {
+        //            // Check for the virtual environment, 
+        //            // create it if it doesn&apos;t exist
+        //            sh &apos;bash -c &quot;python3 -m venv .venv&quot;&apos;
+        //            // Activate the virtual environment
+        //            sh &apos;bash -c &quot;source .venv/bin/activate&quot;&apos;
+        //        }
+        //    }
+        //}
+        //stage(&apos;Install dependencies&apos;) {
+        //    steps {
+        //        // Install any dependencies listed in requirements.txt
+        //        sh &apos;pip install -r requirements.txt&quot;&apos;
+        //    }
+        //}
+
+        stage(&apos;Test&apos;) {
+            steps {
+                // Run your tests here. This is just a placeholder.
+                // For example, if you had tests, you might run: pytest
+                echo &quot;Assuming tests are run here. Please replace this with actual test commands.&quot;
+                sh &quot;docker run shop&quot;
+                sh &quot;docker exec shop python -m pytest -v&quot;
+            }
+        }
+
+        stage(&apos;Deploy&apos;) {
+            steps {
+                script {
+                    // Deploy your Flask app
+                    // This step greatly depends on where and 
+                    // how you&apos;re deploying your app
+                    // For example, if you&apos;re deploying to a server you control,
+                    // you might use scp, rsync, or SSH commands
+                    // If you&apos;re using a PaaS (Platform as a Service), 
+                    //you might use a specific CLI tool for that platform
+                    echo &apos;Deploying application...&apos;
+                    // Example: sh &apos;scp -r . user@your_server:/path/to/deploy&apos;
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            // Clean up after the pipeline runs
+            echo &apos;Cleaning up...&apos;
+            sh &apos;rm -rf ${VIRTUAL_ENV_DIR}&apos;
+        }
+    }
+}</script>
     <sandbox>true</sandbox>
   </definition>
   <triggers/>

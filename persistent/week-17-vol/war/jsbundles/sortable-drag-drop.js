@@ -2,11 +2,11 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 1025:
+/***/ 2739:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 /* unused harmony export registerSortableTableDragDrop */
-/* harmony import */ var sortablejs_modular_sortable_core_esm_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5281);
+/* harmony import */ var sortablejs_modular_sortable_core_esm_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4025);
 /**
  * This module provides drag & drop functionality used by certain components,
  * such as f:repeatable or f:hetero-list.
@@ -18,12 +18,12 @@
  */
 
 
-sortablejs_modular_sortable_core_esm_js__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .ZP.mount(new sortablejs_modular_sortable_core_esm_js__WEBPACK_IMPORTED_MODULE_0__/* .AutoScroll */ .lK());
+sortablejs_modular_sortable_core_esm_js__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Ay.mount(new sortablejs_modular_sortable_core_esm_js__WEBPACK_IMPORTED_MODULE_0__/* .AutoScroll */ .ZZ());
 function registerSortableDragDrop(e) {
   if (!e || !e.classList.contains("with-drag-drop")) {
     return false;
   }
-  new sortablejs_modular_sortable_core_esm_js__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .ZP(e, {
+  new sortablejs_modular_sortable_core_esm_js__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Ay(e, {
     draggable: ".repeated-chunk",
     handle: ".dd-handle",
     ghostClass: "repeated-chunk--sortable-ghost",
@@ -160,7 +160,7 @@ window.registerSortableDragDrop = registerSortableDragDrop;
 /******/ 	
 /******/ 	/* webpack/runtime/runtimeId */
 /******/ 	!function() {
-/******/ 		__webpack_require__.j = 294;
+/******/ 		__webpack_require__.j = 80;
 /******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/jsonp chunk loading */
@@ -171,7 +171,7 @@ window.registerSortableDragDrop = registerSortableDragDrop;
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			294: 0
+/******/ 			80: 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -228,7 +228,7 @@ window.registerSortableDragDrop = registerSortableDragDrop;
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [216], function() { return __webpack_require__(1025); })
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [96], function() { return __webpack_require__(2739); })
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

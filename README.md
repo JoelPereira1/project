@@ -131,6 +131,10 @@ To check the code coverage of the tests:
 To run the app and all instances needed to function you should run it by docker compose, grant that you have the docker installed
 docker compose up -d
 
+## Next Steps
+
+Turn the rethinkdb corelib into a package
+
 
 {'username_1': 'HeatherMacdonald', 'email_1': 'william.williams@example.com', 'password_1': 'password', 'param_1': 1}
 {'username_1': 'DennisCrawford', 'email_1': 'james.gonzalez@example.com', 'password_1': 'password', 'param_1': 1}

@@ -14,6 +14,30 @@ class Challenge(Model):
   user_id = Column(db.Integer())
   rating = Column(db.DECIMAL(8, 2), default=5.0)
 
+  @property
+  def images(self):
+    return ChallengeImage.query.filter(ChallengeImage.challenge_id == self.id).all()
+
+  @property
+  def first_img(self):
+    if self.images:
+        return str(self.images[0])
+    return ""
+
+@classmethod
+def update_images(self, new_images):
+    origin_ids = (
+      ChallengeImage.query.with_entities(ChallengeImage.id)
+      .filter_by(challenge_id=self.id)
+      .all()
+    )
+    origin_ids = set(i for i, in origin_ids)
+    new_images = set(int(i) for i in new_images)
+    need_del = origin_ids - new_images
+    for id in need_del:
+      ChallengeImage.get_by_id(id).delete(commit=False)
+    db.session.commit()
+
 class ChallengeImage(Model):
   __tablename__ = "challenge_image"
   image = Column(db.String(255))

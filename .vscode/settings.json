@@ -9,5 +9,17 @@
     "./shop/models/",
     "./shop/static/",
     "./shop/templates/"
+  ],
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "name": "dev",
+      "username": "dev",
+      "password": "dev",
+      "database": "demo_postgres_app"
+    }
   ]
 }

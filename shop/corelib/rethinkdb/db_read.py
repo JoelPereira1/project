@@ -1,11 +1,12 @@
 import time
 from rethinkdb import r
 import shop.corelib.rethinkdb.initdb as InitDatabase
+from settings import DBConfig
 
 # Module DbRead
 @staticmethod
 def GetAll(database, table, ref_col, ref_id, order_col, limit = False, limit_num = 3, limit_col = None):
-  conn = InitDatabase.connect('localhost', 28015, database, 'Passw0rd!')
+  conn = InitDatabase.connect(DBConfig.rethinkdb_uri, DBConfig.rethinkdb_port, database, DBConfig.rethinkdb_pwd)
   cursor = r.table(table).order_by(r.desc('timestamp')).run(conn)
   return cursor
 

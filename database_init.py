@@ -56,6 +56,7 @@ import os
 # os.environ['APP_ENV1'] = 'local'
 os.environ['APP_ENV'] = 'docker'
 os.environ['APP_ENV1'] = 'docker'
+
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate

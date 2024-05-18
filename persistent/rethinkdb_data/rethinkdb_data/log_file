@@ -1044,3 +1044,167 @@
 2024-05-11T10:35:47.189258759 1.719974s info: Table 9fcc1ec1-0ca1-4375-ad9c-7f128f4869fe: This server is Raft leader for term 35. Latest log index is 110.
 2024-05-11T10:35:47.384532485 1.915247s info: Table 8856d34f-1e47-42d6-bc5c-6ed7f900f1ec: Starting a new Raft election for term 15.
 2024-05-11T10:35:47.424758993 1.955474s info: Table 8856d34f-1e47-42d6-bc5c-6ed7f900f1ec: This server is Raft leader for term 15. Latest log index is 46.
+2024-05-11T10:38:17.196667673 152.015787s warn: RethinkDB has been accessing a lot of swap memory in the past ten minutes. This may impact performace.
+2024-05-11T10:53:47.627262118 0.049382s notice: Running rethinkdb 2.4.4~0jammy (x86_64-linux-gnu) (GCC 11.4.0)...
+2024-05-11T10:53:47.686143806 0.108264s notice: Running on Linux 5.15.146.1-microsoft-standard-WSL2 x86_64
+2024-05-11T10:53:47.687598053 0.109718s notice: Loading data from directory /data/rethinkdb_data
+2024-05-11T10:53:47.789120674 0.211241s info: Automatically using cache size of 100 MB
+2024-05-11T10:53:47.791442768 0.213563s warn: Cache size does not leave much memory for server and query overhead (available memory: 781 MB).
+2024-05-11T10:53:47.791447869 0.213568s warn: Cache size is very low and may impact performance.
+2024-05-11T10:53:47.803367791 0.225488s notice: Listening for intracluster connections on port 29015
+2024-05-11T10:53:47.997039544 0.419160s notice: Listening for client driver connections on port 28015
+2024-05-11T10:53:47.997493521 0.419614s notice: Listening for administrative HTTP connections on port 8080
+2024-05-11T10:53:47.997496921 0.419617s notice: Listening on cluster addresses: 127.0.0.1, 172.19.0.2, 172.25.0.3, 172.18.0.6, ::1
+2024-05-11T10:53:47.997500822 0.419621s notice: Listening on driver addresses: 127.0.0.1, 172.19.0.2, 172.25.0.3, 172.18.0.6, ::1
+2024-05-11T10:53:47.997515424 0.419635s notice: Listening on http addresses: 127.0.0.1, 172.19.0.2, 172.25.0.3, 172.18.0.6, ::1
+2024-05-11T10:53:47.997518825 0.419639s notice: Server ready, "3c95517529f4_6ta" 3e16050d-5054-4551-95f3-d71085e44617
+2024-05-11T10:53:49.484818918 1.906939s info: Table 9fcc1ec1-0ca1-4375-ad9c-7f128f4869fe: Starting a new Raft election for term 36.
+2024-05-11T10:53:49.500086508 1.922206s info: Table 9fcc1ec1-0ca1-4375-ad9c-7f128f4869fe: This server is Raft leader for term 36. Latest log index is 114.
+2024-05-11T10:53:49.592906653 2.015027s info: Table 8856d34f-1e47-42d6-bc5c-6ed7f900f1ec: Starting a new Raft election for term 16.
+2024-05-11T10:53:49.652118297 2.074238s info: Table 8856d34f-1e47-42d6-bc5c-6ed7f900f1ec: This server is Raft leader for term 16. Latest log index is 50.
+2024-05-11T10:55:35.241024923 0.022001s notice: Running rethinkdb 2.4.4~0jammy (x86_64-linux-gnu) (GCC 11.4.0)...
+2024-05-11T10:55:35.263876357 0.044854s notice: Running on Linux 5.15.146.1-microsoft-standard-WSL2 x86_64
+2024-05-11T10:55:35.264455514 0.045432s notice: Loading data from directory /data/rethinkdb_data
+2024-05-11T10:55:35.395179395 0.176156s info: Automatically using cache size of 127 MB
+2024-05-11T10:55:35.413355472 0.194332s notice: Listening for intracluster connections on port 29015
+2024-05-11T10:55:35.606820588 0.387797s notice: Listening for client driver connections on port 28015
+2024-05-11T10:55:35.606932399 0.387909s notice: Listening for administrative HTTP connections on port 8080
+2024-05-11T10:55:35.606935400 0.387912s notice: Listening on cluster addresses: 127.0.0.1, 172.18.0.3, 172.19.0.3, 172.25.0.3, ::1
+2024-05-11T10:55:35.606945301 0.387922s notice: Listening on driver addresses: 127.0.0.1, 172.18.0.3, 172.19.0.3, 172.25.0.3, ::1
+2024-05-11T10:55:35.606955002 0.387931s notice: Listening on http addresses: 127.0.0.1, 172.18.0.3, 172.19.0.3, 172.25.0.3, ::1
+2024-05-11T10:55:35.606965103 0.387941s notice: Server ready, "3c95517529f4_6ta" 3e16050d-5054-4551-95f3-d71085e44617
+2024-05-11T10:55:36.897536987 1.678513s info: Table 9fcc1ec1-0ca1-4375-ad9c-7f128f4869fe: Starting a new Raft election for term 37.
+2024-05-11T10:55:36.908073618 1.689050s info: Table 9fcc1ec1-0ca1-4375-ad9c-7f128f4869fe: This server is Raft leader for term 37. Latest log index is 117.
+2024-05-11T10:55:37.031967131 1.812944s info: Table 8856d34f-1e47-42d6-bc5c-6ed7f900f1ec: Starting a new Raft election for term 17.
+2024-05-11T10:55:37.039505968 1.820482s info: Table 8856d34f-1e47-42d6-bc5c-6ed7f900f1ec: This server is Raft leader for term 17. Latest log index is 54.
+2024-05-11T10:57:01.384511968 0.020359s notice: Running rethinkdb 2.4.4~0jammy (x86_64-linux-gnu) (GCC 11.4.0)...
+2024-05-11T10:57:01.434454187 0.070302s notice: Running on Linux 5.15.146.1-microsoft-standard-WSL2 x86_64
+2024-05-11T10:57:01.437712711 0.073560s notice: Loading data from directory /data/rethinkdb_data
+2024-05-11T10:57:01.537747282 0.173594s info: Automatically using cache size of 168 MB
+2024-05-11T10:57:01.553162816 0.189010s notice: Listening for intracluster connections on port 29015
+2024-05-11T10:57:01.706487910 0.342335s notice: Listening for client driver connections on port 28015
+2024-05-11T10:57:01.706808999 0.342656s notice: Listening for administrative HTTP connections on port 8080
+2024-05-11T10:57:01.706811801 0.342659s notice: Listening on cluster addresses: 127.0.0.1, 172.25.0.2, 172.18.0.3, 172.19.0.3, ::1
+2024-05-11T10:57:01.706814604 0.342661s notice: Listening on driver addresses: 127.0.0.1, 172.25.0.2, 172.18.0.3, 172.19.0.3, ::1
+2024-05-11T10:57:01.706817306 0.342664s notice: Listening on http addresses: 127.0.0.1, 172.25.0.2, 172.18.0.3, 172.19.0.3, ::1
+2024-05-11T10:57:01.706827215 0.342674s notice: Server ready, "3c95517529f4_6ta" 3e16050d-5054-4551-95f3-d71085e44617
+2024-05-11T10:57:03.436453804 2.072301s info: Table 9fcc1ec1-0ca1-4375-ad9c-7f128f4869fe: Starting a new Raft election for term 38.
+2024-05-11T10:57:03.441138682 2.076986s info: Table 9fcc1ec1-0ca1-4375-ad9c-7f128f4869fe: This server is Raft leader for term 38. Latest log index is 120.
+2024-05-11T10:57:03.568276525 2.204123s info: Table 8856d34f-1e47-42d6-bc5c-6ed7f900f1ec: Starting a new Raft election for term 18.
+2024-05-11T10:57:03.584299535 2.220147s info: Table 8856d34f-1e47-42d6-bc5c-6ed7f900f1ec: This server is Raft leader for term 18. Latest log index is 58.
+2024-05-11T10:59:01.711448735 120.359820s warn: RethinkDB has been accessing a lot of swap memory in the past ten minutes. This may impact performace.
+2024-05-11T11:10:08.988755037 0.043606s notice: Running rethinkdb 2.4.4~0jammy (x86_64-linux-gnu) (GCC 11.4.0)...
+2024-05-11T11:10:09.069932516 0.124785s notice: Running on Linux 5.15.146.1-microsoft-standard-WSL2 x86_64
+2024-05-11T11:10:09.070501517 0.125353s notice: Loading data from directory /data/rethinkdb_data
+2024-05-11T11:10:09.162026206 0.216878s info: Automatically using cache size of 100 MB
+2024-05-11T11:10:09.167609112 0.222460s warn: Cache size does not leave much memory for server and query overhead (available memory: 917 MB).
+2024-05-11T11:10:09.167614312 0.222465s warn: Cache size is very low and may impact performance.
+2024-05-11T11:10:09.190768634 0.245620s notice: Listening for intracluster connections on port 29015
+2024-05-11T11:10:09.388722527 0.443573s notice: Listening for client driver connections on port 28015
+2024-05-11T11:10:09.388771827 0.443623s notice: Listening for administrative HTTP connections on port 8080
+2024-05-11T11:10:09.388778127 0.443629s notice: Listening on cluster addresses: 127.0.0.1, 172.25.0.2, 172.19.0.4, 172.18.0.6, ::1
+2024-05-11T11:10:09.388778627 0.443629s notice: Listening on driver addresses: 127.0.0.1, 172.25.0.2, 172.19.0.4, 172.18.0.6, ::1
+2024-05-11T11:10:09.388801727 0.443653s notice: Listening on http addresses: 127.0.0.1, 172.25.0.2, 172.19.0.4, 172.18.0.6, ::1
+2024-05-11T11:10:09.388836927 0.443688s notice: Server ready, "3c95517529f4_6ta" 3e16050d-5054-4551-95f3-d71085e44617
+2024-05-11T11:10:10.955058552 2.009910s info: Table 8856d34f-1e47-42d6-bc5c-6ed7f900f1ec: Starting a new Raft election for term 19.
+2024-05-11T11:10:11.012935908 2.067787s info: Table 8856d34f-1e47-42d6-bc5c-6ed7f900f1ec: This server is Raft leader for term 19. Latest log index is 61.
+2024-05-11T11:10:11.198548489 2.253399s info: Table 9fcc1ec1-0ca1-4375-ad9c-7f128f4869fe: Starting a new Raft election for term 39.
+2024-05-11T11:10:11.212356102 2.267207s info: Table 9fcc1ec1-0ca1-4375-ad9c-7f128f4869fe: This server is Raft leader for term 39. Latest log index is 123.
+2024-05-11T11:18:12.044863985 483.099653s warn: RethinkDB has been accessing a lot of swap memory in the past ten minutes. This may impact performace.
+2024-05-11T11:31:03.751925131 0.028847s notice: Running rethinkdb 2.4.4~0jammy (x86_64-linux-gnu) (GCC 11.4.0)...
+2024-05-11T11:31:03.804156333 0.081079s notice: Running on Linux 5.15.146.1-microsoft-standard-WSL2 x86_64
+2024-05-11T11:31:03.804557833 0.081480s notice: Loading data from directory /data/rethinkdb_data
+2024-05-11T11:31:03.854489334 0.131411s info: Automatically using cache size of 378 MB
+2024-05-11T11:31:03.879419234 0.156341s notice: Listening for intracluster connections on port 29015
+2024-05-11T11:31:04.042585038 0.319507s notice: Listening for client driver connections on port 28015
+2024-05-11T11:31:04.042647238 0.319569s notice: Listening for administrative HTTP connections on port 8080
+2024-05-11T11:31:04.042656538 0.319579s notice: Listening on cluster addresses: 127.0.0.1, 172.19.0.2, 172.25.0.2, 172.18.0.3, ::1
+2024-05-11T11:31:04.042660538 0.319583s notice: Listening on driver addresses: 127.0.0.1, 172.19.0.2, 172.25.0.2, 172.18.0.3, ::1
+2024-05-11T11:31:04.042716138 0.319638s notice: Listening on http addresses: 127.0.0.1, 172.19.0.2, 172.25.0.2, 172.18.0.3, ::1
+2024-05-11T11:31:04.042721038 0.319643s notice: Server ready, "3c95517529f4_6ta" 3e16050d-5054-4551-95f3-d71085e44617
+2024-05-11T11:31:05.155906662 1.432829s info: Table 9fcc1ec1-0ca1-4375-ad9c-7f128f4869fe: Starting a new Raft election for term 40.
+2024-05-11T11:31:05.174010663 1.450933s info: Table 9fcc1ec1-0ca1-4375-ad9c-7f128f4869fe: This server is Raft leader for term 40. Latest log index is 126.
+2024-05-11T11:31:05.754016675 2.030939s info: Table 8856d34f-1e47-42d6-bc5c-6ed7f900f1ec: Starting a new Raft election for term 20.
+2024-05-11T11:31:05.767673076 2.044595s info: Table 8856d34f-1e47-42d6-bc5c-6ed7f900f1ec: This server is Raft leader for term 20. Latest log index is 64.
+2024-05-11T11:31:30.464830717 26.743092s notice: Server got SIGTERM from pid 0, uid 0; shutting down...
+2024-05-11T11:31:30.468672273 26.746934s notice: Shutting down client connections...
+2024-05-11T11:31:30.470039629 26.748301s notice: All client connections closed.
+2024-05-11T11:31:30.470043729 26.748305s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2024-05-11T11:31:30.511663627 26.789925s notice: Storage engine shut down.
+2024-05-11T11:40:29.936572913 0.024895s notice: Running rethinkdb 2.4.4~0jammy (x86_64-linux-gnu) (GCC 11.4.0)...
+2024-05-11T11:40:29.973381689 0.061704s notice: Running on Linux 5.15.146.1-microsoft-standard-WSL2 x86_64
+2024-05-11T11:40:29.973979190 0.062301s notice: Loading data from directory /data/rethinkdb_data
+2024-05-11T11:40:30.043876834 0.132199s info: Automatically using cache size of 100 MB
+2024-05-11T11:40:30.048140343 0.136462s warn: Cache size does not leave much memory for server and query overhead (available memory: 920 MB).
+2024-05-11T11:40:30.048145943 0.136468s warn: Cache size is very low and may impact performance.
+2024-05-11T11:40:30.068873786 0.157196s notice: Listening for intracluster connections on port 29015
+2024-05-11T11:40:30.495454767 0.583777s notice: Listening for client driver connections on port 28015
+2024-05-11T11:40:30.496156068 0.584478s notice: Listening for administrative HTTP connections on port 8080
+2024-05-11T11:40:30.496160368 0.584482s notice: Listening on cluster addresses: 127.0.0.1, 172.19.0.2, 172.25.0.2, 172.18.0.5, ::1
+2024-05-11T11:40:30.496239769 0.584562s notice: Listening on driver addresses: 127.0.0.1, 172.19.0.2, 172.25.0.2, 172.18.0.5, ::1
+2024-05-11T11:40:30.496283969 0.584606s notice: Listening on http addresses: 127.0.0.1, 172.19.0.2, 172.25.0.2, 172.18.0.5, ::1
+2024-05-11T11:40:30.496288069 0.584610s notice: Server ready, "3c95517529f4_6ta" 3e16050d-5054-4551-95f3-d71085e44617
+2024-05-11T11:40:31.550598546 1.638920s info: Table 8856d34f-1e47-42d6-bc5c-6ed7f900f1ec: Starting a new Raft election for term 21.
+2024-05-11T11:40:31.562394070 1.650716s info: Table 8856d34f-1e47-42d6-bc5c-6ed7f900f1ec: This server is Raft leader for term 21. Latest log index is 67.
+2024-05-11T11:40:31.575420697 1.663743s info: Table 9fcc1ec1-0ca1-4375-ad9c-7f128f4869fe: Starting a new Raft election for term 41.
+2024-05-11T11:40:31.591902031 1.680224s info: Table 9fcc1ec1-0ca1-4375-ad9c-7f128f4869fe: This server is Raft leader for term 41. Latest log index is 129.
+2024-05-11T11:42:30.658125918 120.743889s warn: RethinkDB has been accessing a lot of swap memory in the past ten minutes. This may impact performace.
+2024-05-11T11:49:58.972757289 0.043297s notice: Running rethinkdb 2.4.4~0jammy (x86_64-linux-gnu) (GCC 11.4.0)...
+2024-05-11T11:49:58.992933963 0.063474s notice: Running on Linux 5.15.146.1-microsoft-standard-WSL2 x86_64
+2024-05-11T11:49:58.993453332 0.063993s notice: Loading data from directory /data/rethinkdb_data
+2024-05-11T11:49:59.080052912 0.150592s info: Automatically using cache size of 409 MB
+2024-05-11T11:49:59.095896512 0.166436s notice: Listening for intracluster connections on port 29015
+2024-05-11T11:49:59.245805585 0.316345s notice: Listening for client driver connections on port 28015
+2024-05-11T11:49:59.245877495 0.316417s notice: Listening for administrative HTTP connections on port 8080
+2024-05-11T11:49:59.246180735 0.316720s notice: Listening on cluster addresses: 127.0.0.1, 172.25.0.2, 172.19.0.3, 172.18.0.4, ::1
+2024-05-11T11:49:59.246187336 0.316727s notice: Listening on driver addresses: 127.0.0.1, 172.25.0.2, 172.19.0.3, 172.18.0.4, ::1
+2024-05-11T11:49:59.246190436 0.316730s notice: Listening on http addresses: 127.0.0.1, 172.25.0.2, 172.19.0.3, 172.18.0.4, ::1
+2024-05-11T11:49:59.246194037 0.316733s notice: Server ready, "3c95517529f4_6ta" 3e16050d-5054-4551-95f3-d71085e44617
+2024-05-11T11:50:00.497879366 1.568419s info: Table 8856d34f-1e47-42d6-bc5c-6ed7f900f1ec: Starting a new Raft election for term 22.
+2024-05-11T11:50:00.506545015 1.577084s info: Table 8856d34f-1e47-42d6-bc5c-6ed7f900f1ec: This server is Raft leader for term 22. Latest log index is 71.
+2024-05-11T11:50:01.185788958 2.256328s info: Table 9fcc1ec1-0ca1-4375-ad9c-7f128f4869fe: Starting a new Raft election for term 42.
+2024-05-11T11:50:01.195327623 2.265867s info: Table 9fcc1ec1-0ca1-4375-ad9c-7f128f4869fe: This server is Raft leader for term 42. Latest log index is 133.
+2024-05-11T11:50:10.446169669 11.516709s notice: Server got SIGTERM from pid 0, uid 0; shutting down...
+2024-05-11T11:50:10.446714752 11.517254s notice: Shutting down client connections...
+2024-05-11T11:50:10.448002648 11.518542s notice: All client connections closed.
+2024-05-11T11:50:10.448092162 11.518632s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2024-05-11T11:50:10.494375919 11.564916s notice: Storage engine shut down.
+2024-05-16T19:23:51.734650241 0.047188s notice: Running rethinkdb 2.4.4~0jammy (x86_64-linux-gnu) (GCC 11.4.0)...
+2024-05-16T19:23:51.776505406 0.089045s notice: Running on Linux 5.15.146.1-microsoft-standard-WSL2 x86_64
+2024-05-16T19:23:51.779791166 0.092329s notice: Loading data from directory /data/rethinkdb_data
+2024-05-16T19:23:51.892286821 0.204824s info: Automatically using cache size of 616 MB
+2024-05-16T19:23:51.910077346 0.222615s notice: Listening for intracluster connections on port 29015
+2024-05-16T19:23:52.224915896 0.537453s notice: Listening for client driver connections on port 28015
+2024-05-16T19:23:52.225411905 0.537949s notice: Listening for administrative HTTP connections on port 8080
+2024-05-16T19:23:52.225413205 0.537950s notice: Listening on cluster addresses: 127.0.0.1, 172.21.0.2, 172.22.0.2, 172.19.0.5, ::1
+2024-05-16T19:23:52.225417805 0.537955s notice: Listening on driver addresses: 127.0.0.1, 172.21.0.2, 172.22.0.2, 172.19.0.5, ::1
+2024-05-16T19:23:52.225421805 0.537959s notice: Listening on http addresses: 127.0.0.1, 172.21.0.2, 172.22.0.2, 172.19.0.5, ::1
+2024-05-16T19:23:52.225426305 0.537963s notice: Server ready, "3c95517529f4_6ta" 3e16050d-5054-4551-95f3-d71085e44617
+2024-05-16T19:23:53.979422341 2.291960s info: Table 8856d34f-1e47-42d6-bc5c-6ed7f900f1ec: Starting a new Raft election for term 23.
+2024-05-16T19:23:53.994035408 2.306573s info: Table 8856d34f-1e47-42d6-bc5c-6ed7f900f1ec: This server is Raft leader for term 23. Latest log index is 75.
+2024-05-16T19:23:54.017057329 2.329595s info: Table 9fcc1ec1-0ca1-4375-ad9c-7f128f4869fe: Starting a new Raft election for term 43.
+2024-05-16T19:23:54.034885154 2.347422s info: Table 9fcc1ec1-0ca1-4375-ad9c-7f128f4869fe: This server is Raft leader for term 43. Latest log index is 136.
+2024-05-16T19:42:52.144976932 1140.570623s warn: RethinkDB has been accessing a lot of swap memory in the past ten minutes. This may impact performace.
+2024-05-16T22:24:48.666888045 10860.553766s warn: RethinkDB has been accessing a lot of swap memory in the past ten minutes. This may impact performace.
+2024-05-18T08:16:53.201295772 0.034207s notice: Running rethinkdb 2.4.4~0jammy (x86_64-linux-gnu) (GCC 11.4.0)...
+2024-05-18T08:16:53.263936626 0.096849s notice: Running on Linux 5.15.146.1-microsoft-standard-WSL2 x86_64
+2024-05-18T08:16:53.264438711 0.097350s notice: Loading data from directory /data/rethinkdb_data
+2024-05-18T08:16:53.351900768 0.184812s info: Automatically using cache size of 597 MB
+2024-05-18T08:16:53.363921904 0.196833s notice: Listening for intracluster connections on port 29015
+2024-05-18T08:16:53.491831620 0.324743s notice: Listening for client driver connections on port 28015
+2024-05-18T08:16:53.492020919 0.324932s notice: Listening for administrative HTTP connections on port 8080
+2024-05-18T08:16:53.492026819 0.324938s notice: Listening on cluster addresses: 127.0.0.1, 172.22.0.3, 172.19.0.4, 172.21.0.5, ::1
+2024-05-18T08:16:53.492030819 0.324942s notice: Listening on driver addresses: 127.0.0.1, 172.22.0.3, 172.19.0.4, 172.21.0.5, ::1
+2024-05-18T08:16:53.492110319 0.325022s notice: Listening on http addresses: 127.0.0.1, 172.22.0.3, 172.19.0.4, 172.21.0.5, ::1
+2024-05-18T08:16:53.492115419 0.325027s notice: Server ready, "3c95517529f4_6ta" 3e16050d-5054-4551-95f3-d71085e44617
+2024-05-18T08:16:54.491908312 1.324820s info: Table 9fcc1ec1-0ca1-4375-ad9c-7f128f4869fe: Starting a new Raft election for term 44.
+2024-05-18T08:16:54.503060312 1.335972s info: Table 9fcc1ec1-0ca1-4375-ad9c-7f128f4869fe: This server is Raft leader for term 44. Latest log index is 139.
+2024-05-18T08:16:54.898648112 1.731560s info: Table 8856d34f-1e47-42d6-bc5c-6ed7f900f1ec: Starting a new Raft election for term 24.
+2024-05-18T08:16:54.906310812 1.739222s info: Table 8856d34f-1e47-42d6-bc5c-6ed7f900f1ec: This server is Raft leader for term 24. Latest log index is 78.
+2024-05-18T08:34:53.478973167 1080.356979s warn: RethinkDB has been accessing a lot of swap memory in the past ten minutes. This may impact performace.
+2024-05-18T09:08:53.360625283 3120.342351s warn: RethinkDB has been accessing a lot of swap memory in the past ten minutes. This may impact performace.
+2024-05-18T10:33:20.474073311 8187.674291s notice: Server got SIGTERM from pid 0, uid 0; shutting down...
+2024-05-18T10:33:20.515864445 8187.716082s notice: Shutting down client connections...
+2024-05-18T10:33:20.525184876 8187.725403s notice: All client connections closed.
+2024-05-18T10:33:20.525191176 8187.725409s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2024-05-18T10:33:21.004595242 8188.204813s notice: Storage engine shut down.

@@ -1,0 +1,457 @@
+Started by user [8mha:////4Lyer/xoKlTDAJdP5ttaP/XScVu7v6SqJO/pugYZj40oAAAAmR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAz2EgZe/dLi1CL9rNS87My8YgDGtiJjwgAAAA==[0mjenkins
+[8mha:////4FTcsXjMWm/DQ8Cc/iw4y8ToVsxZDu7H9Y5Rd9F6RBKKAAAAoh+LCAAAAAAAAP9tjTEOwjAQBM8BClpKHuFItIiK1krDC0x8GCfWnbEdkooX8TX+gCESFVvtrLSa5wtWKcKBo5UdUu8otU4GP9jS5Mixv3geZcdn2TIl9igbHBs2eJyx4YwwR1SwULBGaj0nRzbDRnX6rmuvydanHMu2V1A5c4MHCFXMWcf8hSnC9jqYxPTz/BXAFEIGsfuclm8zQVqFvQAAAA==[0m[Pipeline] Start of Pipeline
+[8mha:////4EF5+F5oKF+MKXvbS4o9V+JMPeejoTF+AQz8l7ioQnwPAAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+KOrAycohUghExsUZZOEFIQkgb/d8mKe3EibgadyBQiQlLlmxL1nu+oE4RjhQdby12HpP2vA+jK4lPFLtroIm3dOGaMFGwXNpJkrGnpUrKFhaxClYC1hZ1oOTRZdiIVt1VExS65pxj2Q4CKm8GeAAThZxVzN8yR9jeRpMIf5y/AJj7DGxXvP/86jduZBmjwAAAAA==[0m[Pipeline] node
+Running on [8mha:////4KQLqXfkLOIPnRYXt5+WYGckL4gyF4Fk2F+483qku+OTAAAAoR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAz2EgZR/eT83ILSktQifY2k0sycEt3MPE19AHHxbH3KAAAA[0mJenkins in /var/jenkins_home/workspace/shop
+[8mha:////4DCcHSvWvQcIT0UIPEfmizm38R+tU1OliIOpq6GB6mbQAAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+KOrAycoh0gA0xsUZZOEFIQkgb/d8mKe3EibgadyBQiQlLlmxL1nu+oE4RjhQdby12HpP2vA+jK4lPFLtroIm3dOGaMFGwXNpJkrGnpUrKFhaxClYC1hZ1oOTRZdiIVt1VExS65pxj2Q4CKm8GeAAThZxVzN8yR9jeRpMIf5y/AJj7DGxXvP/86jfoP95RwAAAAA==[0m[Pipeline] {
+[8mha:////4HsggpZpsNPLzZQjoGbcZJtDu3RX1BReV/ssd2KYaVt0AAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+KOrAycoh0gQkxsUZZOEFIQkgb/d8mKe3EibgadyBQiQlLlmxL1nu+oE4RjhQdby12HpP2vA+jK4lPFLtroIm3dOGaMFGwXNpJkrGnpUrKFhaxClYC1hZ1oOTRZdiIVt1VExS65pxj2Q4CKm8GeAAThZxVzN8yR9jeRpMIf5y/AJj7DGxXvP/86jc09154wAAAAA==[0m[Pipeline] withEnv
+[8mha:////4FNCKLH5eh8yynrk3fCGPy2rkaBgrbZ7iGUx+CaFzCfhAAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+KOrAycoh0ggUxsUZZOEFIQkgb/d8mKe3EibgadyBQiQlLlmxL1nu+oE4RjhQdby12HpP2vA+jK4lPFLtroIm3dOGaMFGwXNpJkrGnpUrKFhaxClYC1hZ1oOTRZdiIVt1VExS65pxj2Q4CKm8GeAAThZxVzN8yR9jeRpMIf5y/AJj7DGxXvP/86jek7ggRwAAAAA==[0m[Pipeline] {
+[8mha:////4B753o+vuZzjuqbG9kpDuzprli5Ou7phnQVHC52zZ8n5AAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+KOrAycoh0gwExsUZZOEFIQkgb/d8mKe3EibgadyBQiQlLlmxL1nu+oE4RjhQdby12HpP2vA+jK4lPFLtroIm3dOGaMFGwXNpJkrGnpUrKFhaxClYC1hZ1oOTRZdiIVt1VExS65pxj2Q4CKm8GeAAThZxVzN8yR9jeRpMIf5y/AJj7DGxXvP/86jcChmMxwAAAAA==[0m[Pipeline] stage
+[8mha:////4JiflDXFbBgrOn5juaMO9gsDVtyddTbqe1TC06mXrjc3AAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+KOrAycoh0BAkxsUZZOEFIQkgb/d8mKe3EibgadyBQiQlLlmxL1nu+oE4RjhQdby12HpP2vA+jK4lPFLtroIm3dOGaMFGwXNpJkrGnpUrKFhaxClYC1hZ1oOTRZdiIVt1VExS65pxj2Q4CKm8GeAAThZxVzN8yR9jeRpMIf5y/AJj7DGxXvP/86jfpX/cvwAAAAA==[0m[Pipeline] { (Limpar)
+[8mha:////4Ly2S4QRBlC7Gc87HjEnPwWoE444cyyXQEFCBEuyBjjbAAAAoh+LCAAAAAAAAP9tjTEOAiEURD9rLGwtPQTbaoyVLaHxBMgiwpL/WWDdrTyRV/MOEjexcpJJ5k3zXm9Y5wQnSpZ7g73DrB2PYbR18YlSfws0cU9XrgkzBcOlmSR15rygpGJgCWtgJWBjUAfKDm2BrfDqodqg0LaXkup3FNC4boAnMFHNRaXyhTnB7j52mfDn+SuAORZg+9pD/AAeoCAqvAAAAA==[0m[Pipeline] cleanWs
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] done
+[8mha:////4CqKH97QIwVcM3veXICRUq3sUj5dRzgciq1C220VPkIaAAAAox+LCAAAAAAAAP9tjTEOwjAQBDdBFLSUPMKBDglR0VppeIFJjHFi3QX7QlLxIr7GH4iIRMVWO9PM641lijhydKqx1HpKlVdd6N301MCxvQYeVMMXVTElDlaVdii5tqcZSxaLeVmOhcbKUhU4eXKCtW7MwxTBkCvOEid30Mh9fccTmZ7KYqJ8YYzY3Po6Mf06fwMYu06Q77aCbP8Brmfz270AAAA=[0m[Pipeline] }
+[8mha:////4JZA71M1TvQMHS3m3F3K+OjxZHOuRGg4D9oJ4K0SzhHtAAAAox+LCAAAAAAAAP9tjTESgjAQRT84FraWHiIMlYVjZZuh8QQRYgxkdjFZhMoTeTXvICMzVv7qv9e81xvrFHHk6FRrqfOUaq/6MLj5qZFjdw08qpYvqmZKHKyq7FhxY08LViwWy7IcK42NpTpw8uQEW92ahymCIVecJc7uoJH75o4nMj2XxUT5whSxuw1NYvp1/gYw9b0gL0tBtv8Aj1Msdr0AAAA=[0m[Pipeline] // stage
+[8mha:////4IZKvnziQOWyG5l9t3yn0hGvlJPHcre7Y89OhC97vC5AAAAAph+LCAAAAAAAAP9tjTEOwjAQBM9BKWgpeYQjKGgQFa3lhheY2Bgn1l2wLyQVL+Jr/IFAJCq22llpNc8XlDnBgZKXjcM2YK6D7GLvpyYHSu0l0iAbOsuaMFN0UrtBk3XHGTWxgzmigIWCpcM6Ug7oGVaqMXdTRYO+OnGatr2CItgbPECoycwm8RfGBOtrbzPhz/NXAGPHIHYMxWb7OZZvfPyORMEAAAA=[0m[Pipeline] stage
+[8mha:////4FY6DIcMof+TJzZSZOeBhmYdpnwTnAuRQ/3vaqcYKbUiAAAAph+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycohUwIiYukZZOEFoQkgb/V9+UtqJE3E17kBLJSY8WLYl673eUESGE7ETjcXWY6y96ELvpiQG4vYaaBANXURNGClYoeygyNhqqYqShUVZDisJa4t1oOjRJdjIRj90GTS68px42o4Scm/u8IRMTuSkOX3LyLC99SYS/jh/ATB2CfLdfrbD/Cw+y7kUycIAAAA=[0m[Pipeline] { (Checkout)
+[8mha:////4ClTZq+6yn+1iceioL3uaG0PkjMkBjCHQKHYuucufybTAAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiBB2iSmu54QUmNsaJdWdsh6TiRXyNPxCIRMUWq51t5vmCZYpw5GixNdQ5So3D4Hs7LRw4dhfPA7Z8xoYpsTcozSBZm3pGydnAnKKEhYCVocZzcmQzrEWr7qryimx1ynH6DgJKp2/wgEJM5qxi/sIYYXPtdWL6ef4KYAwZyu3uU/vwBgq0rvS+AAAA[0m[Pipeline] git
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://github.com/JoelPereira1/project.git
+ > git init /var/jenkins_home/workspace/shop # timeout=10
+Fetching upstream changes from https://github.com/JoelPereira1/project.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+ > git fetch --tags --force --progress -- https://github.com/JoelPereira1/project.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/JoelPereira1/project.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision dbc5fabc7249adc288e1f672ed0c5b3483fb8bc1 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f dbc5fabc7249adc288e1f672ed0c5b3483fb8bc1 # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git checkout -b main dbc5fabc7249adc288e1f672ed0c5b3483fb8bc1 # timeout=10
+Commit message: "Merge pull request #1 from JoelPereira1/dev"
+ > git rev-list --no-walk dbc5fabc7249adc288e1f672ed0c5b3483fb8bc1 # timeout=10
+[8mha:////4GbzA4pgzLA7nZ+RndRSfU9FYPckH6usnEoeC14rb4g8AAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIihKgQVVrLDS8wsTFOrDtjOyQVL+Jr/IFAJCq2WO1sM88XLFOEI0eLraHOUWocBt/baeHAsbt4HrDlMzZMib1BaQbJ2tQzSs4G5hQlLASsDDWekyObYS1adVeVV2SrU47TdxBQOn2DBxRiMmcV8xfGCJtrrxPTz/NXAGMIGcrt/lO7N7BnLt++AAAA[0m[Pipeline] }
+[8mha:////4AYA2qv8Z5pb5a3bdNFTJKkovOIJNFQtWpWrq9pz96pxAAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiKGgQVVrLDS8wsTFOrDtjOyQVL+Jr/IFAJCq2WO1sM88XLFOEI0eLraHOUWocBt/baeHAsbt4HrDlMzZMib1BaQbJ2tQzSs4G5hQlLASsDDWekyObYS1adVeVV2SrU47TdxBQOn2DBxRiMmcV8xfGCJtrrxPTz/NXAGMIGcrt/lO7N4glvS6+AAAA[0m[Pipeline] // stage
+[8mha:////4PitqR/QQr76I9TqSip5xtgAMdOkBlTPPGXipy40qNswAAAAph+LCAAAAAAAAP9tjTEOwjAQBM9BKWgpeYQjGigQFa3lhheY2Bgn1l2wLyQVL+Jr/IFAJCq22llpNc8XlDnBgZKXjcM2YK6D7GLvpyYHSu0l0iAbOsuaMFN0UrtBk3XHGTWxgzmigIWCpcM6Ug7oGVaqMXdTRYO+OnGatr2CItgbPECoycwm8RfGBOtrbzPhz/NXAGPHILYMxWb3OZZvz21DFMEAAAA=[0m[Pipeline] stage
+[8mha:////4Nt3Pg399f3xb+KY0H5ZJXlFzxAjVBhp3BqkIRKxlZepAAAApx+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycohUTCAhpq5RFk4QmhDSRv+Xn5R24kRcjTvQUokJD5ZtyXqvNxSR4UTsRGOx9RhrL7rQuymJgbi9BhpEQxdRE0YKVig7KDK2WqqiZGFRlsNKwtpiHSh6dAk2stEPXQaNrjwnnrajhNybOzwhkxM5aU7fMjJsb72JhD/OXwCMXYJ8t5/tMD+LD0rlhNLCAAAA[0m[Pipeline] { (Building image)
+[8mha:////4GFl8+dgQoQbIT/GiBSPG5024RKwZhgapI+9wbz4yFhfAAAApx+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycohUbCDE1DXKwglCE0La6P/yk9JOnIircQdaKjHhwbItWe/1hiIynIidaCy2HmPtRRd6NyUxELfXQINo6CJqwkjBCmUHRcZWS1WULCzKclhJWFusA0WPLsFGNvqhy6DRlefE03aUkHtzhydkciInzelbRobtrTeR8Mf5C4CxS5Dv9rMd5mfxASnCIIrCAAAA[0m[Pipeline] script
+[8mha:////4KHlLPLKp+Rlt8kH8Dt/pv8hP6b/P7Vpc2EUHOdxquHlAAAApx+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycogU2BDqxBp14QShCSFp9H9JUtKJE3E17kCgEhMeLNuS9Z4vqIKHhrxmVmFvMHSGDW7UObFEvr84SszSmXWEgZxirUotSXWca0tRwayihAWHpcLOUTCoI6y4FXdRO4G6PkWftwOH0sgbPKDgmRyFj98yeVhfRxkIf5y/AJiGCOV2n223+TyrN7xWSV3CAAAA[0m[Pipeline] {
+[8mha:////4C/cTvDKTQcahNZKd+nMuLwXvtjHYo7iPddDiTAdTpqZAAAAox+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOICtIgqreWGF5jYGCfWnbEdkooX8TX+QCASFVusdraZ5wuWKcKRo8XWUOcoNQ6D7+20cODYXTwP2PIZG6bE3qA0g2Rt6hklZwNzihIWAlaGGs/Jkc2wFq26q8orstUpx+k7CCidvsEDCjGZs4r5C2OEzbXXienn+SuAMWQo99tP7cIbaOP4NL4AAAA=[0m[Pipeline] sh
++ bash -c 'echo /var/jenkins_home/workspace/shop'
+/var/jenkins_home/workspace/shop
+[8mha:////4O4mD/YIvHlz2yoz8JG10F3GvCfdw0ZhN7JNXXFBHmN5AAAAox+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOKC0iIqWisNLzCJMXasO8d2cCpexNf4A4FIVGyx2tlmni9YxwBHDhqtot5QbA16N+p5YebQXx1ntHzBlimyU9io3HCnTgs2nBQsKUpYCdgoah1HQzrBVlh5l5WTpKtzCvN3EFCaboAHFGI2JxnSF6YAu9vYRaaf568AJp+grPefqv0bq7DVH74AAAA=[0m[Pipeline] sh
++ docker build -t shop -f /var/jenkins_home/workspace/shop/.docker/dockerfile .
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from dockerfile
+#1 transferring dockerfile: 2.04kB 0.0s done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/python:3.10
+#2 DONE 1.5s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 3.37kB 0.0s done
+#3 DONE 0.0s
+
+#4 [1/7] FROM docker.io/library/python:3.10@sha256:817c0d8684087acb6d88f0f0951f9a541aa3e762302aa5e8f439d5d12edd48ad
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 103.77MB 4.9s
+#5 transferring context: 181.11MB 10.0s
+#5 transferring context: 205.88MB 15.0s
+#5 transferring context: 309.40MB 20.1s
+#5 transferring context: 411.08MB 25.2s
+#5 transferring context: 454.64MB 30.2s
+#5 transferring context: 507.38MB 35.3s
+#5 transferring context: 519.82MB 38.4s done
+#5 DONE 38.5s
+
+#6 [2/7] WORKDIR /app
+#6 CACHED
+
+#7 [3/7] COPY . .
+#7 DONE 4.7s
+
+#8 [4/7] RUN pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org --upgrade pip
+#8 4.274 Requirement already satisfied: pip in /usr/local/lib/python3.10/site-packages (23.0.1)
+#8 4.539 Collecting pip
+#8 4.712   Downloading pip-24.0-py3-none-any.whl (2.1 MB)
+#8 5.460      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 2.8 MB/s eta 0:00:00
+#8 5.556 Installing collected packages: pip
+#8 5.556   Attempting uninstall: pip
+#8 5.558     Found existing installation: pip 23.0.1
+#8 5.733     Uninstalling pip-23.0.1:
+#8 6.206       Successfully uninstalled pip-23.0.1
+#8 7.746 Successfully installed pip-24.0
+#8 7.747 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#8 DONE 8.5s
+
+#9 [5/7] RUN pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org --no-cache-dir -r requirements.txt
+#9 1.141 Collecting alembic==1.13.1 (from -r requirements.txt (line 1))
+#9 1.229   Downloading alembic-1.13.1-py3-none-any.whl.metadata (7.4 kB)
+#9 1.299 Collecting argon2-cffi==23.1.0 (from -r requirements.txt (line 2))
+#9 1.314   Downloading argon2_cffi-23.1.0-py3-none-any.whl.metadata (5.2 kB)
+#9 1.357 Collecting argon2-cffi-bindings==21.2.0 (from -r requirements.txt (line 3))
+#9 1.373   Downloading argon2_cffi_bindings-21.2.0-cp36-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.7 kB)
+#9 1.436 Collecting arrow==1.3.0 (from -r requirements.txt (line 4))
+#9 1.450   Downloading arrow-1.3.0-py3-none-any.whl.metadata (7.5 kB)
+#9 1.490 Collecting async-timeout==4.0.3 (from -r requirements.txt (line 5))
+#9 1.509   Downloading async_timeout-4.0.3-py3-none-any.whl.metadata (4.2 kB)
+#9 1.597 Collecting bcrypt==4.1.2 (from -r requirements.txt (line 6))
+#9 1.611   Downloading bcrypt-4.1.2-cp39-abi3-manylinux_2_28_x86_64.whl.metadata (9.5 kB)
+#9 1.741 Collecting bidict==0.23.1 (from -r requirements.txt (line 7))
+#9 1.758   Downloading bidict-0.23.1-py3-none-any.whl.metadata (8.7 kB)
+#9 1.793 Collecting blinker==1.7.0 (from -r requirements.txt (line 8))
+#9 1.807   Downloading blinker-1.7.0-py3-none-any.whl.metadata (1.9 kB)
+#9 1.938 Collecting Bootstrap-Flask==2.4.0 (from -r requirements.txt (line 9))
+#9 1.967   Downloading Bootstrap_Flask-2.4.0-py3-none-any.whl.metadata (6.0 kB)
+#9 2.024 Collecting certifi==2024.2.2 (from -r requirements.txt (line 10))
+#9 2.043   Downloading certifi-2024.2.2-py3-none-any.whl.metadata (2.2 kB)
+#9 2.281 Collecting cffi==1.16.0 (from -r requirements.txt (line 11))
+#9 2.296   Downloading cffi-1.16.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.5 kB)
+#9 2.464 Collecting charset-normalizer==3.3.2 (from -r requirements.txt (line 12))
+#9 2.480   Downloading charset_normalizer-3.3.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (33 kB)
+#9 2.543 Collecting click==8.1.7 (from -r requirements.txt (line 13))
+#9 2.557   Downloading click-8.1.7-py3-none-any.whl.metadata (3.0 kB)
+#9 3.116 Collecting coverage==7.4.4 (from -r requirements.txt (line 14))
+#9 3.133   Downloading coverage-7.4.4-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (8.2 kB)
+#9 3.176 Collecting dnspython==2.6.1 (from -r requirements.txt (line 15))
+#9 3.189   Downloading dnspython-2.6.1-py3-none-any.whl.metadata (5.8 kB)
+#9 3.314 Collecting dominate==2.9.1 (from -r requirements.txt (line 16))
+#9 3.329   Downloading dominate-2.9.1-py2.py3-none-any.whl.metadata (13 kB)
+#9 3.379 Collecting elastic-transport==8.11.0 (from -r requirements.txt (line 17))
+#9 3.393   Downloading elastic_transport-8.11.0-py3-none-any.whl.metadata (3.5 kB)
+#9 3.517 Collecting elasticsearch==8.11.1 (from -r requirements.txt (line 18))
+#9 3.532   Downloading elasticsearch-8.11.1-py3-none-any.whl.metadata (5.4 kB)
+#9 3.669 Collecting elasticsearch-dsl==8.11.0 (from -r requirements.txt (line 19))
+#9 3.683   Downloading elasticsearch_dsl-8.11.0-py3-none-any.whl.metadata (10 kB)
+#9 3.729 Collecting email_validator==2.1.1 (from -r requirements.txt (line 20))
+#9 3.743   Downloading email_validator-2.1.1-py3-none-any.whl.metadata (26 kB)
+#9 3.786 Collecting exceptiongroup==1.2.0 (from -r requirements.txt (line 21))
+#9 3.804   Downloading exceptiongroup-1.2.0-py3-none-any.whl.metadata (6.6 kB)
+#9 4.034 Collecting Faker==24.11.0 (from -r requirements.txt (line 22))
+#9 4.049   Downloading Faker-24.11.0-py3-none-any.whl.metadata (15 kB)
+#9 4.103 Collecting Flask==3.0.3 (from -r requirements.txt (line 23))
+#9 4.120   Downloading flask-3.0.3-py3-none-any.whl.metadata (3.2 kB)
+#9 4.243 Collecting Flask-Bcrypt==1.0.1 (from -r requirements.txt (line 24))
+#9 4.258   Downloading Flask_Bcrypt-1.0.1-py3-none-any.whl.metadata (2.6 kB)
+#9 4.369 Collecting Flask-Bootstrap4==4.0.2 (from -r requirements.txt (line 25))
+#9 4.385   Downloading Flask_Bootstrap4-4.0.2-py3-none-any.whl.metadata (1.6 kB)
+#9 4.506 Collecting Flask-Helper==2.1.1 (from -r requirements.txt (line 26))
+#9 4.526   Downloading Flask-Helper-2.1.1.tar.gz (12 kB)
+#9 4.545   Preparing metadata (setup.py): started
+#9 5.127   Preparing metadata (setup.py): finished with status 'done'
+#9 5.246 Collecting Flask-Login==0.6.3 (from -r requirements.txt (line 27))
+#9 5.262   Downloading Flask_Login-0.6.3-py3-none-any.whl.metadata (5.8 kB)
+#9 5.297 Collecting Flask-Migrate==4.0.7 (from -r requirements.txt (line 28))
+#9 5.312   Downloading Flask_Migrate-4.0.7-py3-none-any.whl.metadata (3.1 kB)
+#9 5.447 Collecting Flask-Minio==0.1.2 (from -r requirements.txt (line 29))
+#9 5.463   Downloading Flask_Minio-0.1.2-py3-none-any.whl.metadata (2.7 kB)
+#9 5.491 Collecting Flask-Script==2.0.6 (from -r requirements.txt (line 30))
+#9 5.506   Downloading Flask-Script-2.0.6.tar.gz (43 kB)
+#9 5.511      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 43.1/43.1 kB 20.3 MB/s eta 0:00:00
+#9 5.533   Preparing metadata (setup.py): started
+#9 5.802   Preparing metadata (setup.py): finished with status 'done'
+#9 5.935 Collecting Flask-SocketIO==5.3.6 (from -r requirements.txt (line 31))
+#9 5.950   Downloading Flask_SocketIO-5.3.6-py3-none-any.whl.metadata (2.6 kB)
+#9 5.989 Collecting Flask-SQLAlchemy==3.1.1 (from -r requirements.txt (line 32))
+#9 6.006   Downloading flask_sqlalchemy-3.1.1-py3-none-any.whl.metadata (3.4 kB)
+#9 6.125 Collecting Flask-Testing==0.8.1 (from -r requirements.txt (line 33))
+#9 6.141   Downloading Flask-Testing-0.8.1.tar.gz (45 kB)
+#9 6.145      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 45.2/45.2 kB 50.4 MB/s eta 0:00:00
+#9 6.162   Preparing metadata (setup.py): started
+#9 6.427   Preparing metadata (setup.py): finished with status 'done'
+#9 6.554 Collecting Flask-WTF==1.2.1 (from -r requirements.txt (line 34))
+#9 6.568   Downloading flask_wtf-1.2.1-py3-none-any.whl.metadata (3.4 kB)
+#9 6.823 Collecting greenlet==3.0.3 (from -r requirements.txt (line 35))
+#9 6.840   Downloading greenlet-3.0.3-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (3.8 kB)
+#9 6.871 Collecting h11==0.14.0 (from -r requirements.txt (line 36))
+#9 6.888   Downloading h11-0.14.0-py3-none-any.whl.metadata (8.2 kB)
+#9 6.923 Collecting idna==3.7 (from -r requirements.txt (line 37))
+#9 6.941   Downloading idna-3.7-py3-none-any.whl.metadata (9.9 kB)
+#9 7.067 Collecting infisical==1.6.0 (from -r requirements.txt (line 38))
+#9 7.084   Downloading infisical-1.6.0-py3-none-any.whl.metadata (13 kB)
+#9 7.435 Collecting infisical-python==2.1.9 (from -r requirements.txt (line 39))
+#9 7.456   Downloading infisical_python-2.1.9-cp310-cp310-manylinux_2_28_x86_64.whl.metadata (2.0 kB)
+#9 7.486 Collecting iniconfig==2.0.0 (from -r requirements.txt (line 40))
+#9 7.500   Downloading iniconfig-2.0.0-py3-none-any.whl.metadata (2.6 kB)
+#9 7.541 Collecting itsdangerous==2.2.0 (from -r requirements.txt (line 41))
+#9 7.557   Downloading itsdangerous-2.2.0-py3-none-any.whl.metadata (1.9 kB)
+#9 7.604 Collecting Jinja2==3.1.3 (from -r requirements.txt (line 42))
+#9 7.619   Downloading Jinja2-3.1.3-py3-none-any.whl.metadata (3.3 kB)
+#9 7.757 Collecting libgravatar==1.0.4 (from -r requirements.txt (line 43))
+#9 7.772   Downloading libgravatar-1.0.4-py2.py3-none-any.whl.metadata (3.9 kB)
+#9 7.902 Collecting looseversion==1.3.0 (from -r requirements.txt (line 44))
+#9 7.918   Downloading looseversion-1.3.0-py2.py3-none-any.whl.metadata (4.6 kB)
+#9 7.965 Collecting Mako==1.3.3 (from -r requirements.txt (line 45))
+#9 7.981   Downloading Mako-1.3.3-py3-none-any.whl.metadata (2.9 kB)
+#9 8.088 Collecting MarkupSafe==2.1.5 (from -r requirements.txt (line 46))
+#9 8.105   Downloading MarkupSafe-2.1.5-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.0 kB)
+#9 8.279 Collecting minio==7.2.7 (from -r requirements.txt (line 47))
+#9 8.294   Downloading minio-7.2.7-py3-none-any.whl.metadata (6.4 kB)
+#9 8.349 Collecting packaging==24.0 (from -r requirements.txt (line 48))
+#9 8.364   Downloading packaging-24.0-py3-none-any.whl.metadata (3.2 kB)
+#9 8.474 Collecting phonenumbers==8.13.34 (from -r requirements.txt (line 49))
+#9 8.489   Downloading phonenumbers-8.13.34-py2.py3-none-any.whl.metadata (11 kB)
+#9 8.534 Collecting pluggy==1.4.0 (from -r requirements.txt (line 50))
+#9 8.550   Downloading pluggy-1.4.0-py3-none-any.whl.metadata (4.3 kB)
+#9 8.601 Collecting psycopg==3.1.18 (from -r requirements.txt (line 51))
+#9 8.618   Downloading psycopg-3.1.18-py3-none-any.whl.metadata (4.2 kB)
+#9 8.717 Collecting psycopg2==2.9.9 (from -r requirements.txt (line 52))
+#9 8.734   Downloading psycopg2-2.9.9.tar.gz (384 kB)
+#9 8.809      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 384.9/384.9 kB 6.4 MB/s eta 0:00:00
+#9 8.921   Preparing metadata (setup.py): started
+#9 9.321   Preparing metadata (setup.py): finished with status 'done'
+#9 9.436 Collecting psycopg2-binary==2.9.9 (from -r requirements.txt (line 53))
+#9 9.457   Downloading psycopg2_binary-2.9.9-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.4 kB)
+#9 9.486 Collecting pycparser==2.22 (from -r requirements.txt (line 54))
+#9 9.501   Downloading pycparser-2.22-py3-none-any.whl.metadata (943 bytes)
+#9 9.748 Collecting pycryptodome==3.20.0 (from -r requirements.txt (line 55))
+#9 9.762   Downloading pycryptodome-3.20.0-cp35-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.4 kB)
+#9 10.04 Collecting pycryptodomex==3.20.0 (from -r requirements.txt (line 56))
+#9 10.05   Downloading pycryptodomex-3.20.0-cp35-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.4 kB)
+#9 10.26 Collecting pydantic==1.10.15 (from -r requirements.txt (line 57))
+#9 10.28   Downloading pydantic-1.10.15-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (150 kB)
+#9 10.32      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 150.6/150.6 kB 3.8 MB/s eta 0:00:00
+#9 10.37 Collecting PyNaCl==1.5.0 (from -r requirements.txt (line 58))
+#9 10.39   Downloading PyNaCl-1.5.0-cp36-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl.metadata (8.6 kB)
+#9 10.52 Collecting pytest==8.1.1 (from -r requirements.txt (line 59))
+#9 10.54   Downloading pytest-8.1.1-py3-none-any.whl.metadata (7.6 kB)
+#9 10.58 Collecting pytest-cov==5.0.0 (from -r requirements.txt (line 60))
+#9 10.60   Downloading pytest_cov-5.0.0-py3-none-any.whl.metadata (27 kB)
+#9 10.64 Collecting python-dateutil==2.9.0.post0 (from -r requirements.txt (line 61))
+#9 10.65   Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+#9 10.70 Collecting python-dotenv==1.0.1 (from -r requirements.txt (line 62))
+#9 10.71   Downloading python_dotenv-1.0.1-py3-none-any.whl.metadata (23 kB)
+#9 10.86 Collecting python-engineio==4.9.0 (from -r requirements.txt (line 63))
+#9 10.88   Downloading python_engineio-4.9.0-py3-none-any.whl.metadata (2.2 kB)
+#9 11.02 Collecting python-socketio==5.11.2 (from -r requirements.txt (line 64))
+#9 11.03   Downloading python_socketio-5.11.2-py3-none-any.whl.metadata (3.2 kB)
+#9 11.11 Collecting redis==5.0.3 (from -r requirements.txt (line 65))
+#9 11.12   Downloading redis-5.0.3-py3-none-any.whl.metadata (9.3 kB)
+#9 11.19 Collecting requests==2.31.0 (from -r requirements.txt (line 66))
+#9 11.21   Downloading requests-2.31.0-py3-none-any.whl.metadata (4.6 kB)
+#9 11.36 Collecting rethinkdb==2.4.10.post1 (from -r requirements.txt (line 67))
+#9 11.37   Downloading rethinkdb-2.4.10.post1-py2.py3-none-any.whl.metadata (9.3 kB)
+#9 11.52 Collecting simple-websocket==1.0.0 (from -r requirements.txt (line 68))
+#9 11.53   Downloading simple_websocket-1.0.0-py3-none-any.whl.metadata (1.3 kB)
+#9 11.57 Collecting six==1.16.0 (from -r requirements.txt (line 69))
+#9 11.59   Downloading six-1.16.0-py2.py3-none-any.whl.metadata (1.8 kB)
+#9 12.16 Collecting SQLAlchemy==2.0.29 (from -r requirements.txt (line 70))
+#9 12.18   Downloading SQLAlchemy-2.0.29-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (9.6 kB)
+#9 12.22 Collecting tomli==2.0.1 (from -r requirements.txt (line 71))
+#9 12.24   Downloading tomli-2.0.1-py3-none-any.whl.metadata (8.9 kB)
+#9 12.38 Collecting types-python-dateutil==2.9.0.20240316 (from -r requirements.txt (line 72))
+#9 12.39   Downloading types_python_dateutil-2.9.0.20240316-py3-none-any.whl.metadata (1.8 kB)
+#9 12.43 Collecting typing_extensions==4.11.0 (from -r requirements.txt (line 73))
+#9 12.45   Downloading typing_extensions-4.11.0-py3-none-any.whl.metadata (3.0 kB)
+#9 12.53 Collecting urllib3==2.2.1 (from -r requirements.txt (line 74))
+#9 12.55   Downloading urllib3-2.2.1-py3-none-any.whl.metadata (6.4 kB)
+#9 12.67 Collecting visitor==0.1.3 (from -r requirements.txt (line 75))
+#9 12.69   Downloading visitor-0.1.3.tar.gz (3.3 kB)
+#9 12.69   Preparing metadata (setup.py): started
+#9 12.94   Preparing metadata (setup.py): finished with status 'done'
+#9 12.99 Collecting Werkzeug==3.0.2 (from -r requirements.txt (line 76))
+#9 13.01   Downloading werkzeug-3.0.2-py3-none-any.whl.metadata (4.1 kB)
+#9 13.13 Collecting wsproto==1.2.0 (from -r requirements.txt (line 77))
+#9 13.14   Downloading wsproto-1.2.0-py3-none-any.whl.metadata (5.6 kB)
+#9 13.27 Collecting WTForms==3.1.2 (from -r requirements.txt (line 78))
+#9 13.28   Downloading wtforms-3.1.2-py3-none-any.whl.metadata (5.3 kB)
+#9 15.11 Downloading alembic-1.13.1-py3-none-any.whl (233 kB)
+#9 15.17    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 233.4/233.4 kB 5.4 MB/s eta 0:00:00
+#9 15.19 Downloading argon2_cffi-23.1.0-py3-none-any.whl (15 kB)
+#9 15.20 Downloading argon2_cffi_bindings-21.2.0-cp36-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (86 kB)
+#9 15.23    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 86.2/86.2 kB 4.0 MB/s eta 0:00:00
+#9 15.25 Downloading arrow-1.3.0-py3-none-any.whl (66 kB)
+#9 15.26    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 66.4/66.4 kB 7.6 MB/s eta 0:00:00
+#9 15.28 Downloading async_timeout-4.0.3-py3-none-any.whl (5.7 kB)
+#9 15.30 Downloading bcrypt-4.1.2-cp39-abi3-manylinux_2_28_x86_64.whl (698 kB)
+#9 15.47    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 698.9/698.9 kB 4.1 MB/s eta 0:00:00
+#9 15.49 Downloading bidict-0.23.1-py3-none-any.whl (32 kB)
+#9 15.51 Downloading blinker-1.7.0-py3-none-any.whl (13 kB)
+#9 15.53 Downloading Bootstrap_Flask-2.4.0-py3-none-any.whl (3.9 MB)
+#9 16.28    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.9/3.9 MB 5.3 MB/s eta 0:00:00
+#9 16.29 Downloading certifi-2024.2.2-py3-none-any.whl (163 kB)
+#9 16.32    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 163.8/163.8 kB 7.7 MB/s eta 0:00:00
+#9 16.34 Downloading cffi-1.16.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (443 kB)
+#9 16.40    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 443.9/443.9 kB 6.8 MB/s eta 0:00:00
+#9 16.42 Downloading charset_normalizer-3.3.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (142 kB)
+#9 16.44    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 142.1/142.1 kB 7.1 MB/s eta 0:00:00
+#9 16.46 Downloading click-8.1.7-py3-none-any.whl (97 kB)
+#9 16.47    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 97.9/97.9 kB 10.2 MB/s eta 0:00:00
+#9 16.50 Downloading coverage-7.4.4-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (233 kB)
+#9 16.53    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 233.5/233.5 kB 8.1 MB/s eta 0:00:00
+#9 16.54 Downloading dnspython-2.6.1-py3-none-any.whl (307 kB)
+#9 16.59    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 307.7/307.7 kB 7.4 MB/s eta 0:00:00
+#9 16.60 Downloading dominate-2.9.1-py2.py3-none-any.whl (29 kB)
+#9 16.63 Downloading elastic_transport-8.11.0-py3-none-any.whl (59 kB)
+#9 16.63    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 59.8/59.8 kB 16.0 MB/s eta 0:00:00
+#9 16.65 Downloading elasticsearch-8.11.1-py3-none-any.whl (412 kB)
+#9 16.72    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 412.8/412.8 kB 6.2 MB/s eta 0:00:00
+#9 16.73 Downloading elasticsearch_dsl-8.11.0-py3-none-any.whl (63 kB)
+#9 16.74    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 63.1/63.1 kB 12.7 MB/s eta 0:00:00
+#9 16.76 Downloading email_validator-2.1.1-py3-none-any.whl (30 kB)
+#9 16.78 Downloading exceptiongroup-1.2.0-py3-none-any.whl (16 kB)
+#9 16.80 Downloading Faker-24.11.0-py3-none-any.whl (1.8 MB)
+#9 17.05    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 7.6 MB/s eta 0:00:00
+#9 17.06 Downloading flask-3.0.3-py3-none-any.whl (101 kB)
+#9 17.08    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 101.7/101.7 kB 14.9 MB/s eta 0:00:00
+#9 17.09 Downloading Flask_Bcrypt-1.0.1-py3-none-any.whl (6.0 kB)
+#9 17.11 Downloading Flask_Bootstrap4-4.0.2-py3-none-any.whl (1.7 MB)
+#9 17.33    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.7/1.7 MB 8.0 MB/s eta 0:00:00
+#9 17.36 Downloading Flask_Login-0.6.3-py3-none-any.whl (17 kB)
+#9 17.37 Downloading Flask_Migrate-4.0.7-py3-none-any.whl (21 kB)
+#9 17.39 Downloading Flask_Minio-0.1.2-py3-none-any.whl (2.9 kB)
+#9 17.41 Downloading Flask_SocketIO-5.3.6-py3-none-any.whl (18 kB)
+#9 17.43 Downloading flask_sqlalchemy-3.1.1-py3-none-any.whl (25 kB)
+#9 17.45 Downloading flask_wtf-1.2.1-py3-none-any.whl (12 kB)
+#9 17.47 Downloading greenlet-3.0.3-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (616 kB)
+#9 17.53    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 616.0/616.0 kB 9.5 MB/s eta 0:00:00
+#9 17.55 Downloading h11-0.14.0-py3-none-any.whl (58 kB)
+#9 17.55    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 58.3/58.3 kB 17.7 MB/s eta 0:00:00
+#9 17.57 Downloading idna-3.7-py3-none-any.whl (66 kB)
+#9 17.58    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 66.8/66.8 kB 17.3 MB/s eta 0:00:00
+#9 17.60 Downloading infisical-1.6.0-py3-none-any.whl (21 kB)
+#9 17.62 Downloading infisical_python-2.1.9-cp310-cp310-manylinux_2_28_x86_64.whl (3.7 MB)
+#9 18.03    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.7/3.7 MB 9.0 MB/s eta 0:00:00
+#9 18.05 Downloading iniconfig-2.0.0-py3-none-any.whl (5.9 kB)
+#9 18.07 Downloading itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+#9 18.09 Downloading Jinja2-3.1.3-py3-none-any.whl (133 kB)
+#9 18.10    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 133.2/133.2 kB 11.2 MB/s eta 0:00:00
+#9 18.12 Downloading libgravatar-1.0.4-py2.py3-none-any.whl (17 kB)
+#9 18.13 Downloading looseversion-1.3.0-py2.py3-none-any.whl (8.2 kB)
+#9 18.15 Downloading Mako-1.3.3-py3-none-any.whl (78 kB)
+#9 18.16    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78.8/78.8 kB 28.2 MB/s eta 0:00:00
+#9 18.18 Downloading MarkupSafe-2.1.5-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (25 kB)
+#9 18.20 Downloading minio-7.2.7-py3-none-any.whl (93 kB)
+#9 18.21    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 93.5/93.5 kB 24.0 MB/s eta 0:00:00
+#9 18.22 Downloading packaging-24.0-py3-none-any.whl (53 kB)
+#9 18.23    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 53.5/53.5 kB 19.9 MB/s eta 0:00:00
+#9 18.25 Downloading phonenumbers-8.13.34-py2.py3-none-any.whl (2.6 MB)
+#9 18.53    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.6/2.6 MB 9.3 MB/s eta 0:00:00
+#9 18.55 Downloading pluggy-1.4.0-py3-none-any.whl (20 kB)
+#9 18.57 Downloading psycopg-3.1.18-py3-none-any.whl (178 kB)
+#9 18.58    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 178.1/178.1 kB 14.6 MB/s eta 0:00:00
+#9 18.60 Downloading psycopg2_binary-2.9.9-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.0 MB)
+#9 18.90    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.0/3.0 MB 10.3 MB/s eta 0:00:00
+#9 18.92 Downloading pycparser-2.22-py3-none-any.whl (117 kB)
+#9 18.94    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 117.6/117.6 kB 7.4 MB/s eta 0:00:00
+#9 18.96 Downloading pycryptodome-3.20.0-cp35-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+#9 19.15    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 10.9 MB/s eta 0:00:00
+#9 19.17 Downloading pycryptodomex-3.20.0-cp35-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+#9 19.37    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 10.9 MB/s eta 0:00:00
+#9 19.39 Downloading pydantic-1.10.15-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.1 MB)
+#9 19.65    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.1/3.1 MB 12.1 MB/s eta 0:00:00
+#9 19.66 Downloading PyNaCl-1.5.0-cp36-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl (856 kB)
+#9 19.73    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 856.7/856.7 kB 13.8 MB/s eta 0:00:00
+#9 19.75 Downloading pytest-8.1.1-py3-none-any.whl (337 kB)
+#9 19.77    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 337.4/337.4 kB 15.0 MB/s eta 0:00:00
+#9 19.79 Downloading pytest_cov-5.0.0-py3-none-any.whl (21 kB)
+#9 19.81 Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+#9 19.82    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 229.9/229.9 kB 24.4 MB/s eta 0:00:00
+#9 19.84 Downloading python_dotenv-1.0.1-py3-none-any.whl (19 kB)
+#9 19.86 Downloading python_engineio-4.9.0-py3-none-any.whl (57 kB)
+#9 19.87    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 57.5/57.5 kB 14.5 MB/s eta 0:00:00
+#9 19.88 Downloading python_socketio-5.11.2-py3-none-any.whl (75 kB)
+#9 19.89    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 75.7/75.7 kB 26.8 MB/s eta 0:00:00
+#9 19.91 Downloading redis-5.0.3-py3-none-any.whl (251 kB)
+#9 19.93    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 251.8/251.8 kB 17.2 MB/s eta 0:00:00
+#9 19.94 Downloading requests-2.31.0-py3-none-any.whl (62 kB)
+#9 19.95    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.6/62.6 kB 27.4 MB/s eta 0:00:00
+#9 19.96 Downloading rethinkdb-2.4.10.post1-py2.py3-none-any.whl (160 kB)
+#9 19.97    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 160.9/160.9 kB 23.1 MB/s eta 0:00:00
+#9 19.99 Downloading simple_websocket-1.0.0-py3-none-any.whl (13 kB)
+#9 20.01 Downloading six-1.16.0-py2.py3-none-any.whl (11 kB)
+#9 20.03 Downloading SQLAlchemy-2.0.29-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.1 MB)
+#9 20.26    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.1/3.1 MB 13.3 MB/s eta 0:00:00
+#9 20.28 Downloading tomli-2.0.1-py3-none-any.whl (12 kB)
+#9 20.30 Downloading types_python_dateutil-2.9.0.20240316-py3-none-any.whl (9.7 kB)
+#9 20.31 Downloading typing_extensions-4.11.0-py3-none-any.whl (34 kB)
+#9 20.33 Downloading urllib3-2.2.1-py3-none-any.whl (121 kB)
+#9 20.34    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 121.1/121.1 kB 15.7 MB/s eta 0:00:00
+#9 20.36 Downloading werkzeug-3.0.2-py3-none-any.whl (226 kB)
+#9 20.38    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 226.8/226.8 kB 19.1 MB/s eta 0:00:00
+#9 20.40 Downloading wsproto-1.2.0-py3-none-any.whl (24 kB)
+#9 20.42 Downloading wtforms-3.1.2-py3-none-any.whl (145 kB)
+#9 20.43    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 146.0/146.0 kB 31.0 MB/s eta 0:00:00
+#9 20.63 Building wheels for collected packages: Flask-Helper, Flask-Script, Flask-Testing, psycopg2, visitor
+#9 20.63   Building wheel for Flask-Helper (setup.py): started
+#9 21.10   Building wheel for Flask-Helper (setup.py): finished with status 'done'
+#9 21.10   Created wheel for Flask-Helper: filename=Flask_Helper-2.1.1-py3-none-any.whl size=18362 sha256=96b5ce49c6241107e86c2faf539837df0da53513a30ce25885f2a4088926967a
+#9 21.10   Stored in directory: /tmp/pip-ephem-wheel-cache-li0ydhmy/wheels/94/28/04/8d0e9b959a678453fb82310fee484d2e6d10bbd23c30457915
+#9 21.11   Building wheel for Flask-Script (setup.py): started
+#9 21.47   Building wheel for Flask-Script (setup.py): finished with status 'done'
+#9 21.47   Created wheel for Flask-Script: filename=Flask_Script-2.0.6-py3-none-any.whl size=14027 sha256=83dedce8505be9f3d2e0b3379232e67d35333d2941b7c9da65236b683200c72c
+#9 21.47   Stored in directory: /tmp/pip-ephem-wheel-cache-li0ydhmy/wheels/1b/03/68/33d4ba806bbe80fc1b5ca92226da88a3acd03b6b31d3f9cbb3
+#9 21.47   Building wheel for Flask-Testing (setup.py): started
+#9 21.84   Building wheel for Flask-Testing (setup.py): finished with status 'done'
+#9 21.84   Created wheel for Flask-Testing: filename=Flask_Testing-0.8.1-py3-none-any.whl size=8190 sha256=ab003ee11d09b422cb3d2548b0a9aede7fd273ab26d672e51e3f97fc92b01f93
+#9 21.84   Stored in directory: /tmp/pip-ephem-wheel-cache-li0ydhmy/wheels/c9/ed/31/9b0a9431bdb3d378f0b63671efc517bac666e5ab4b4fa3b360
+#9 21.84   Building wheel for psycopg2 (setup.py): started
+#9 31.58   Building wheel for psycopg2 (setup.py): finished with status 'done'
+#9 31.58   Created wheel for psycopg2: filename=psycopg2-2.9.9-cp310-cp310-linux_x86_64.whl size=483011 sha256=8f674337f909fd745424289429df6c9c4bcbb0c0607a5d2a11b9272ba69c037d
+#9 31.58   Stored in directory: /tmp/pip-ephem-wheel-cache-li0ydhmy/wheels/7d/75/13/da1c6d88687ae81bf5e3cfa07d702981ba137963163472b050
+#9 31.59   Building wheel for visitor (setup.py): started
+#9 32.02   Building wheel for visitor (setup.py): finished with status 'done'
+#9 32.02   Created wheel for visitor: filename=visitor-0.1.3-py3-none-any.whl size=3928 sha256=c8b800e76b1bfbe8eadd00d63a25435ad5e49d1efb37b37451662ae714568ae2
+#9 32.02   Stored in directory: /tmp/pip-ephem-wheel-cache-li0ydhmy/wheels/19/31/99/2ec5b4459cac4d801d6201d501a354366d180afc9f8bb2d333
+#9 32.02 Successfully built Flask-Helper Flask-Script Flask-Testing psycopg2 visitor
+#9 32.57 Installing collected packages: visitor, phonenumbers, looseversion, libgravatar, urllib3, typing_extensions, types-python-dateutil, tomli, six, python-dotenv, pycryptodomex, pycryptodome, pycparser, psycopg2-binary, psycopg2, pluggy, packaging, MarkupSafe, itsdangerous, iniconfig, infisical-python, idna, h11, greenlet, exceptiongroup, dominate, dnspython, coverage, click, charset-normalizer, certifi, blinker, bidict, bcrypt, async-timeout, WTForms, wsproto, Werkzeug, SQLAlchemy, rethinkdb, requests, redis, python-dateutil, pytest, pydantic, psycopg, Mako, Jinja2, email_validator, elastic-transport, cffi, simple-websocket, pytest-cov, PyNaCl, Flask, Faker, elasticsearch, arrow, argon2-cffi-bindings, alembic, python-engineio, infisical, Flask-WTF, Flask-Testing, Flask-SQLAlchemy, Flask-Script, Flask-Login, Flask-Helper, Flask-Bootstrap4, Flask-Bcrypt, elasticsearch-dsl, Bootstrap-Flask, argon2-cffi, python-socketio, minio, Flask-Migrate, Flask-SocketIO, Flask-Minio
+#9 47.86 Successfully installed Bootstrap-Flask-2.4.0 Faker-24.11.0 Flask-3.0.3 Flask-Bcrypt-1.0.1 Flask-Bootstrap4-4.0.2 Flask-Helper-2.1.1 Flask-Login-0.6.3 Flask-Migrate-4.0.7 Flask-Minio-0.1.2 Flask-SQLAlchemy-3.1.1 Flask-Script-2.0.6 Flask-SocketIO-5.3.6 Flask-Testing-0.8.1 Flask-WTF-1.2.1 Jinja2-3.1.3 Mako-1.3.3 MarkupSafe-2.1.5 PyNaCl-1.5.0 SQLAlchemy-2.0.29 WTForms-3.1.2 Werkzeug-3.0.2 alembic-1.13.1 argon2-cffi-23.1.0 argon2-cffi-bindings-21.2.0 arrow-1.3.0 async-timeout-4.0.3 bcrypt-4.1.2 bidict-0.23.1 blinker-1.7.0 certifi-2024.2.2 cffi-1.16.0 charset-normalizer-3.3.2 click-8.1.7 coverage-7.4.4 dnspython-2.6.1 dominate-2.9.1 elastic-transport-8.11.0 elasticsearch-8.11.1 elasticsearch-dsl-8.11.0 email_validator-2.1.1 exceptiongroup-1.2.0 greenlet-3.0.3 h11-0.14.0 idna-3.7 infisical-1.6.0 infisical-python-2.1.9 iniconfig-2.0.0 itsdangerous-2.2.0 libgravatar-1.0.4 looseversion-1.3.0 minio-7.2.7 packaging-24.0 phonenumbers-8.13.34 pluggy-1.4.0 psycopg-3.1.18 psycopg2-2.9.9 psycopg2-binary-2.9.9 pycparser-2.22 pycryptodome-3.20.0 pycryptodomex-3.20.0 pydantic-1.10.15 pytest-8.1.1 pytest-cov-5.0.0 python-dateutil-2.9.0.post0 python-dotenv-1.0.1 python-engineio-4.9.0 python-socketio-5.11.2 redis-5.0.3 requests-2.31.0 rethinkdb-2.4.10.post1 simple-websocket-1.0.0 six-1.16.0 tomli-2.0.1 types-python-dateutil-2.9.0.20240316 typing_extensions-4.11.0 urllib3-2.2.1 visitor-0.1.3 wsproto-1.2.0
+#9 47.86 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#9 DONE 49.1s
+
+#10 [6/7] RUN git config --global --add safe.directory .git/gitconfig
+#10 DONE 0.9s
+
+#11 [7/7] WORKDIR /app/shop
+#11 DONE 0.3s
+
+#12 exporting to image
+#12 exporting layers
+#12 exporting layers 3.2s done
+#12 writing image sha256:f7ff5e1bc244e1123d5920682fe956ea05fae52db96206bcc6b6587532507ed4 done
+#12 naming to docker.io/library/shop 0.0s done
+#12 DONE 3.3s
+[8mha:////4NYyfXG3PyCYjhCMsgU1uP1TO/1+WvnCybMZv96PKkEiAAAAox+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOKCoERUaS03vMDExjix7oztkFS8iK/xBwKRqNhitbPNPF+wTBGOHC22hjpHqXEYfG+nhQPH7uJ5wJbP2DAl9galGSRrU88oORuYU5SwELAy1HhOjmyGtWjVXVVeka1OOU7fQUDp9A0eUIjJnFXMXxgjbK69Tkw/z18BjCFkKHf7T23fSZy7ir4AAAA=[0m[Pipeline] }
+[8mha:////4Hnw7Yd73HLTvxRm90oH9fXDP5YAWO8i8R16IKChgfEHAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiEA1CqWgtN7zAJMY4se6C7eBUvIiv8QcsIlGxxWpnm3m9YRk81OwNdpp6S6GxOLjR5IWJfX91nLDjCzZMgZ1GqZPkVp9mlBw1zClKWAhYaWocB0smwlp06qEqp8hU5+jzdxRQ2vYOTyhENkfl4xcmD5vb2Aamn+evAKZhiFDu9rm2hw+WR0/FvgAAAA==[0m[Pipeline] // script
+[8mha:////4Dc+hXLU/Vxzwcy611mfdrU7GbEZBz9kkM/uRABS66JKAAAAph+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIikJCQUCpayw0vMIkxTqy7YDs4FS/ia/wBi0hUbLHa2WZeb1gGDzV7g52m3lJoLA5uNHlhYt9fHSfs+IINU2CnUeokudWnGSVHDXOKEhYCVpoax8GSibAWnXqoyiky1Tn6/B0FlLa9wxMKkc1R+fiFycPmNraB6ef5K4BpGCKUu32u7eEDpaQUeb4AAAA=[0m[Pipeline] }
+[8mha:////4PKn+fFIGQdDwLyr+UfdM4cgudgiXu/qiFsRrkeEKgooAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiKKBAqWgtN7zAJMY4se6C7eBUvIiv8QcsIlGxxWpnm3m9YRk81OwNdpp6S6GxOLjR5IWJfX91nLDjCzZMgZ1GqZPkVp9mlBw1zClKWAhYaWocB0smwlp06qEqp8hU5+jzdxRQ2vYOTyhENkfl4xcmD5vb2Aamn+evAKZhiFDu9rm2hw+ayz9vvgAAAA==[0m[Pipeline] // stage
+[8mha:////4Ce2foL2UiYyIPykJDKhdxmcw+01tqZRUtsshJ5vkNRdAAAApx+LCAAAAAAAAP9tjTEOwjAQBM9BKWgpeYQjUUCBqGgtN7zAxMY4se6CfSGpeBFf4w8EIlGx1c5Kq3m+oMwJDpS8bBy2AXMdZBd7PzU5UGovkQbZ0FnWhJmik9oNmqw7zqiJHcwRBSwULB3WkXJAz7BSjbmbKhr01YnTtO0VFMHe4AFCTWY2ib8wJlhfe5sJf56/Ahg7BrFlKDa7z7F8A1J3qyXBAAAA[0m[Pipeline] stage
+[8mha:////4LW7yIs2yr1hCs5N0skTvVTDSGdtpjV7+/PzOgTkTn9fAAAAqB+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycohUYgEJMXWNsnCC0ISQNvq//KS0EyfiatyBlkpMeLBsS9Z7vaGIDCdiJxqLrcdYe9GF3k1JDMTtNdAgGrqImjBSsELZQZGx1VIVJQuLshxWEtYW60DRo0uwkY1+6DJodOU58bQdJeTe3OEJmZzISXP6lpFhe+tNJPxx/gJg7BLku/1sh/lZfAAnLfKUwgAAAA==[0m[Pipeline] { (Test)
+[8mha:////4Btt6zw35bFxRiUtEyI1k4Sw5VHTfG0mGNSjtt99qs7lAAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiUYEQVVrLDS8wsTFOrDtjOyQVL+Jr/IFAJCq2WO1sM88XLFOEI0eLraHOUWocBt/baeHAsbt4HrDlMzZMib1BaQbJ2tQzSs4G5hQlLASsDDWekyObYS1adVeVV2SrU47TdxBQOn2DBxRiMmcV8xfGCJtrrxPTz/NXAGPIUG53n9qHNwcnzs++AAAA[0m[Pipeline] echo
+Assuming tests are run here. Please replace this with actual test commands.
+[8mha:////4M/L0qkgKdKwzSxm7PFQozw9P7H1UqNXr8asQdNN48bmAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOKCoEFCqWgtN7zAJMY4se6C7eBUvIiv8QcsIlGxxWpnm3m9YRk81OwNdpp6S6GxOLjR5IWJfX91nLDjCzZMgZ1GqZPkVp9mlBw1zClKWAhYaWocB0smwlp06qEqp8hU5+jzdxRQ2vYOTyhENkfl4xcmD5vb2Aamn+evAKYhQrk75Npvhw959s4fvgAAAA==[0m[Pipeline] sh
++ docker exec shop python -m pytest -v
+Error response from daemon: No such container: shop
+[8mha:////4G5D6Cod0deGMbmdLLMlhjapKZgb0YMI5/VuCT9jsm/0AAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIioEFCqWgtN7zAJMY4se6C7eBUvIiv8QcsIlGxxWpnm3m9YRk81OwNdpp6S6GxOLjR5IWJfX91nLDjCzZMgZ1GqZPkVp9mlBw1zClKWAhYaWocB0smwlp06qEqp8hU5+jzdxRQ2vYOTyhENkfl4xcmD5vb2Aamn+evAKZhiFDut7l2hw/Evt9vvgAAAA==[0m[Pipeline] }
+[8mha:////4BuO7XHLaT/ponRFuK+O2Uc9p7Wg7dWQoNn0SqUULntdAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIihYICUaW10vACExvjxLoztkNS8SK+xh+wiETFFqudbeb1hnUMcOJgsNc0WIqdRe9GkxdOHIar4wl7vmDHFNlpbPXUstLNgi0nDUuKElYCNpo6x9GSSbAVvXzIykky1TmF/B0FlFbd4QmFyOYkQ/rCHGB3G1Vk+nn+CmD2PkG5r3PVhw/70fR5vgAAAA==[0m[Pipeline] // stage
+[8mha:////4FFoaFGPBsOFSeWK/Ke00G27r/WWAdsbXbCejgC8amzwAAAAph+LCAAAAAAAAP9tjTEOwjAQBC9BKWgpeYRTRKJBVLSWG15gYmOcWHfBvpBUvIiv8QcMkajYamel1TxfUKUIB4pOdBZ7j6n1Ygijy01MFPtLoEl0dBYtYaJghbKTImOPCypiC0uKElYS1hbbQMmjY9jITt91HTS6+sQxb3sJpTc3eEAhs5l15C/MEbbX0STCn+evAOaBodgxlE3zOVZv8D5NGMEAAAA=[0m[Pipeline] stage
+[8mha:////4FRI+9mRPz91GW760yHeIkSj7jNdWzEZrfBGhfyiKqp+AAAAph+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycoh0KBtiYo2ycILQhJA0+r9NUtKJE3E17kBLJSY8WLYl673eUMUAJwqGOY2dxdha1vvRzIllCt3NU2aOrqwljOQ1EzoLUvq8VkFJw6qihA2HrcbWU7RoEuy4kw9Ze4mmvqQwb0cOpVUDPKHgMznJkL5lCrC/jyoS/jh/ATD1CcqmWeywPKsPBdk7bsIAAAA=[0m[Pipeline] { (Deploy)
+Stage "Deploy" skipped due to earlier failure(s)
+[8mha:////4ASPPQQVVtVHOenHmxfHIdYRQOb42eRrYFclPjoRUaASAAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOJSABWiSmu54QUmNsaJdWdsh6TiRXyNPxCIRMUWq51t5vmCZYpw5GixNdQ5So3D4Hs7LRw4dhfPA7Z8xoYpsTcozSBZm3pGydnAnKKEhYCVocZzcmQzrEWr7qryimx1ynH6DgJKp2/wgEJM5qxi/sIYYXPtdWL6ef4KYAwZyu3uU/vwBtZos2m+AAAA[0m[Pipeline] getContext
+[8mha:////4PeOnVXid0At5bBc+umbCv8uryLYcfSBYtsk/Wb94z2HAAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOJSgGgQVVrLDS8wsTFOrDtjOyQVL+Jr/IFAJCq2WO1sM88XLFOEI0eLraHOUWocBt/baeHAsbt4HrDlMzZMib1BaQbJ2tQzSs4G5hQlLASsDDWekyObYS1adVeVV2SrU47TdxBQOn2DBxRiMmcV8xfGCJtrrxPTz/NXAGMIGcrt/lO7Nxbzd2K+AAAA[0m[Pipeline] }
+[8mha:////4EN96Jd8EcnGEmdGAhx9U5PseELFSNQH9QsaQZ3ZfPfnAAAApB+LCAAAAAAAAP9tjTESwiAURH/iWNhaeghSpLBwrGwZGk+ACSKE+Z8AkVSeyKt5B9HMWLnFzr5t3vMF6xjgSEEzq3AwGDvDvJt0WSxTGK6OMrN0YR1hJKeYUFlQr04LCkoKllQ1rDhsFHaOokGdYMutvMvGSdTNOYXyHTjUph/hARUv5iRD+sIcYHeb+kj48/wVwOx9grrdf6p9AxC1Tze+AAAA[0m[Pipeline] // stage
+[8mha:////4OTR2U7PFTKtNnWSbA43qgWt8hkUjvcYaY7ViS6a2nq4AAAApx+LCAAAAAAAAP9tjTEOwjAQBM9BKWgpeYRTICEkREVrueEFJjbGiXUX7AtJxYv4Gn8gEImKrXZWWs3zBWVOcKDkZeOwDZjrILvY+6nJgVJ7iTTIhs6yJswUndRu0GTdcUZN7GCOKGChYOmwjpQDeoaVaszdVNGgr06cpm2voAj2Bg8QajKzSfyFMcH62ttM+PP8FcDYMYgtQ7HZfY7lGzPOinLBAAAA[0m[Pipeline] stage
+[8mha:////4DhvakoBv0JgSVQ0dROHCQR+J1X5d9+EIYBtkjIrOsNsAAAApx+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycoh0YAEhpq5RFk4QmhDSRv+Xn5R24kRcjTvQUokJD5ZtyXqvNxSR4UTsRGOx9RhrL7rQuymJgbi9BhpEQxdRE0YKVig7KDK2WqqiZGFRlsNKwtpiHSh6dAk2stEPXQaNrjwnnrajhNybOzwhkxM5aU7fMjJsb72JhD/OXwCMXYJ8t5/tMD+LD59NhPHCAAAA[0m[Pipeline] { (Declarative: Post Actions)
+[8mha:////4IyuUBmMVW1eY95lmTtWv/HMt7oiSvUpaqsDX6XIhmMtAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOKCBA1CqWgtN7zAJMY4se6C7eBUvIiv8QcsIlGxxWpnm3m9YRk81OwNdpp6S6GxOLjR5IWJfX91nLDjCzZMgZ1GqZPkVp9mlBw1zClKWAhYaWocB0smwlp06qEqp8hU5+jzdxRQ2vYOTyhENkfl4xcmD5vb2Aamn+evAKYhQrk75Npvhw/W61xwvgAAAA==[0m[Pipeline] echo
+Cleaning up...
+[8mha:////4IxrDQCrtCWRlSuubt2P7V0D9XODKrhDpz1TyZB/UUIIAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiBA1CqWgtN7zAJMY4se6C7eBUvIiv8QcsIlGxxWpnm3m9YRk81OwNdpp6S6GxOLjR5IWJfX91nLDjCzZMgZ1GqZPkVp9mlBw1zClKWAhYaWocB0smwlp06qEqp8hU5+jzdxRQ2vYOTyhENkfl4xcmD5vb2Aamn+evAKYhQrk75Npvhw+X2kdpvgAAAA==[0m[Pipeline] sh
++ rm -rf
+[8mha:////4Nu5kc650WjU9U8A6gvk7JyE00GVBWlqegdWzVtJd66/AAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiAQ1CqWgtN7zAJMY4se6C7eBUvIiv8QcsIlGxxWpnm3m9YRk81OwNdpp6S6GxOLjR5IWJfX91nLDjCzZMgZ1GqZPkVp9mlBw1zClKWAhYaWocB0smwlp06qEqp8hU5+jzdxRQ2vYOTyhENkfl4xcmD5vb2Aamn+evAKZhiFDut7l2hw8z8/BCvgAAAA==[0m[Pipeline] }
+[8mha:////4NH2LaPIk3AtMZsh+Oe2SfQtEre2avhdyDo5Ooo+7kSCAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOJShAIJUaW10vACExvjxLoztkNS8SK+xh+wiETFFqudbeb1hnUMcOJgsNc0WIqdRe9GkxdOHIar4wl7vmDHFNlpbPXUstLNgi0nDUuKElYCNpo6x9GSSbAVvXzIykky1TmF/B0FlFbd4QmFyOYkQ/rCHGB3G1Vk+nn+CmD2PkG5r3PVhw8AEKv+vgAAAA==[0m[Pipeline] // stage
+[8mha:////4EP4zVwTSv2f0D1QNrmvVVcGaHDX148Jicr0kTDjTta5AAAAox+LCAAAAAAAAP9tjTESgjAQRT84FraWHiI0jI1jZZuh8QQRYgxkdjFZhMoTeTXvICMzVv7qv9e81xvrFHHk6FRrqfOUaq/6MLj5qZFjdw08qpYvqmZKHKyq7FhxY08LViwWy7IcK42NpTpw8uQEW92ahymCIVecJc7uoJH75o4nMj2XxUT5whSxuw1NYvp1/gYw9b0gL0tBtv8A2n0Gmb0AAAA=[0m[Pipeline] }
+[8mha:////4HYbwsqRGFLaq3ncr7qo1vkP8c1mBqq8SO5YDALrKrYGAAAAoh+LCAAAAAAAAP9tjTESgjAQRT84FraWHiI0UjlWthkaTxAhxkBmF5NFqDyRV/MOMjJj5a/+e817vbFOEUeOTrWWOk+p9qoPg5ufGjl218CjavmiaqbEwarKjhU39rRgxWKxLMux0thYqgMnT06w1a15mCIYcsVZ4uwOGrlv7ngi03NZTJQvTBG729Akpl/nbwBT3wvyfSnIyg/QBW89vQAAAA==[0m[Pipeline] // withEnv
+[8mha:////4I1CwuuwiqLEHia58nNNozyolyMAu0YJ93cubTVyh0MTAAAAox+LCAAAAAAAAP9tjTESgjAQRT84FraWHiI0jI1jZZuh8QQRYgxkdjFZhMoTeTXvICMzVv7qv9e81xvrFHHk6FRrqfOUaq/6MLj5qZFjdw08qpYvqmZKHKyq7FhxY08LViwWy7IcK42NpTpw8uQEW92ahymCIVecJc7uoJH75o4nMj2XxUT5whSxuw1NYvp1/gYw9b0gL/eCrPwAlk/IDb0AAAA=[0m[Pipeline] }
+[8mha:////4H8so8NVYYvCogGOQW/NEtQh8AXqyXrrJ6J+0x8EBznxAAAApB+LCAAAAAAAAP9tjTEOwjAQBDdBFLSUPMIpQKJAVLRWGl5gEmOcWHfBvpBUvIiv8QciIlGx1c4083pjmSKOHJ1qLLWeUuVVF3o3PTVwbK+BB9XwRVVMiYNVpR1Kru1pxpLFYl6WY6GxslQFTp6cYK0b8zBFMOSKs8TJHTRyX9/xRKanspgoXxgjNre+Tky/zt8Axq4T5Lu9INt+AIXzzK69AAAA[0m[Pipeline] // node
+[8mha:////4KMaHByUGhxMrAcLPQa/9Azr9MAdG/BL5adIoztl0u4LAAAApB+LCAAAAAAAAP9tjTEOwjAQBDdBFLSUPMKREAUSoqK10vACkxjjxLoL9oWk4kV8jT8QEYmKrXammdcbyxRx5OhUY6n1lCqvutC76amBY3sNPKiGL6piShysKu1Qcm1PM5YsFvOyHAuNlaUqcPLkBGvdmIcpgiFXnCVO7qCR+/qOJzI9lcVE+cIYsbn1dWL6df4GMHadIN/tBdn2A8JUm1u9AAAA[0m[Pipeline] End of Pipeline
+ERROR: script returned exit code 1
+Finished: FAILURE

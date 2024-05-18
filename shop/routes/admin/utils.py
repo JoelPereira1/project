@@ -25,7 +25,21 @@ def get_unique_path(path):
 
 # TODO| Change to fileserver location
 def save_img_file(image):
-  client = Minio(Config.MINIO_API_HOST, Config.MINIO_ACCESS_KEY, Config.MINIO_SECRET_KEY, secure=False)
+  client = Minio(
+    Config.MINIO_API_URI,
+    access_key=Config.MINIO_ACCESS_KEY,
+    secret_key=Config.MINIO_SECRET_KEY,
+    secure=False,
+    # http_client=urllib3.ProxyManager(
+    #   "http://localhost:9000/",
+    #   timeout=urllib3.Timeout.DEFAULT_TIMEOUT,
+    #   retries=urllib3.Retry(
+    #       total=5,
+    #       backoff_factor=0.2,
+    #       status_forcelist=[500, 502, 503, 504],
+    #   ),
+    # ),
+  )
   # Make bucket if not exist.
   found = client.bucket_exists(Config.BUCKET_NAME)
   if not found:
@@ -43,7 +57,7 @@ def save_img_file(image):
   )
 
   url = client.get_presigned_url('GET' ,Config.BUCKET_NAME, image.filename, expires=timedelta(hours=2))
-  background_img_url = url
+  background_img_url = f"http://localhost:9000/{Config.BUCKET_NAME}/{image.filename}"
   print(background_img_url)
 
   # upload_path = current_app.config["UPLOAD_DIR"] / image.filename
