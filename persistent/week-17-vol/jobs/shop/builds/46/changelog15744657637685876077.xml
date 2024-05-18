@@ -1,0 +1,30 @@
+commit 6eda6b059e43f8b6a95e89e57453df5893329c61
+tree e8ad880097e2b6a85b31ea4dc8e845e3a73b7779
+parent 6b9a20a8b79032dac25902c15fd277c4539a0b53
+author JoelPereira1 <> 2024-05-18 18:24:30 +0100
+committer JoelPereira1 <> 2024-05-18 18:24:30 +0100
+
+    try different port
+
+
+:100644 100644 8c25c8a6095ab025faf4288bdab5effd89236fe9 ec330677717d8cd4d7ef141c7222d9846990cc10 M	docker-compose-ci.yml
+:100644 100644 6c3a4093e54b5cbcf3f75b3009e176e16084f7c8 8889ca5ecdc70296ca6404b7a0064b1d2092c31c M	persistent/minio-data/.minio.sys/buckets/.bloomcycle.bin/xl.meta
+:100644 100644 247e312c80bfe8955f172a90a95d1f2fe46b1d3f b112f52f5019a93fe7b36743bf1c67e6719a2dd7 M	persistent/minio-data/.minio.sys/buckets/.usage-cache.bin.bkp/xl.meta
+:100644 100644 3161157d0d3fde37a8ca2094cab442d0cdeebb88 477ff1eabe60d861ef98baabd3dcd50433f9cf2d M	persistent/minio-data/.minio.sys/buckets/.usage-cache.bin/xl.meta
+:100644 100644 edc7c22a431aca15faf911b53d5518ec3fc93a3d f61b417e25344797698210ca0854b40260f2d9c0 M	persistent/minio-data/.minio.sys/buckets/.usage.json/xl.meta
+:100644 100644 6cadb3632a707aed772c4bf1a1dabab068418fad f6f29b0038e46e32b955941c79220057ba903142 M	persistent/minio-data/.minio.sys/buckets/flowershop/.usage-cache.bin.bkp/xl.meta
+:100644 100644 e357fc19cc9a603ae513364a1a903f318437ba6b 330308406f1d10b9cb6e092e3a056d34ba5f235b M	persistent/minio-data/.minio.sys/buckets/flowershop/.usage-cache.bin/xl.meta
+:100644 100644 cc7b9ee134855ee85b832aa1855992ac0537836f 5bb2f0c5768e7db16cb00f0f7ee5beaca5cc058d M	persistent/redis_data/appendonly.aof
+:100644 100644 f8a6a5e6f07a49ce40319641ff9a2c0245c82b03 a38ae7824416ed626e2a4bc9139f4da17a513a20 M	persistent/redis_data/dump.rdb
+:000000 100644 0000000000000000000000000000000000000000 fb68828f68cfc08b1510757a0357df06acf3735a A	persistent/week-17-vol/jobs/shop/builds/45/build.xml
+:000000 100644 0000000000000000000000000000000000000000 01ad1e6a14293c1a2c7f6604753ffe35510e6be9 A	persistent/week-17-vol/jobs/shop/builds/45/changelog7173226050418635527.xml
+:000000 100644 0000000000000000000000000000000000000000 ef995859879be986962baafb0f2de2a8ded983c1 A	persistent/week-17-vol/jobs/shop/builds/45/log
+:000000 100644 0000000000000000000000000000000000000000 ff8b66adaa918d635288e30c0a2aa67cad445dbd A	persistent/week-17-vol/jobs/shop/builds/45/log-index
+:000000 100644 0000000000000000000000000000000000000000 36498d24d4df4953621010b4e082fe3a1340f445 A	persistent/week-17-vol/jobs/shop/builds/45/workflow-completed/flowNodeStore.xml
+:100644 100644 8b62ca3d03cea4dbfd1d7a8381478b8544d3d3fd 5e2d50fe4f2eae60532d3df79980a5b9babf9031 M	persistent/week-17-vol/jobs/shop/builds/permalinks
+:100644 100644 ea90ee31980757b2e469741512bcb39e73494e78 9e5feb5256930f3cae636754eef8a244ede164eb M	persistent/week-17-vol/jobs/shop/nextBuildNumber
+:100644 100644 5193d120c28c99e5e1a6a5d93fa829320556980c eba5fe0a46cdd1b6a3ea16ef2aa12926e00488ca M	persistent/week-17-vol/queue.xml
+:000000 100644 0000000000000000000000000000000000000000 53c5e9a0e14dd1f30ce96e41571509c9a9d4fa39 A	persistent/week-17-vol/workspace/shop@tmp/durable-99582270/jenkins-log.txt
+:000000 100644 0000000000000000000000000000000000000000 573541ac9702dd3969c9bc859d2b91ec1f7e6e56 A	persistent/week-17-vol/workspace/shop@tmp/durable-99582270/jenkins-result.txt
+:000000 100644 0000000000000000000000000000000000000000 4ce9da7b7e36f1e4c8cfc6f10051e111312cb8ab A	persistent/week-17-vol/workspace/shop@tmp/durable-99582270/script.sh
+:000000 100644 0000000000000000000000000000000000000000 4ce9da7b7e36f1e4c8cfc6f10051e111312cb8ab A	persistent/week-17-vol/workspace/shop@tmp/durable-99582270/script.sh.copy

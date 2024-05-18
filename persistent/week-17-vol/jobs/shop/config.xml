@@ -47,7 +47,7 @@
                 // Activate the digital atmosphere
                 sh &apos;source $VENV_PATH/bin/activate&apos;
                 //dockerImage = &apos;${WORKSPACE}/.docker/dockerfile&apos;
-                sh &apos;docker compose -f docker-compose-ci.yml up --build --remove-orphans&apos;
+                sh &apos;docker compose -f docker-compose-ci.yml up -d --build --remove-orphans&apos;
                 echo &apos;Docker-compose-build Build Image Completed&apos;
             }
           }
@@ -75,7 +75,7 @@
                 // Run your tests here. This is just a placeholder.
                 // For example, if you had tests, you might run: pytest
                 echo &quot;Assuming tests are run here. Please replace this with actual test commands.&quot;
-                sh &quot;docker run flowershop-ci&quot;
+                //sh &quot;docker run flowershop-ci&quot;
                 sh &quot;docker exec flowershop-ci python -m pytest -v&quot;
             }
         }
