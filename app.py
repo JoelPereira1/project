@@ -13,7 +13,7 @@ import shop.corelib.rethinkdb.initdb as InitDatabase
 import shop.corelib.rethinkdb.db_read as RethinkRead
 
 app = create_app()
-socketio = SocketIO(app)
+socketio = SocketIO(app, always_connect=True, async_mode='threading')
 global thread
 global thread1
 thread = None
@@ -52,4 +52,4 @@ if __name__ == 'app':
     # thread1 = Thread(target=watch_challenge)
     thread.start()
     # thread1.start()
-  socketio.run(app, host='0.0.0.0',  debug=True, reload=True, port=8088)
+  socketio.run(app, host='0.0.0.0', port=8088, debug=True, use_reloader=True, allow_unsafe_werkzeug=True)

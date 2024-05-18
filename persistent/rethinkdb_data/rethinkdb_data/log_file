@@ -1223,3 +1223,7 @@
 2024-05-18T10:33:54.487784000 1.554642s info: Table 8856d34f-1e47-42d6-bc5c-6ed7f900f1ec: This server is Raft leader for term 25. Latest log index is 81.
 2024-05-18T10:33:55.233492273 2.300350s info: Table 9fcc1ec1-0ca1-4375-ad9c-7f128f4869fe: Starting a new Raft election for term 45.
 2024-05-18T10:33:55.240577816 2.307435s info: Table 9fcc1ec1-0ca1-4375-ad9c-7f128f4869fe: This server is Raft leader for term 45. Latest log index is 142.
+2024-05-18T10:40:53.516632841 420.619513s warn: RethinkDB has been accessing a lot of swap memory in the past ten minutes. This may impact performace.
+2024-05-18T12:41:48.458939908 7680.376288s warn: RethinkDB has been accessing a lot of swap memory in the past ten minutes. This may impact performace.
+2024-05-18T12:53:48.418397635 8400.377179s warn: RethinkDB has been accessing a lot of swap memory in the past ten minutes. This may impact performace.
+2024-05-18T14:19:48.267821470 13560.396691s warn: RethinkDB has been accessing a lot of swap memory in the past ten minutes. This may impact performace.

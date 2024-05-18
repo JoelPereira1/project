@@ -17,7 +17,7 @@
     agent any
 
     environment {
-        VENV_PATH = &apos;myprojectenv&apos;
+        VENV_PATH = &apos;.venv&apos;
         FLASK_APP = &apos;shop/app.py&apos;
     }
 
@@ -40,9 +40,15 @@
         stage(&apos;Building image&apos;) {
           steps{
             script {
-                //sh &apos;bash -c &quot;cd ${WORKSPACE}/..&quot;&apos;
-                dockerImage = &apos;${WORKSPACE}/.docker/dockerfile&apos;
-                sh &apos;docker compose up&apos;
+                //sh &apos;cd ${WORKSPACE}&apos;
+                // Verify for the digital atmosphere, 
+                // create it if it would not exist
+                sh &apos;python3 -m venv $VENV_PATH&apos;
+                // Activate the digital atmosphere
+                sh &apos;source $VENV_PATH/bin/activate&apos;
+                //dockerImage = &apos;${WORKSPACE}/.docker/dockerfile&apos;
+                sh &apos;docker compose up --build&apos;
+                echo &apos;Docker-compose-build Build Image Completed&apos;
             }
           }
         }

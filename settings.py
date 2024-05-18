@@ -221,6 +221,8 @@ class Config:
   FLASK_DEBUG = get_debug_flag()
   SECRET_KEY = os.getenv('SECRET_KEY', secretkeyvalue)
   WTF_CSRF_ENABLED = False  # Allows form testing
+  PYTHONUNBUFFERED=1
+
   # Redis
   # if redis is enabled, it can be used for:
   #   - cache
