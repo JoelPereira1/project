@@ -33,7 +33,7 @@
             steps {
                 // Checkout code from a source control 
                 //management system (e.g., Git)
-                git url: &apos;https://github.com/JoelPereira1/project.git&apos;, branch: &apos;main&apos;
+                git url: &apos;https://github.com/JoelPereira1/project.git&apos;, branch: &apos;dev&apos;
             }
         }
          // Building Docker images
@@ -100,8 +100,10 @@
     post {
         always {
             // Clean up after the pipeline runs
+            echo &apos;Remove Containers...&apos;
+            sh &apos;docker system prune -f&apos;
             echo &apos;Cleaning up...&apos;
-            sh &apos;rm -rf ${VIRTUAL_ENV_DIR}&apos;
+            sh &apos;rm -rf ${WORKSPACE}&apos;
         }
     }
 }</script>

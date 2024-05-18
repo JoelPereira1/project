@@ -1,0 +1,240 @@
+version: '3.9'
+
+services:
+  redis:
+    image: redis:6.2-alpine
+    env_file: infisical/.env
+    restart: always
+    # Password cannot have special chars
+    # command: redis-server --port 6379 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81 --maxmemory-policy allkeys-lfu --appendonly yes
+    command: redis-server --port 6379 --loglevel warning --maxmemory-policy allkeys-lfu --appendonly yes
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      - ./persistent/redis_data:/data
+    ports:
+      - 6379:6379
+    networks:
+      redis_network:
+      infisical_network:
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 2GB
+
+  db:
+    image: postgres:16-alpine
+    env_file: infisical/.env
+    ports:
+      - 5432:5432
+    networks:
+      postgresql_network:
+      infisical_network:
+      flaskshop_network:
+    volumes:
+      - ./.docker/init-scripts:/docker-entrypoint-initdb.d
+      - ./persistent/postgresql:/var/lib/postgresql
+      - ./persistent/postgresql_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: infisical
+      POSTGRES_PASSWORD: infisical
+      POSTGRES_DB: postgres
+      # PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/postgresql/16/bin
+    command:
+      # - /bin/bash
+      # - -c
+      # - |
+      #   rethinkdb create --initial-password Passw0rd!
+      #   rethinkdb --bind all
+    healthcheck:
+      test: "pg_isready --username=infisical && psql --username=infisical --list"
+      interval: 5s
+      timeout: 10s
+      retries: 10
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 2GB
+
+  db-migration:
+    depends_on:
+      db:
+        condition: service_healthy
+    image: infisical/infisical:latest-postgres
+    env_file: infisical/.env
+    command: npm run migration:latest
+    pull_policy: always
+    networks:
+      infisical_network:
+      postgresql_network:
+      redis_network:
+
+  backend:
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+      db-migration:
+        condition: service_completed_successfully
+    image: infisical/infisical:latest-postgres
+    # image: postgres:latest
+    pull_policy: always
+    env_file: infisical/.env
+    ports:
+      - 9090:8080
+    environment:
+      - NODE_ENV=production
+    networks:
+      infisical_network:
+      postgresql_network:
+      redis_network:
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 2GB
+
+  rethinkdb:
+    build:
+      context: .
+      dockerfile: ./.docker/dockerfile.rethinkdb
+    environment: # Goes directly to ENV inside container (cachtes env from gitlab ci)
+      - TZ=Europe/Lisbon
+    restart: always
+    networks:
+      flaskshop_network:
+      redis_network:
+      rethinkdb_net:
+    ports:
+      - 8086:8080
+      - 28015:28015
+      - 29015:29015
+    command:
+      - /bin/bash
+      - -c
+      - |
+        rethinkdb create --initial-password Passw0rd!
+        rethinkdb --bind all
+    volumes:
+      - ./persistent/rethinkdb_data:/data
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 2GB
+
+  minio:
+    image: quay.io/minio/minio:latest
+    command: server --console-address ":9001"
+    ports:
+      - 9000:9000
+      - 9001:9001
+    env_file:
+      - minio/.env
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+    restart: always
+    volumes:
+      - ./persistent/minio-data:/mnt/data
+    networks:
+      minio_network:
+      flaskshop_network:
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 2GB
+
+  flowershop:
+    build:
+      context: .
+      dockerfile: ./.docker/dockerfile
+    environment: # Goes directly to ENV inside container (cachtes env from gitlab ci)
+      - TZ=Europe/Lisbon
+    container_name: flowershop
+    restart: always
+    networks:
+      flaskshop_network:
+      redis_network:
+      rethinkdb_net:
+      jenkins_network:
+      minio_network:
+    ports:
+      - 5000:5000
+      # - 5679:5679
+    # entrypoint: [ "python", "-m", "debugpy", "--listen", "0.0.0.0:5679", "-m", "app",  "--wait-for-client", "--multiprocess", "-m", "flask", "run", "-h", "0.0.0.0", "-p", "5000" ]
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 2GB
+
+networks:
+  redis_network:
+    name: redis_network
+    # driver: overlay
+    attachable: true
+    # external: true
+  infisical_network:
+    name: infisical_network
+    # driver: overlay
+    attachable: true
+    # external: true
+  postgresql_network:
+    name: postgresql_network
+    # driver: overlay
+    attachable: true
+    # external: true
+  rethinkdb_net:
+    name: rethinkdb_net
+    # driver: overlay
+    attachable: true
+    # external: true
+  flaskshop_network:
+    name: flaskshop_network
+    # driver: overlay
+    attachable: true
+    # external: true
+  jenkins_network:
+    name: jenkins_network
+    # driver: overlay
+    attachable: true
+    # external: true
+  minio_network:
+    name: minio_network
+    # driver: overlay
+    attachable: true
+    # external: true
+
+volumes:
+  rethinkdb_data:
+    driver: local
+  pg_data:
+    driver: local
+  redis_data:
+    driver: local
+  postgresql_data:
+    driver: local
+  postgresql:
+    driver: local
+  week-17-vol:
+    driver: local
+  minio-data:
+    driver: local
+
+# networks:
+#   host:
+#     external: true
+# docker network create rethinkdb_net
+# docker network create postgresql_network
+# docker network create redis_network
+# docker network create infisical_network
+# docker network create flaskshop_network
+# docker network create jenkins_network
