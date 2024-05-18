@@ -75,8 +75,8 @@
                 // Run your tests here. This is just a placeholder.
                 // For example, if you had tests, you might run: pytest
                 echo &quot;Assuming tests are run here. Please replace this with actual test commands.&quot;
-                sh &quot;docker run shop&quot;
-                sh &quot;docker exec shop python -m pytest -v&quot;
+                sh &quot;docker run flowershop-ci&quot;
+                sh &quot;docker exec flowershop-ci python -m pytest -v&quot;
             }
         }
 
