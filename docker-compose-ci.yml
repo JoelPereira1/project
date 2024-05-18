@@ -158,7 +158,7 @@ services:
       dockerfile: ./.docker/dockerfile
     environment: # Goes directly to ENV inside container (cachtes env from gitlab ci)
       - TZ=Europe/Lisbon
-    container_name: flowershop
+    container_name: flowershop-ci
     restart: always
     networks:
       flaskshop_network:

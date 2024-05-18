@@ -47,7 +47,7 @@
                 // Activate the digital atmosphere
                 sh &apos;source $VENV_PATH/bin/activate&apos;
                 //dockerImage = &apos;${WORKSPACE}/.docker/dockerfile&apos;
-                sh &apos;docker compose up --build&apos;
+                sh &apos;docker compose -f docker-compose-ci.yml up --build --remove-orphans&apos;
                 echo &apos;Docker-compose-build Build Image Completed&apos;
             }
           }
