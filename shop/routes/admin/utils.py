@@ -57,7 +57,7 @@ def save_img_file(image):
   )
 
   url = client.get_presigned_url('GET' ,Config.BUCKET_NAME, image.filename, expires=timedelta(hours=2))
-  background_img_url = f"http://localhost:9000/{Config.BUCKET_NAME}/{image.filename}"
+  background_img_url = image.filename
   print(background_img_url)
 
   # upload_path = current_app.config["UPLOAD_DIR"] / image.filename

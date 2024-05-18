@@ -1208,3 +1208,18 @@
 2024-05-18T10:33:20.525184876 8187.725403s notice: All client connections closed.
 2024-05-18T10:33:20.525191176 8187.725409s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
 2024-05-18T10:33:21.004595242 8188.204813s notice: Storage engine shut down.
+2024-05-18T10:33:53.003595133 0.070453s notice: Running rethinkdb 2.4.4~0jammy (x86_64-linux-gnu) (GCC 11.4.0)...
+2024-05-18T10:33:53.040826037 0.107685s notice: Running on Linux 5.15.146.1-microsoft-standard-WSL2 x86_64
+2024-05-18T10:33:53.041452355 0.108310s notice: Loading data from directory /data/rethinkdb_data
+2024-05-18T10:33:53.079365180 0.146223s info: Automatically using cache size of 916 MB
+2024-05-18T10:33:53.173471170 0.240329s notice: Listening for intracluster connections on port 29015
+2024-05-18T10:33:53.328366263 0.395224s notice: Listening for client driver connections on port 28015
+2024-05-18T10:33:53.328526268 0.395384s notice: Listening for administrative HTTP connections on port 8080
+2024-05-18T10:33:53.328530268 0.395388s notice: Listening on cluster addresses: 127.0.0.1, 172.21.0.2, 172.22.0.2, 172.19.0.3, ::1
+2024-05-18T10:33:53.328535368 0.395393s notice: Listening on driver addresses: 127.0.0.1, 172.21.0.2, 172.22.0.2, 172.19.0.3, ::1
+2024-05-18T10:33:53.328547468 0.395405s notice: Listening on http addresses: 127.0.0.1, 172.21.0.2, 172.22.0.2, 172.19.0.3, ::1
+2024-05-18T10:33:53.328551169 0.395408s notice: Server ready, "3c95517529f4_6ta" 3e16050d-5054-4551-95f3-d71085e44617
+2024-05-18T10:33:54.480937165 1.547795s info: Table 8856d34f-1e47-42d6-bc5c-6ed7f900f1ec: Starting a new Raft election for term 25.
+2024-05-18T10:33:54.487784000 1.554642s info: Table 8856d34f-1e47-42d6-bc5c-6ed7f900f1ec: This server is Raft leader for term 25. Latest log index is 81.
+2024-05-18T10:33:55.233492273 2.300350s info: Table 9fcc1ec1-0ca1-4375-ad9c-7f128f4869fe: Starting a new Raft election for term 45.
+2024-05-18T10:33:55.240577816 2.307435s info: Table 9fcc1ec1-0ca1-4375-ad9c-7f128f4869fe: This server is Raft leader for term 45. Latest log index is 142.
